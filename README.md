@@ -1,7 +1,7 @@
 # Progetto PSSS: Travelgram
 
-How to read this ReadME:
-credits go to: Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;
+###### How to read this ReadME:
+credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;
 this is an Italian team, so the TeadMe is built in 2 section: 
 1. English summary
 2. Italian summary
@@ -24,14 +24,17 @@ blablabla in english
 
 ### Introduzione:
 
-Conserva i tuoi ricordi e condividili con gli amici:
-seleziona i paesi o le città che hai visitato (o intendi visitare) attraverso una mappa interattiva, qui vedrai colorati di verde i paesi già visitati e di giallo quelli che ti interesserebbe visitare.
-aggiungi e visualizza le tue memories (immagini, testi).
+Con Travelgram puoi conservare i tuoi ricordi e condividerli con gli amici:
+- interagisci con una mappa interattiva e visualizza i paesi visitati (verde) o che intendi visitare in futuro (giallo)
+- aggiungi e visualizza le tue memories (immagini, testi, commenti).
 
-Osserva le esperienze di altri travelers: segui i tuoi amici o persone che reputi interessanti, visualizza le loro Memories e recensioni.
-Gestisci la tua lista amici e segui automaticamente gli amici di facebook registrandoti all'app tramite il profilo facebook.
+Osserva le esperienze di altri travelers: 
+- segui i tuoi amici o persone che reputi interessanti, visualizza le loro Memories e recensioni.
+- gestisci la tua lista amici e segui automaticamente gli amici di facebook registrandoti all'app tramite il profilo facebook.
 
 ![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/Immagine1_interfaccia.png)
+
+
 
 ### Come inserire una memory:
 1. Clicca sul bottone “new Memory”, dove?
