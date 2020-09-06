@@ -9,7 +9,7 @@ aggiungi e visualizza le tue memories (immagini, testi).
 Osserva le esperienze di altri travelers: segui i tuoi amici o persone che reputi interessanti, visualizza le sue Memories e recensioni.
 Gestisci la tua lista amici e segui automaticamente gli amici di facebook registrandoti all'app tramite il profilo facebook.
 
-![alt text](
+![alt text](https://github.com/fabiom95/repo/blob/master/images/Immagine1_interfaccia.png)
 
 Come inserire una memory:
 1.	Cliccare sul bottone “new Memory”, che si può trovare:
