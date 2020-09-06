@@ -1,4 +1,4 @@
-# Pregetto PSSS: Travelgram
+# Progetto PSSS: Travelgram
 
 ### Introduzione:
 
