@@ -35,8 +35,8 @@ Gestisci la tua lista amici e segui automaticamente gli amici di facebook regist
 
 ### Come inserire una memory:
 1. Clicca sul bottone “new Memory”, dove?
-   a. nella schermata principale (la ScratchMap)
-   b. cliccando sul bottone “show cities” sulla schermata principale e selezionando una città sulla mappa
+   - nella schermata principale (la ScratchMap)
+   - cliccando sul bottone “show cities” sulla schermata principale e selezionando una città sulla mappa
 2. Aggiungi una o più immagini dalla galleria
 3. Seleziona i nomi della città e del paese; nel caso (1.b) i campi sono riempiti automaticamente in base alla città indicata
 4. (Opzionale) Aggiungi informazioni aggiuntive come luogo o data
