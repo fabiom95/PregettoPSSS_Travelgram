@@ -1,13 +1,9 @@
 # Progetto PSSS: Travelgram
 
-###### How to read this ReadME:
-credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;
-this is an Italian team, so the TeadMe is built in 2 section: 
-1. English summary
-2. Italian summary
-
-> vedere come si fanno i collegamenti ipertestuali qui:
-> https://docs.microsoft.com/it-it/contribute/how-to-write-links#bookmark-links
+> credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;
+> this is an Italian team, so the TeadMe is built in 2 section: 
+> 1. English summary
+> 2. Italian summary
 
 
 ### Introduction:
