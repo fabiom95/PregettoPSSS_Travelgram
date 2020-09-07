@@ -1,7 +1,8 @@
 # Progetto PSSS: Travelgram
 
 > credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;
-> this is an Italian team, so the TeadMe is built in 2 section: 
+
+> this is an Italian team, so the ReadMe is built in 2 section: 
 > 1. English summary
 > 2. Italian summary
 
