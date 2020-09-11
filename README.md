@@ -10,7 +10,7 @@
 
 Travelgram allows you to store and share with friends your memories:
 - interact with a ScratchMap where you can find in green the countries you have visited and in yellow those that you want to visit in future (marked as "wish").
-- add and see your memories (images, texts, comments)
+- add and see your memories (images, texts, comments).
 
 Look at your friends' experiences too:
 - follow who you know and/or who you consider interesting, view their memories and reviews.
@@ -23,7 +23,7 @@ Look at your friends' experiences too:
 ### How to insert a memory
 
 1. Click on the “new Memory” button, where?
-   - a) in the main interface (the ScratchMap)
+   - a) in the main interface (the ScratchMap);
    - b) first click on the “show cities” botton (on the main interface) and then click on a country of the map.
 2. Add one or more images from your phone gallery.
 3. Choose the city/country name; these two will be automatically chosen if you are in the 1.b scenario.
@@ -42,7 +42,7 @@ Look at your friends' experiences too:
 ### Introduzione:
 
 Con Travelgram puoi conservare i tuoi ricordi e condividerli con gli amici:
-- interagisci con una mappa interattiva e visualizza i paesi visitati (verde) o che intendi visitare in futuro (giallo)
+- interagisci con una mappa interattiva e visualizza i paesi visitati (verde) o che intendi visitare in futuro (giallo);
 - aggiungi e visualizza le tue memories (immagini, testi, commenti).
 
 Osserva le esperienze di altri travelers: 
@@ -56,8 +56,8 @@ Osserva le esperienze di altri travelers:
 ### Come inserire una memory:
 
 1. Clicca sul bottone “new Memory”, dove?
-   - a) nella schermata principale (la ScratchMap)
-   - b) cliccando sul bottone “show cities” sulla schermata principale e selezionando una città sulla mappa
+   - a) nella schermata principale (la ScratchMap);
+   - b) cliccando sul bottone “show cities” sulla schermata principale e selezionando una città sulla mappa.
 2. Aggiungi una o più immagini dalla galleria del cellulare.
 3. Seleziona i nomi della città e del paese; nel caso (1.b) i campi sono riempiti automaticamente in base alla città indicata.
 4. [Opzionale] Aggiungi informazioni aggiuntive come luogo o data.
