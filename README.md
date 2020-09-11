@@ -5,7 +5,6 @@
 > 2. Italian summary
 
 
-## ENGLISH
 
 ### Introduction:
 
