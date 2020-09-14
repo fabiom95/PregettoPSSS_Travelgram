@@ -1,4 +1,4 @@
-package com.example.travelgram.ui.dashboard;
+package com.example.travelgram.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.travelgram.R;
+import com.example.travelgram.viewmodel.DashboardViewModel;
 
 public class DashboardFragment extends Fragment {
 

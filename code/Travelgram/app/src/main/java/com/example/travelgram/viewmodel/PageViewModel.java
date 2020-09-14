@@ -1,4 +1,4 @@
-package com.example.travelgram.ui.main;
+package com.example.travelgram.viewmodel;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

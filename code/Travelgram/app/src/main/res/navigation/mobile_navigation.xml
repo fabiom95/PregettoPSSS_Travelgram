@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_scratchmap"
-        android:name="com.example.travelgram.ui.scratchmap.ScratchMapFragment"
+        android:name="com.example.travelgram.view.ScratchMapFragment"
         android:label="@string/title_scratchmap"
         tools:layout="@layout/fragment_scratchmap" />
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.travelgram.ui.home.HomeFragment"
+        android:name="com.example.travelgram.view.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.travelgram.ui.dashboard.DashboardFragment"
+        android:name="com.example.travelgram.view.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.travelgram.ui.notifications.NotificationsFragment"
+        android:name="com.example.travelgram.view.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

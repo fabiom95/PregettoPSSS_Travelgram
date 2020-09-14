@@ -1,16 +1,16 @@
-package com.example.travelgram.ui.scratchmap;
+package com.example.travelgram.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ScratchMapViewModel extends ViewModel {
+public class DashboardViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ScratchMapViewModel() {
-        //mText = new MutableLiveData<>();
-        //mText.setValue("This is the Scratch Map");
+    public DashboardViewModel() {
+        mText = new MutableLiveData<>();
+        mText.setValue("This is dashboard fragment");
     }
 
     public LiveData<String> getText() {
