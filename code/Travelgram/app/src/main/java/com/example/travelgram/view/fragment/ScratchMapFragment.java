@@ -1,4 +1,4 @@
-package com.example.travelgram.view;
+package com.example.travelgram.view.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,9 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.travelgram.PlaceTabActivity;
+import com.example.travelgram.view.activity.PlaceTabActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

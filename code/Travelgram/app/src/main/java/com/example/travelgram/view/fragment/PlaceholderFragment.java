@@ -1,4 +1,4 @@
-package com.example.travelgram.view;
+package com.example.travelgram.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

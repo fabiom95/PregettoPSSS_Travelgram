@@ -1,9 +1,11 @@
-package com.example.travelgram;
+package com.example.travelgram.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.travelgram.view.ScratchMapFragment;
+import com.example.travelgram.R;
+import com.example.travelgram.view.fragment.ScratchMapFragment;
+import com.example.travelgram.view.fragment.SectionsPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;

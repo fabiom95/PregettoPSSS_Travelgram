@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ScratchMapFragment"
+    tools:context=".view.fragment.ScratchMapFragment"
     tools:layout_editor_absoluteX="16dp"
     tools:layout_editor_absoluteY="0dp"
     map:uiCompass="false"
