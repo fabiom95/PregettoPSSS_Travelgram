@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.travelgram.PlaceTabActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -31,6 +33,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public class ScratchMapFragment extends Fragment implements OnMapReadyCallback {
 
+    public static final String COUNTRY_NAME = "com.example.myfirstapp.COUNTRY";
     private static final String TAG = ScratchMapFragment.class.getSimpleName();
     private GoogleMap scratchMap;
 
@@ -84,7 +87,9 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback {
             layer.setOnFeatureClickListener(new KmlLayer.OnFeatureClickListener() {
                 @Override
                 public void onFeatureClick(Feature feature) {
-                    Toast.makeText(getActivity().getApplicationContext(), feature.getProperty("name"),Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), PlaceTabActivity.class);
+                    intent.putExtra(COUNTRY_NAME, feature.getProperty("name"));
+                    startActivity(intent);
                 }
             });
         }

@@ -1,7 +1,9 @@
 package com.example.travelgram;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.travelgram.view.ScratchMapFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -10,6 +12,8 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.TextView;
+
 
 public class PlaceTabActivity extends AppCompatActivity {
 
@@ -17,7 +21,15 @@ public class PlaceTabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_tab);
+
+        Intent intent = getIntent();
+        String country = intent.getStringExtra(ScratchMapFragment.COUNTRY_NAME);
+
+        TextView countryText = findViewById(R.id.country_name);
+        countryText.setText(country);
+
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
