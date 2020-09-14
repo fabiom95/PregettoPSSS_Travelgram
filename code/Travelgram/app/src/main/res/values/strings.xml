@@ -5,6 +5,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_place_tab">PlaceTabActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">My Memories</string>
+    <string name="tab_text_2">Reviews</string>
+    <string name="tab_text_3">Guides</string>
 </resources>
