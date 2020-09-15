@@ -27,7 +27,7 @@ import com.example.travelgram.R;
 
 import org.w3c.dom.Text;
 
-//fffffffffff
+//commento
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
 
