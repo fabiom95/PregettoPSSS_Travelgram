@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private FirebaseAuth mAuth;
 
     @Override
-    protected void onCreate (Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -65,7 +66,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     };
 
-        Button button = findViewById(R.id.loginBtn);
+        TextView login = findViewById(R.id.clicklogin);
+        login.setOnClickListener(this);
+
+        Button button = findViewById(R.id.regBtn);
         button.setOnClickListener(this);
     }
 
@@ -97,8 +101,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        switch(v.getId()){
+            case R.id.clicklogin:
+                Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.regBtn:
+                Intent in=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                break;
+            default:
+                break;
+        }
     }
-
 }

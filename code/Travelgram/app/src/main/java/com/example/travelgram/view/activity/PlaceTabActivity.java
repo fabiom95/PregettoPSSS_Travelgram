@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.travelgram.R;
 import com.example.travelgram.view.fragment.ScratchMapFragment;
-import com.example.travelgram.view.fragment.SectionsPagerAdapter;
+import com.example.travelgram.SectionsPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -34,6 +34,7 @@ public class PlaceTabActivity extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
+
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
