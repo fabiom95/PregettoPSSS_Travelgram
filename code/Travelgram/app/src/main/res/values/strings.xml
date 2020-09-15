@@ -6,9 +6,11 @@
     <string name="title_activity_place_tab">PlaceTabActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="prompt_email">Email</string>
+    <string name="signup">SIGN UP</string>
+    <string name="click_login">Already Registered? Click here to Log In</string>
+    <string name="click_signup">Not Registered? Click here to Sign Up</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="login">Log in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -16,4 +18,5 @@
     <string name="tab_text_1">My Memories</string>
     <string name="tab_text_2">Reviews</string>
     <string name="tab_text_3">Guides</string>
+    <string name="title_activity_login">Login</string>
 </resources>

@@ -83,26 +83,14 @@
         android:layout_width="116dp"
         android:layout_height="63dp"
         android:background="@drawable/reg_btn_style"
-        android:text="sign in"
+        android:onClick="onClick"
+        android:text="@string/signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regPassword2"
         app:layout_constraintVertical_bias="0.284" />
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="116dp"
-        android:layout_height="63dp"
-        android:background="@drawable/reg_btn_style"
-        android:text="Log in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPassword2"
-        app:layout_constraintVertical_bias="0.786" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -114,6 +102,18 @@
         app:layout_constraintStart_toStartOf="@+id/regBtn"
         app:layout_constraintTop_toTopOf="@+id/regBtn"
         app:layout_constraintVertical_bias="0.533" />
+
+    <TextView
+        android:id="@+id/clicklogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click_login"
+        app:layout_constraintBottom_toTopOf="@+id/regBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regPassword2"
+        android:onClick="onClick"
+        android:clickable="true"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
