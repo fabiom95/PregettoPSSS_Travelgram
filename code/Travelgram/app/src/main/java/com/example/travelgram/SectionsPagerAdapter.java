@@ -1,4 +1,4 @@
-package com.example.travelgram.view.fragment;
+package com.example.travelgram;
 
 import android.content.Context;
 
@@ -8,7 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.travelgram.R;
+import com.example.travelgram.view.fragment.DashboardFragment;
+import com.example.travelgram.view.fragment.NotificationsFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -28,8 +29,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        switch(position){
+            case 0:
+                return new DashboardFragment();
+            case 1:
+                return new NotificationsFragment();
+            case 2:
+                return new DashboardFragment();
+        }
+        return null;
     }
 
     @Nullable
