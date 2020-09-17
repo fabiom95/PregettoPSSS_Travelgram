@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.TextView;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,13 +40,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         loadingProgress = findViewById(R.id.progressBar);
         regBtn = findViewById(R.id.regBtn);
         loadingProgress.setVisibility(View.INVISIBLE);
+
         mAuth = FirebaseAuth.getInstance();
 
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 regBtn.setVisibility(View.INVISIBLE);
-                loadingProgress.setVisibility(View.INVISIBLE);
+                loadingProgress.setVisibility(View.VISIBLE);
                 final String email = userEmail.getText().toString();
                 final String password = userPassword.getText().toString();
                 final String password2 = userPassword2.getText().toString();
@@ -61,10 +64,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     //everything is ok and all fields are filled, so we can start creating user account
                     CreateUserAccount(email, username, password);
                 }
-        }
+            }
+        });
 
-
-    };
 
         TextView login = findViewById(R.id.clicklogin);
         login.setOnClickListener(this);
@@ -73,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         button.setOnClickListener(this);
     }
 
-    private void CreateUserAccount(String email, String username, String password) {
+    private void CreateUserAccount(String email, final String username, String password) {
 
         //This method create an account with specific email and password.
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -82,6 +84,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             showMessage("Account is created");
+                            //dopo aver creato l'account, dobbiamo conservare le informazioni immesse dall'utente
+                            updateUserInfo(username, mAuth.getCurrentUser());
+
 
                         }
                         else {
@@ -90,8 +95,48 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             loadingProgress.setVisibility(View.INVISIBLE);
                         }
                     }
-                })
+                });
     }
+
+
+
+    //update user name
+    private void updateUserInfo(final String username, final FirebaseUser currentUser) {
+
+        UserProfileChangeRequest profleUpdate = new UserProfileChangeRequest.Builder()
+                .setDisplayName(username)
+            //    .setPhotoUri(uri)
+                .build();
+
+        currentUser.updateProfile(profleUpdate)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()) {
+                            // user info updated successfully
+                            showMessage("Register Complete");
+                            updateUI();
+                        }
+
+                    }
+                });
+
+    }
+
+
+
+
+    private void updateUI() {
+
+        Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(homeActivity);
+        finish();
+
+    }
+
+
+
 
 
     //simple method to show toast message.
