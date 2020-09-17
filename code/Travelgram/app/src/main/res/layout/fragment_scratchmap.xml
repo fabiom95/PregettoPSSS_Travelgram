@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.NotificationsFragment">
+    tools:context="com.psss.travelgram.view.fragment.NotificationsFragment">
 
     <fragment
         android:id="@+id/map"
@@ -13,7 +13,7 @@
         xmlns:map="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.fragment.ScratchMapFragment"
+        tools:context="com.psss.travelgram.view.fragment.ScratchMapFragment"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp"
         map:uiCompass="false"

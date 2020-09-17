@@ -1,10 +1,10 @@
-package com.example.travelgram.view.activity;
+package com.psss.travelgram.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.travelgram.R;
+import com.psss.travelgram.R;
 
 public class HomeActivity extends AppCompatActivity {
 

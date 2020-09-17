@@ -1,4 +1,4 @@
-package com.example.travelgram;
+package com.psss.travelgram;
 
 import android.content.Context;
 
@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.travelgram.view.fragment.DashboardFragment;
-import com.example.travelgram.view.fragment.NotificationsFragment;
+import com.psss.travelgram.R;
+import com.psss.travelgram.view.fragment.DashboardFragment;
+import com.psss.travelgram.view.fragment.NotificationsFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

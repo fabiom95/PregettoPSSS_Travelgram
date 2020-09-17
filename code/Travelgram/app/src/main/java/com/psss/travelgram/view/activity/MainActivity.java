@@ -1,25 +1,18 @@
-package com.example.travelgram.view.activity;
+package com.psss.travelgram.view.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.travelgram.R;
-import com.example.travelgram.view.fragment.DashboardFragment;
-import com.example.travelgram.view.fragment.NotificationsFragment;
-import com.example.travelgram.view.fragment.ScratchMapFragment;
+import com.psss.travelgram.R;
+import com.psss.travelgram.view.fragment.DashboardFragment;
+import com.psss.travelgram.view.fragment.NotificationsFragment;
+import com.psss.travelgram.view.fragment.ScratchMapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 
 public class MainActivity extends AppCompatActivity {

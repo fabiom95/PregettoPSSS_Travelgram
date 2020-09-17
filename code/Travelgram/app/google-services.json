@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "32863997807",
-    "firebase_url": "https://travelgram-27cc2.firebaseio.com",
-    "project_id": "travelgram-27cc2",
-    "storage_bucket": "travelgram-27cc2.appspot.com"
+    "project_number": "311541182485",
+    "firebase_url": "https://travelgram-psss.firebaseio.com",
+    "project_id": "travelgram-psss",
+    "storage_bucket": "travelgram-psss.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:32863997807:android:c00d9a760bbcd92436a29a",
+        "mobilesdk_app_id": "1:311541182485:android:0c06bc80797e4945b11e1c",
         "android_client_info": {
-          "package_name": "com.example.travelgram"
+          "package_name": "com.psss.travelgram"
         }
       },
       "oauth_client": [
         {
-          "client_id": "32863997807-1np6p2f4j3e3ft52vfgs71f3fip5kvol.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.travelgram",
-            "certificate_hash": "9399cdbf4172b1fe61859d784c612d05ea32a2c0"
-          }
-        },
-        {
-          "client_id": "32863997807-5fd79900srqbor1mg2f9m52qpijv5grg.apps.googleusercontent.com",
+          "client_id": "311541182485-q4rfnldn1mvln0is8s8mjm4gj7nek3rh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAlM2RpfaXvFnxDEs6FSnPRL6j99D95qXs"
+          "current_key": "AIzaSyDr5Oedk9TgMuTGO9KdYJVIcgpOyTX4Z_4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "32863997807-5fd79900srqbor1mg2f9m52qpijv5grg.apps.googleusercontent.com",
+              "client_id": "311541182485-q4rfnldn1mvln0is8s8mjm4gj7nek3rh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

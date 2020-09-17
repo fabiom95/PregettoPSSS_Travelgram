@@ -1,7 +1,8 @@
-package com.example.travelgram.view.activity;
 
 
-import android.content.DialogInterface;
+package com.psss.travelgram.view.activity;
+
+/*
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -18,11 +19,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseUser;
+*/
 
 public class SignUpActivity implements View.OnClickListener {
 
+
+
+
+
+
+ProgressBar progressBar;
     EditText editTextEmail, editTextPassword;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -105,6 +113,18 @@ public class SignUpActivity implements View.OnClickListener {
                 break;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+     */
 }
 
 
