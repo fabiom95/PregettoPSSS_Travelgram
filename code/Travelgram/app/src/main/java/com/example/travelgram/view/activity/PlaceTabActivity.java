@@ -30,8 +30,8 @@ public class PlaceTabActivity extends AppCompatActivity {
         TextView countryText = findViewById(R.id.country_name);
         countryText.setText(country);
 
+        // l'adapter istanzia le pagine da mostrare nelle varie sezioni
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
 

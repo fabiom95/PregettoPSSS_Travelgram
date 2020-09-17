@@ -1,11 +1,21 @@
 package com.example.travelgram.view.activity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.travelgram.R;
+import com.example.travelgram.view.fragment.DashboardFragment;
+import com.example.travelgram.view.fragment.NotificationsFragment;
+import com.example.travelgram.view.fragment.ScratchMapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -14,19 +24,57 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
 
+    final Fragment fragment1 = new ScratchMapFragment();
+    final Fragment fragment2 = new DashboardFragment();
+    final Fragment fragment3 = new NotificationsFragment();
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment active = fragment1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-        // passa le scritte sulla barra in alto
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_scratchmap, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
+        fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").hide(fragment3).commit();
+        fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide(fragment2).commit();
+        fm.beginTransaction().add(R.id.nav_host_fragment, fragment1, "1").commit();
+        getSupportActionBar().setTitle("Scratch-map");
+
+        navView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_scratchmap:
+                        fm.beginTransaction().hide(active).show(fragment1).commit();
+                        getSupportActionBar().setTitle("Scratch-map");
+                        active = fragment1;
+                        return true;
+
+                    case R.id.navigation_dashboard:
+                        fm.beginTransaction().hide(active).show(fragment2).commit();
+                        getSupportActionBar().setTitle("Dashboard");
+                        active = fragment2;
+                        return true;
+
+                    case R.id.navigation_notifications:
+                        fm.beginTransaction().hide(active).show(fragment3).commit();
+                        getSupportActionBar().setTitle("Notifications");
+                        active = fragment3;
+                        return true;
+                }
+                return false;
+            }
+        }
+        );
+
     }
+
+
+
+
 
 }
