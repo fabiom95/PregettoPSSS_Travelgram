@@ -5,13 +5,16 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ import com.psss.travelgram.viewmodel.AuthViewModel;
 public class LoginActivity extends AppCompatActivity implements OnClickListener {
 
     private Button loginBtn;
+    private ProgressBar progressBar;
     private EditText email, password;
     private AuthViewModel authViewModel;
 
@@ -42,18 +46,38 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
 
         // ViewModel
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        authViewModel.getText().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                try{
+                    if(s.equals("success")){
+                        finish();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    }
+                    else {
+                        progressBar.setVisibility(View.GONE);
+                        loginBtn.setVisibility(View.VISIBLE);
+                        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                    }
+                }catch(NullPointerException e) {e.printStackTrace();}
+            }
+        });
 
         // e-mail e password
-        //        email = (EditText) findViewById(R.id.loginEmail);
-        //        password = (EditText) findViewById(R.id.loginPassword);
-        //
-        //        // testo per registrarsi
-        //        TextView login = (TextView) findViewById(R.id.clickSignup);
-        //        login.setOnClickListener(this);
-        //
-        //        // bottone LogIn
+        email = (EditText) findViewById(R.id.loginEmail);
+        password = (EditText) findViewById(R.id.loginPassword);
+
+        // testo per registrarsi
+        TextView login = (TextView) findViewById(R.id.clickSignup);
+        login.setOnClickListener(this);
+
+        // bottone LogIn
         loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(this);
+
+        // progress bar
+        progressBar = findViewById(R.id.progressBar);
+
     }
 
     /*
@@ -106,10 +130,12 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     }
 
 
-
+    // log in
     private void loginUser() {
+        // il controllo iniziale sul formato delle credenziali è affidato al ViewModel
         String result = authViewModel.checkCredentials(email, password);
 
+        // in base al risultato, aggiorna la schermata
         switch(result){
             case "email is empty":
                 email.setError(getString(R.string.email_required));
@@ -122,24 +148,15 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                 break;
 
             case "OK":
-                findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
                 loginBtn.setVisibility(View.GONE);
 
-                Task<AuthResult> login = authViewModel.loginUser(email, password);
-                login.addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            loginBtn.setVisibility(View.VISIBLE);
-                        }
-                    }
-                });
+                // la procedura di login è affidata al ViewModel, che a sua volta
+                // l'affiderà ad AuthRepository (nel package "model")
+                authViewModel.loginUser(email, password);
+
                 break;
+
             default:
                 break;
         }

@@ -17,22 +17,28 @@ import com.psss.travelgram.R;
 import com.psss.travelgram.model.repository.AuthRepository;
 import com.psss.travelgram.view.activity.MainActivity;
 
+
 public class AuthViewModel extends ViewModel {
 
-    /*private MutableLiveData<String> mText;
-
-    public AuthViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
-    }
-
-    public LiveData<String> getText() {
-        return mText;
-    }*/
-
+    private MutableLiveData<String> taskResult;
     private AuthRepository authRepo = new AuthRepository();
 
 
+    public AuthViewModel() {
+        taskResult = new MutableLiveData<>();
+    }
+
+    // operazioni sul Live Data
+    public LiveData<String> getText() {
+        return taskResult;
+    }
+
+    public void updateTaskResult(String message) {
+        taskResult.setValue(message);
+    }
+
+
+    // operazioni per il log in
     public String checkCredentials(EditText emailText, EditText passwordText){
         String email = emailText.getText().toString().trim();   // trim elimina gli spazi all'inizio e alla fine
         String password = passwordText.getText().toString().trim();
@@ -42,11 +48,13 @@ public class AuthViewModel extends ViewModel {
         return "OK";
     }
 
-
-    public Task<AuthResult> loginUser(EditText emailText, EditText passwordText) {
+    public void loginUser(EditText emailText, EditText passwordText) {
         String email = emailText.getText().toString().trim();   // trim elimina gli spazi all'inizio e alla fine
         String password = passwordText.getText().toString().trim();
-        return authRepo.loginUser(email, password);
+
+        // inoltra la richiesta ad AuthRepository, che si interfaccia con Firebase
+        // Il riferimento "this" alla classe stessa serve per ricevere messaggi da AuthRepository
+        authRepo.loginUser(email, password, this);
     }
 
 }
