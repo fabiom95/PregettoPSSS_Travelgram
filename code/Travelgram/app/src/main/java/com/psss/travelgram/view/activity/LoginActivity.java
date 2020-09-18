@@ -1,10 +1,8 @@
 package com.psss.travelgram.view.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -18,15 +16,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.psss.travelgram.R;
 import com.psss.travelgram.viewmodel.AuthViewModel;
 
@@ -77,7 +66,6 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
 
         // progress bar
         progressBar = findViewById(R.id.progressBar);
-
     }
 
     /*
@@ -130,7 +118,10 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     }
 
 
-    // log in
+
+
+    // ----------- LOG IN -----------
+
     private void loginUser() {
         // il controllo iniziale sul formato delle credenziali è affidato al ViewModel
         String result = authViewModel.checkCredentials(email, password);
@@ -154,15 +145,12 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                 // la procedura di login è affidata al ViewModel, che a sua volta
                 // l'affiderà ad AuthRepository (nel package "model")
                 authViewModel.loginUser(email, password);
-
                 break;
 
             default:
                 break;
         }
     }
-
-
 
 
 }

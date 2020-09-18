@@ -20,8 +20,11 @@
     <string name="loginBtn">Log In</string>
     <string name="click_signup">Not Registered? <u>Sign Up</u></string>
 
+    <string name="username_required">username is required</string>
     <string name="email_required">e-mail is required</string>
     <string name="password_required">password is required</string>
+    <string name="password_mismatch">passwords don\'t match</string>
     <string name="password_too_short">Minimum lenght of password should be 6</string>
+
 
 </resources>

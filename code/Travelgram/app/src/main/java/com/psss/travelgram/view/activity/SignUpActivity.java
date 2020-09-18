@@ -8,7 +8,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,18 +20,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
-import com.google.firebase.auth.FirebaseUser;
 import com.psss.travelgram.R;
-import com.psss.travelgram.viewmodel.DashboardViewModel;
+import com.psss.travelgram.viewmodel.AuthViewModel;
 
 
 public class SignUpActivity extends AppCompatActivity implements OnClickListener {
 
     private Button signupBtn;
-    private EditText editTextEmail, editTextPassword;
-    private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
+    private EditText username, email, password, confirmPassword;
+    private AuthViewModel authViewModel;
 
 
     @Override
@@ -40,63 +38,40 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        // istanza di Firebase Authentication
-        mAuth = FirebaseAuth.getInstance();
+        // ViewModel
+        authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        authViewModel.getText().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                try{
+                    if(s.equals("success")){
+                        finish();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    }
+                    else {
+                        progressBar.setVisibility(View.GONE);
+                        signupBtn.setVisibility(View.VISIBLE);
+                        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                    }
+                }catch(NullPointerException e) {e.printStackTrace();}
+            }
+        });
 
         // e-mail e password
-        editTextEmail = (EditText) findViewById(R.id.signupEmail);
-        editTextPassword = (EditText) findViewById(R.id.signupPassword);
+        username = (EditText) findViewById(R.id.signupUsername);
+        email = (EditText) findViewById(R.id.signupEmail);
+        password = (EditText) findViewById(R.id.signupPassword);
+        confirmPassword = (EditText) findViewById(R.id.signupPassword2);
 
         // bottone SignUp
         signupBtn = findViewById(R.id.signupBtn);
         signupBtn.setOnClickListener(this);
 
+        // progress bar
+        progressBar = findViewById(R.id.progressBar);
     }
 
 
-
-    private void registerUser() {
-        String email = editTextEmail.getText().toString().trim();   // trim elimina gli spazi all'inizio e alla fine
-        String password = editTextPassword.getText().toString().trim();
-
-        if (email.isEmpty()) {
-            editTextEmail.setError(getString(R.string.email_required));
-            editTextEmail.requestFocus();
-            return;
-        }
-
-        if (password.isEmpty()) {
-            editTextPassword.setError(getString(R.string.password_required));
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        if (password.length() < 6) {
-            editTextPassword.setError(getString(R.string.password_too_short));
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
-        signupBtn.setVisibility(View.GONE);
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if (task.isSuccessful()) {
-                    finish();   // per chiudere l'activity (non ha senso tornarci successivamente)
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    signupBtn.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-    }
 
     @Override
     public void onClick(View view) {
@@ -105,12 +80,60 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
                 registerUser();
                 break;
 
-            /*case R.id.textViewLogin:
-                finish();
-                startActivity(new Intent(this, MainActivity.class));
-                break;*/
+            //TODO: bottone freccia indietro
         }
     }
+
+
+
+
+    // ----------- SIGN UP -----------
+
+    private void registerUser() {
+        // il controllo iniziale sul formato delle credenziali è affidato al ViewModel
+        String result = authViewModel.checkCredentials(username, email, password, confirmPassword);
+
+        // in base al risultato, aggiorna la schermata
+        switch(result){
+            case "username is empty":
+                username.setError(getString(R.string.username_required));
+                username.requestFocus();
+                break;
+
+            case "email is empty":
+                email.setError(getString(R.string.email_required));
+                email.requestFocus();
+                break;
+
+            case "password is empty":
+                password.setError(getString(R.string.password_required));
+                password.requestFocus();
+                break;
+
+            case "password short":
+                password.setError(getString(R.string.password_too_short));
+                password.requestFocus();
+                break;
+
+            case "password mismatch":
+                confirmPassword.setError(getString(R.string.password_mismatch));
+                confirmPassword.requestFocus();
+                break;
+
+            case "OK":
+                progressBar.setVisibility(View.VISIBLE);
+                signupBtn.setVisibility(View.GONE);
+
+                // la procedura di registrazione è affidata al ViewModel, che a sua volta
+                // l'affiderà ad AuthRepository (nel package "model")
+                authViewModel.signupUser(username, email, password);
+                break;
+
+            default:
+                break;
+        }
+    }
+
 
 }
 
