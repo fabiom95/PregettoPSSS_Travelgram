@@ -13,7 +13,7 @@
     tools:context="com.psss.travelgram.view.activity.LoginActivity">
 
     <EditText
-        android:id="@+id/loginUsername"
+        android:id="@+id/loginEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -79,7 +79,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="@+id/loginBtn"
         app:layout_constraintStart_toStartOf="@+id/loginBtn"
-        app:layout_constraintTop_toTopOf="@+id/loginBtn"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintTop_toTopOf="@+id/loginBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,10 +8,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,15 +25,15 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.psss.travelgram.R;
-
+import com.psss.travelgram.viewmodel.DashboardViewModel;
 
 
 public class SignUpActivity extends AppCompatActivity implements OnClickListener {
 
-    ProgressBar progressBar;
-    Button signupBtn;
+    private Button signupBtn;
     private EditText editTextEmail, editTextPassword;
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +47,10 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
         editTextEmail = (EditText) findViewById(R.id.signupEmail);
         editTextPassword = (EditText) findViewById(R.id.signupPassword);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
+        // bottone SignUp
         signupBtn = findViewById(R.id.signupBtn);
         signupBtn.setOnClickListener(this);
+
     }
 
 
@@ -61,12 +65,6 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
             return;
         }
 
-        /*if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Please enter a valid email");
-            editTextEmail.requestFocus();
-            return;
-        }*/
-
         if (password.isEmpty()) {
             editTextPassword.setError(getString(R.string.password_required));
             editTextPassword.requestFocus();
@@ -79,7 +77,7 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+        findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
         signupBtn.setVisibility(View.GONE);
 
         mAuth.createUserWithEmailAndPassword(email, password)
