@@ -33,9 +33,26 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // e-mail e password
+        email = (EditText) findViewById(R.id.loginEmail);
+        password = (EditText) findViewById(R.id.loginPassword);
+
+        // testo per registrarsi
+        TextView login = (TextView) findViewById(R.id.clickSignup);
+        login.setOnClickListener(this);
+
+        // bottone LogIn
+        loginBtn = findViewById(R.id.loginBtn);
+        loginBtn.setOnClickListener(this);
+
+        // progress bar
+        progressBar = findViewById(R.id.progressBar);
+
         // ViewModel
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
-        authViewModel.getText().observe(this, new Observer<String>() {
+
+        // aspetta il via per l'azione successiva
+        authViewModel.getTaskResult().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 try{
@@ -52,20 +69,17 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
             }
         });
 
-        // e-mail e password
-        email = (EditText) findViewById(R.id.loginEmail);
-        password = (EditText) findViewById(R.id.loginPassword);
-
-        // testo per registrarsi
-        TextView login = (TextView) findViewById(R.id.clickSignup);
-        login.setOnClickListener(this);
-
-        // bottone LogIn
-        loginBtn = findViewById(R.id.loginBtn);
-        loginBtn.setOnClickListener(this);
-
-        // progress bar
-        progressBar = findViewById(R.id.progressBar);
+        // mostra errore
+        authViewModel.getTextError().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                try{
+                    EditText target = findViewById(authViewModel.getTargetID());
+                    target.setError(s);
+                    target.requestFocus();
+                }catch(NullPointerException e) {e.printStackTrace();}
+            }
+        });
     }
 
     /*
@@ -124,31 +138,15 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
 
     private void loginUser() {
         // il controllo iniziale sul formato delle credenziali è affidato al ViewModel
-        String result = authViewModel.checkCredentials(email, password);
+        boolean isValid = authViewModel.validCredentials(getApplicationContext(), email, password);
 
-        // in base al risultato, aggiorna la schermata
-        switch(result){
-            case "email is empty":
-                email.setError(getString(R.string.email_required));
-                email.requestFocus();
-                break;
+        if(isValid){
+            progressBar.setVisibility(View.VISIBLE);
+            loginBtn.setVisibility(View.GONE);
 
-            case "password is empty":
-                password.setError(getString(R.string.password_required));
-                password.requestFocus();
-                break;
-
-            case "OK":
-                progressBar.setVisibility(View.VISIBLE);
-                loginBtn.setVisibility(View.GONE);
-
-                // la procedura di login è affidata al ViewModel, che a sua volta
-                // l'affiderà ad AuthRepository (nel package "model")
-                authViewModel.loginUser(email, password);
-                break;
-
-            default:
-                break;
+            // la procedura di login è affidata al ViewModel, che a sua volta
+            // l'affiderà ad AuthRepository (nel package "model")
+            authViewModel.loginUser(email, password);
         }
     }
 

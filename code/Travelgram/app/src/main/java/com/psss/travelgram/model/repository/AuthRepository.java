@@ -38,9 +38,9 @@ public class AuthRepository {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful())
                         // comunica al ViewModel i dati da mostrare alla View
-                        authViewModel.updateTaskResult("success");
+                        authViewModel.setTaskResult("success");
                     else
-                        authViewModel.updateTaskResult(task.getException().getMessage());
+                        authViewModel.setTaskResult(task.getException().getMessage());
                 }
         });
     }
@@ -63,9 +63,9 @@ public class AuthRepository {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful())
                     // comunica al ViewModel i dati da mostrare alla View
-                    authViewModel.updateTaskResult("success");
+                    authViewModel.setTaskResult("success");
                 else
-                    authViewModel.updateTaskResult(task.getException().getMessage());
+                    authViewModel.setTaskResult(task.getException().getMessage());
             }
         });
     }

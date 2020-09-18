@@ -77,6 +77,7 @@
         android:background="@drawable/btn_style"
         android:onClick="onClick"
         android:text="@string/signupBtn"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -89,11 +90,12 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/signupBtn"
-        app:layout_constraintEnd_toEndOf="@+id/signupBtn"
-        app:layout_constraintStart_toStartOf="@+id/signupBtn"
-        app:layout_constraintTop_toTopOf="@+id/signupBtn"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupPassword2"
+        app:layout_constraintVertical_bias="0.284" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
