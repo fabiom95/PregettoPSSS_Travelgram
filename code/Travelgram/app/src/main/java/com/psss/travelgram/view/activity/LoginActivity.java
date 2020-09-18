@@ -6,13 +6,14 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.psss.travelgram.R;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements OnClickListener {
 
 
     @Override
@@ -22,10 +23,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
 
-        TextView login = (TextView) findViewById(R.id.clicksignup);
+        TextView login = (TextView) findViewById(R.id.clickSignup);
         login.setOnClickListener(this);
 
-        Button button = (Button) findViewById(R.id.login);
+        Button button = (Button) findViewById(R.id.loginBtn);
         button.setOnClickListener(this);
 
 
@@ -34,13 +35,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.clicksignup:
-                Intent intent=new Intent(getApplicationContext(),RegisterActivity.class);
-                startActivity(intent);
+            case R.id.clickSignup:
+                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
                 break;
-            case R.id.login:
-                Intent in=new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(in);
+            case R.id.loginBtn:
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 break;
             default:
                 break;

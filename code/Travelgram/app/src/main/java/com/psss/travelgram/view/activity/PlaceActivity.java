@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class PlaceTabActivity extends AppCompatActivity {
+public class PlaceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

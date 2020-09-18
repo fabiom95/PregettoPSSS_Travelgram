@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.psss.travelgram.view.activity.PlaceTabActivity;
+import com.psss.travelgram.view.activity.PlaceActivity;
 import com.psss.travelgram.viewmodel.ScratchMapViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -51,7 +51,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback {
             layer.setOnFeatureClickListener(new KmlLayer.OnFeatureClickListener() {
                 @Override
                 public void onFeatureClick(Feature feature) {
-                    Intent intent = new Intent(getActivity(), PlaceTabActivity.class);
+                    Intent intent = new Intent(getActivity(), PlaceActivity.class);
                     intent.putExtra(COUNTRY_NAME, feature.getProperty("name"));
                     startActivity(intent);
                 }

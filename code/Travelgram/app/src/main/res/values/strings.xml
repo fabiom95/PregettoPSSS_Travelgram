@@ -1,22 +1,27 @@
 <resources>
     <string name="app_name">Travelgram</string>
+
+    <!-- Main Activity -->
     <string name="title_scratchmap">Scratch-map</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_activity_place_tab">PlaceTabActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="signup">SIGN UP</string>
-    <string name="click_login">Already Registered? Click here to Log In</string>
-    <string name="click_signup">Not Registered? Click here to Sign Up</string>
-    <string name="prompt_password">Password</string>
-    <string name="login">Log in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+
+    <!-- Place Activity -->
     <string name="tab_text_1">My Memories</string>
     <string name="tab_text_2">Reviews</string>
     <string name="tab_text_3">Guides</string>
-    <string name="title_activity_login">Login</string>
+
+    <!-- Login/Signup Activity -->
+    <string name="prompt_username">username</string>
+    <string name="prompt_email">e-mail</string>
+    <string name="prompt_password">password</string>
+    <string name="prompt_password2">confirm password</string>
+    <string name="signupBtn">Sign Up</string>
+    <string name="loginBtn">Log In</string>
+    <string name="click_signup">Not Registered? <u>Sign Up</u></string>
+
+    <string name="email_required">e-mail is required</string>
+    <string name="password_required">password is required</string>
+    <string name="password_too_short">Minimum lenght of password should be 6</string>
+
 </resources>
