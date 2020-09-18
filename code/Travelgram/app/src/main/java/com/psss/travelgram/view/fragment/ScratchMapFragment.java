@@ -1,23 +1,18 @@
-package com.example.travelgram.view.fragment;
+package com.psss.travelgram.view.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.travelgram.view.activity.PlaceTabActivity;
-import com.example.travelgram.viewmodel.NotificationsViewModel;
-import com.example.travelgram.viewmodel.ScratchMapViewModel;
+import com.psss.travelgram.view.activity.PlaceTabActivity;
+import com.psss.travelgram.viewmodel.ScratchMapViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,7 +22,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 
 
-import com.example.travelgram.R;
+import com.psss.travelgram.R;
 import com.google.maps.android.data.kml.KmlLayer;
 import com.google.maps.android.data.Feature;
 

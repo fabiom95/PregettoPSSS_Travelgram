@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.travelgram">
+    package="com.psss.travelgram">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -15,31 +15,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name="com.psss.travelgram.view.activity.HomeActivity"></activity>
         <activity
-            android:name=".view.activity.LoginActivity"
+            android:name="com.psss.travelgram.view.activity.LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".view.activity.RegisterActivity"
-            android:label="@string/app_name">
-        </activity>
-
+            android:name="com.psss.travelgram.view.activity.RegisterActivity"
+            android:label="@string/app_name"></activity>
         <activity
-            android:name=".view.activity.MainActivity"
-            android:label="@string/app_name">
-        </activity>
-
+            android:name="com.psss.travelgram.view.activity.MainActivity"
+            android:label="@string/app_name"></activity>
         <activity
-            android:name=".view.activity.PlaceTabActivity"
+            android:name="com.psss.travelgram.view.activity.PlaceTabActivity"
             android:label="@string/title_activity_place_tab"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

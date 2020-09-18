@@ -1,4 +1,4 @@
-package com.example.travelgram.viewmodel;
+package com.psss.travelgram.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,4 +1,4 @@
-package com.example.travelgram.viewmodel;
+package com.psss.travelgram.viewmodel;
 
 import android.content.Context;
 
@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.travelgram.R;
+import com.psss.travelgram.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.maps.android.data.kml.KmlLayer;
 
