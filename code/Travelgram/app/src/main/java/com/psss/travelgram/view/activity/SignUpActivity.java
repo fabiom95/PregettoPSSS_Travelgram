@@ -2,7 +2,9 @@ package com.psss.travelgram.view.activity;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -72,8 +74,12 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
             public void onChanged(@Nullable String s) {
                 try{
                     EditText target = findViewById(authViewModel.getTargetID());
-                    target.setError(s);
                     target.requestFocus();
+
+                    if(target.getInputType() == 129)  // 129: password
+                        target.setError(s,null);    // altrimenti le icone si sovrappongono
+                    else target.setError(s);
+
                 }catch(NullPointerException e) {e.printStackTrace();}
             }
         });

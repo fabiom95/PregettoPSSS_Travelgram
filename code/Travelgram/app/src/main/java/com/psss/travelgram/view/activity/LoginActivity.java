@@ -75,8 +75,12 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
             public void onChanged(@Nullable String s) {
                 try{
                     EditText target = findViewById(authViewModel.getTargetID());
-                    target.setError(s);
                     target.requestFocus();
+
+                    if(target.getInputType() == 129)  // 129: password
+                        target.setError(s,null);    // altrimenti le icone si sovrappongono
+                    else target.setError(s);
+
                 }catch(NullPointerException e) {e.printStackTrace();}
             }
         });
