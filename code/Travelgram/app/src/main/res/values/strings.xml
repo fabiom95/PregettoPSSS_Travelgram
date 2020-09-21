@@ -26,5 +26,9 @@
     <string name="password_mismatch">passwords don\'t match</string>
     <string name="password_too_short">Minimum lenght of password should be 6</string>
 
+    <!-- Insert Memory Activity -->
+    <string name="share">share</string>
+
+
 
 </resources>

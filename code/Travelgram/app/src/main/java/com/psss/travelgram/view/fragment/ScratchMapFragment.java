@@ -33,7 +33,7 @@ import java.io.IOException;
 
 public class ScratchMapFragment extends Fragment implements OnMapReadyCallback {
 
-    public static final String COUNTRY_NAME = "com.example.travelgram.COUNTRY_NAME";
+    public static final String COUNTRY_NAME = "com.psss.travelgram.COUNTRY_NAME";
     private static final String TAG = ScratchMapFragment.class.getSimpleName();
     private GoogleMap scratchMap;
     private ScratchMapViewModel scratchMapViewModel;

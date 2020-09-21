@@ -93,39 +93,6 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
         });
     }
 
-    /*
-    Intent intent = new Intent(Intent.ACTION_PICK,
-            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-    startActivityForResult(intent, 0);
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK){
-            Uri file = data.getData();
-
-            FirebaseStorage storage = FirebaseStorage.getInstance();
-            StorageReference storageRef = storage.getReference();
-            StorageReference imageRef = storageRef.child("prova/"+file.getLastPathSegment());
-            UploadTask uploadTask = imageRef.putFile(file);
-
-            // Register observers to listen for when the download is done or if it fails
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Handle unsuccessful uploads
-                    Toast.makeText(getApplicationContext(), "fallito", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                    Toast.makeText(getApplicationContext(), "successo", Toast.LENGTH_SHORT).show();
-                    // ...
-                }
-            });
-        }
-    }*/
 
 
     @Override

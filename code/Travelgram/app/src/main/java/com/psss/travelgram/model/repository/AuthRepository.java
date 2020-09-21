@@ -30,6 +30,7 @@ public class AuthRepository {
     private AuthViewModel authViewModel;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+
     // costruttore
     public AuthRepository(){
         authViewModel = null;

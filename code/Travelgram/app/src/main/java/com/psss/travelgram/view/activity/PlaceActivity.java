@@ -14,10 +14,16 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 public class PlaceActivity extends AppCompatActivity {
+
+    public static final String COUNTRY_NAME = "com.psss.travelgram.COUNTRY_NAME";
+    private String countryName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +31,10 @@ public class PlaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_place_tab);
 
         Intent intent = getIntent();
-        String country = intent.getStringExtra(ScratchMapFragment.COUNTRY_NAME);
+        countryName = intent.getStringExtra(ScratchMapFragment.COUNTRY_NAME);
 
         TextView countryText = findViewById(R.id.country_name);
-        countryText.setText(country);
+        countryText.setText(countryName);
 
         // l'adapter istanzia le pagine da mostrare nelle varie sezioni
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
@@ -37,14 +43,19 @@ public class PlaceActivity extends AppCompatActivity {
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+
+        // bottone aggiungi memory
+        FloatingActionButton addMemoryBtn = findViewById(R.id.addMemoryBtn);
+
+        addMemoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), InsertMemoryActivity.class);
+                intent.putExtra("countryName", countryName);
+                startActivity(intent);
             }
         });
     }
+
 }
