@@ -113,6 +113,7 @@ public class AuthViewModel extends ViewModel {
         // inoltra la richiesta ad AuthRepository, che si interfaccia con Firebase
         // Il riferimento "this" alla classe stessa serve per ricevere messaggi da AuthRepository
         authRepo.signupUser(username, email, password, this);
+
     }
 
 }

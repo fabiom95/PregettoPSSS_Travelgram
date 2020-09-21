@@ -1,13 +1,27 @@
 package com.psss.travelgram.model.repository;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.psss.travelgram.viewmodel.AuthViewModel;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.content.ContentValues.TAG;
 
 
 public class AuthRepository {
@@ -15,12 +29,12 @@ public class AuthRepository {
     private String result;
     private AuthViewModel authViewModel;
     private FirebaseAuth mAuth;
-
-
+    private FirebaseFirestore db;
     // costruttore
     public AuthRepository(){
         authViewModel = null;
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
     }
 
 
@@ -49,25 +63,47 @@ public class AuthRepository {
 
     // ----------- SIGN UP -----------
 
-    public void signupUser(String username, String email, String password, AuthViewModel authVM){
+    public void signupUser(final String username, final String email, final String password, AuthViewModel authVM){
         authViewModel = authVM;
 
-        // TODO: inserire anche lo username nel database Firestore
-
-        // registrazione su Firebase
+         // registrazione su Firebase
         Task<AuthResult> task = mAuth.createUserWithEmailAndPassword(email, password);
 
         // in ascolto dell'evento "onComplete"
         task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful())
+                if (task.isSuccessful()){
                     // comunica al ViewModel i dati da mostrare alla View
+                    createUser(username, email); // controllare permessi database
                     authViewModel.setTaskResult("success");
+
+                }
                 else
                     authViewModel.setTaskResult(task.getException().getMessage());
             }
         });
+    }
+
+    // Salvataggio dati utenti su Firestore
+    public void createUser(String username, String email){
+        Map<String, Object> data = new HashMap<>();
+        data.put("Username", username);
+
+        db.collection("Travelers")
+                .add(data)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
     }
 
 }
