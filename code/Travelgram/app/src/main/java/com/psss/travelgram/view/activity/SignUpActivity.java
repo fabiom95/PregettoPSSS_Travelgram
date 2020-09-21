@@ -74,11 +74,17 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
             public void onChanged(@Nullable String s) {
                 try{
                     EditText target = findViewById(authViewModel.getTargetID());
-                    target.requestFocus();
 
-                    if(target.getInputType() == 129)  // 129: password
-                        target.setError(s,null);    // altrimenti le icone si sovrappongono
-                    else target.setError(s);
+                    // personalizzazione icona di errore
+                    Drawable icon = null;
+                    if(target.getInputType() != 129) {  // 129: password type
+                        icon = getDrawable(R.drawable.ic_error_24dp);
+                        icon.setBounds(0, 0, icon.getIntrinsicWidth(), icon.getIntrinsicHeight());
+                    }
+
+                    // mostra errore
+                    target.setError(s, icon);
+                    target.requestFocus();
 
                 }catch(NullPointerException e) {e.printStackTrace();}
             }

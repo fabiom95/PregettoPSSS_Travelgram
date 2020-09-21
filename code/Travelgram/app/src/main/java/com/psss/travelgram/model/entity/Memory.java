@@ -15,7 +15,7 @@ public class Memory {
 
     private Uri file;
 
-    public void insertMemory(){
+    public void addMemory(){
 
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         UploadTask uploadTask = storageRef.child("prova/"+file.getLastPathSegment()).putFile(file);
