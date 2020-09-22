@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
@@ -21,7 +22,7 @@ public class MemoryRepository {
     private FirebaseStorage storage;
     private FirebaseFirestore db;  ////////////////////////////
     private InsertMemoryViewModel insertMemoryViewModel;
-
+    private FirebaseUser currentFirebaseUser;
     //private Uri file;
     //private String state;
 
@@ -29,6 +30,7 @@ public class MemoryRepository {
     public MemoryRepository(){
         storage = FirebaseStorage.getInstance();
         // db = FirebaseFirestore.getInstance();
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         insertMemoryViewModel = null;
     }
 
@@ -44,10 +46,9 @@ public class MemoryRepository {
 
     public void insertMemory(Memory memo, InsertMemoryViewModel insertMemoryVM){
         insertMemoryViewModel = insertMemoryVM;
-
         Uri file = memo.getFile();
 
-        StorageReference memoRef = storage.getReference().child("prova/"+file.getLastPathSegment());
+        StorageReference memoRef = storage.getReference().child( currentFirebaseUser.getUid()+ "/" +file.getLastPathSegment());
         StorageMetadata metadata = new StorageMetadata.Builder()
                 .setCustomMetadata("place",memo.getPlace())
                 .setCustomMetadata("description", memo.getDescription())

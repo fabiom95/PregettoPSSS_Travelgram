@@ -13,7 +13,7 @@ import com.google.firebase.storage.UploadTask;
 import com.psss.travelgram.model.repository.MemoryRepository;
 import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 
-public class Memory {
+public class  Memory {
 
     private Uri file;
     private String place;
