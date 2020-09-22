@@ -75,34 +75,11 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback {
         scratchMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(
                 getActivity().getApplicationContext(), R.raw.country_style));
 
-        //scratchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(46,10), 3.5f));
-        scratchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat,lon), zoom));
+        scratchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(46,10), 3.5f));
 
         addLayer();
 
     }
-
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        if (scratchMap != null) {
-            CameraPosition pos = scratchMap.getCameraPosition();
-            outState.putDouble("Lat", pos.target.latitude);
-            outState.putDouble("Lon", pos.target.longitude);
-            outState.putFloat("Zoom", pos.zoom);
-        }
-        Log.i(TAG,"stato salvato");
-    }
-
-
-    private double lat = 46;
-    private double lon = 10;
-    private float zoom = 3.5f;
-
-
-
 
 
     @Nullable
@@ -110,11 +87,6 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        if(savedInstanceState != null) {
-            lat = savedInstanceState.getDouble("Lat");
-            lon = savedInstanceState.getDouble("Lon");
-            zoom = savedInstanceState.getFloat("Zoom");
-        }
         return inflater.inflate(R.layout.fragment_scratchmap, container, false);
     }
 
