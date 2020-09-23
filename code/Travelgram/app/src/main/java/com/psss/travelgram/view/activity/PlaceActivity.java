@@ -7,16 +7,13 @@ import com.psss.travelgram.R;
 import com.psss.travelgram.view.fragment.ScratchMapFragment;
 import com.psss.travelgram.SectionsPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -29,13 +26,10 @@ public class PlaceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_place_tab);
+        setContentView(R.layout.activity_place);
 
         Intent intent = getIntent();
         countryName = intent.getStringExtra(ScratchMapFragment.COUNTRY_NAME);
-
-        TextView countryText = findViewById(R.id.country_name);
-        countryText.setText(countryName);
 
         // l'adapter istanzia le pagine da mostrare nelle varie sezioni
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
@@ -45,6 +39,17 @@ public class PlaceActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
+        // Toolbar
+        Toolbar mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(countryName);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // bottone aggiungi memory
         FloatingActionButton addMemoryBtn = findViewById(R.id.addMemoryBtn);
