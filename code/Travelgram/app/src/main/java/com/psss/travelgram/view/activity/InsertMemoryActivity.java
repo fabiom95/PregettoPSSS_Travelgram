@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,8 +50,14 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         // Toolbar
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.new_memory));
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // Immagine
         memoryImage = findViewById(R.id.memoryImage);
@@ -75,7 +82,6 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
                 try{
                     if(s.equals("success")){
                         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-
                         //TODO: far funzionare la finish
                     }
                     else {
@@ -86,6 +92,13 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         });
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.insert_memory_menu, menu);
+        return true;
+    }
 
 
     @Override
@@ -106,10 +119,6 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
             case R.id.share:
                 //TODO: if data!=null
                 insertMemoryViewModel.insertMemory(resultCode, data, place, description);
-                return true;
-
-            case R.id.home:
-                finish();
                 return true;
 
             default:
