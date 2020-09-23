@@ -2,11 +2,14 @@ package com.psss.travelgram.view.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -27,7 +30,6 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     private int resultCode;
     private Uri data;
     private ImageView memoryImage;
-    private Button shareBtn;
 
 
     @Override
@@ -38,13 +40,15 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         Intent intent = getIntent();
         String countryName = intent.getStringExtra("countryName");
 
+        // Toolbar
+        Toolbar mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getString(R.string.new_memory));
+
         // Immagine
         memoryImage = findViewById(R.id.memoryImage);
         memoryImage.setOnClickListener(this);
-
-        // bottone share
-        shareBtn = findViewById(R.id.shareBtn);
-        shareBtn.setOnClickListener(this);
 
         // campi
         place = findViewById(R.id.place);
@@ -62,7 +66,8 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
                 try{
                     if(s.equals("success")){
                         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                        finish();
+
+                        //TODO: far funzionare la finish
                     }
                     else {
                         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
@@ -73,6 +78,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     }
 
 
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -81,11 +87,26 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 0);
                 break;
+        }
+    }
 
-            //TODO: bottone freccia indietro
-            case R.id.shareBtn:
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.share:
                 //TODO: if data!=null
                 insertMemoryViewModel.insertMemory(resultCode, data, place, description);
+                return true;
+
+            case R.id.home:
+                finish();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
         }
     }
 

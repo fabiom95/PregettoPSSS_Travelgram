@@ -57,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
             try{
                 if(s.equals("success")){
                     finish();
+                    finishActivity(0);
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
                 else {

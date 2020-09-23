@@ -19,6 +19,7 @@ import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 
 public class MemoryRepository {
 
+    // TODO: eventuale classe AccessManager per la connessione al database
     private FirebaseStorage storage;
     private FirebaseFirestore db;  ////////////////////////////
     private InsertMemoryViewModel insertMemoryViewModel;

@@ -18,16 +18,8 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" >
-
-            <Button
-                android:id="@+id/shareBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/share"
-                android:layout_gravity="end"
-                android:clickable="true"
-                android:background="@color/colorPrimary"/>
+            android:theme="?attr/actionBarTheme"
+            app:menu="@menu/insert_memory_menu">
         </androidx.appcompat.widget.Toolbar>
 
 

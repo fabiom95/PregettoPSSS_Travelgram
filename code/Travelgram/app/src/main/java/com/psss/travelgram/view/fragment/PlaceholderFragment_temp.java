@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.psss.travelgram.R;
-import com.psss.travelgram.viewmodel.PageViewModel;
+import com.psss.travelgram.viewmodel.PageViewModel_temp;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -22,7 +22,7 @@ public class PlaceholderFragment_temp extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    private PageViewModel pageViewModel;
+    private PageViewModel_temp pageViewModel;
 
     public static PlaceholderFragment_temp newInstance(int index) {
         PlaceholderFragment_temp fragment = new PlaceholderFragment_temp();
@@ -35,7 +35,7 @@ public class PlaceholderFragment_temp extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
+        pageViewModel = ViewModelProviders.of(this).get(PageViewModel_temp.class);
         int index = 1;
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);

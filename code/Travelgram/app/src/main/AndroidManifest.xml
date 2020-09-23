@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.activity.InsertMemoryActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName="com.psss.travelgram.view.activity.MainActivity">
         </activity>
 
         <activity

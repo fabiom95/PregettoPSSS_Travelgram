@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.clickSignup:
-                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                startActivityForResult(new Intent(getApplicationContext(), SignUpActivity.class),0);
                 break;
             case R.id.loginBtn:
                 loginUser();
@@ -107,6 +107,13 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
             default:
                 break;
         }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        finish();
     }
 
 
