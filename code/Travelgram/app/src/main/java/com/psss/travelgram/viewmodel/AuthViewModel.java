@@ -17,12 +17,13 @@ public class AuthViewModel extends ViewModel {
     private MutableLiveData<String> taskResult;
     private MutableLiveData<String> textError;
     private int targetID;
-    private AuthRepository authRepo = new AuthRepository();
+    private AuthRepository authRepo;
 
 
     public AuthViewModel() {
         taskResult = new MutableLiveData<>();
         textError = new MutableLiveData<>();
+        authRepo = new AuthRepository();
         targetID = 0;
     }
 
