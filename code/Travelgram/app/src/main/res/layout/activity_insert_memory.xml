@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.activity.InsertMemoryActivity">
+    tools:context="com.codinginflow.autocompletetextviewexample.MainActivity">
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -46,12 +48,18 @@
                 android:layout_height="wrap_content"
                 app:hintTextColor="@color/colorPrimary">
 
-                <EditText
-                    android:id="@+id/place"
+                <AutoCompleteTextView
+                    android:id="@+id/select_country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:hint="place"/>
+                    android:hint="type the country"
+                    android:completionThreshold="1"
+                    android:popupBackground="@color/colorAccent"/>
+                    <!--android:completionHint="select the country"-->
+                    <!--android:dropDownAnchor="@id/text_view_countries"-->
+
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
