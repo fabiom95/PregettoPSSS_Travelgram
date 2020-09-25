@@ -38,14 +38,15 @@
 
             <ImageView
                 android:id="@+id/memoryImage"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:clickable="true"
                 app:srcCompat="@drawable/ic_image_24" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 app:hintTextColor="@color/colorPrimary">
 
                 <AutoCompleteTextView
@@ -59,12 +60,35 @@
                     <!--android:completionHint="select the country"-->
                     <!--android:dropDownAnchor="@id/text_view_countries"-->
 
-
             </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:hintTextColor="@color/colorPrimary">
+
+                <AutoCompleteTextView
+                    android:id="@+id/select_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="type the city"
+                    android:completionThreshold="1"
+                    android:popupBackground="@color/colorAccent"/>
+                <!--android:completionHint="select the country"-->
+                <!--android:dropDownAnchor="@id/text_view_countries"-->
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 app:hintTextColor="@color/colorPrimary">
 
                 <EditText
@@ -79,6 +103,7 @@
                 android:id="@+id/editTextDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:ems="10"
                 android:inputType="date" />
 

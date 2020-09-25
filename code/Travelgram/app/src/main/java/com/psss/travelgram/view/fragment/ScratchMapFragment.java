@@ -60,23 +60,6 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
             layer = new GeoJsonLayer(scratchMap, R.raw.world_j, getActivity().getApplicationContext());
             layer.addLayerToMap();
 
-
-            ArrayList<String> countries = new ArrayList<>();
-            for (GeoJsonFeature feature : layer.getFeatures()) {
-                countries.add(feature.getProperty("name"));
-            }
-            try {
-                FileWriter myWriter = new FileWriter("C:\\Users\\fabri\\Desktop\\filename.txt");
-                for (GeoJsonFeature feature : layer.getFeatures())
-                    myWriter.write("<item>" + feature.getProperty("name") + "</item>");
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            //getResources().getStringArray(R.array.countries);
-
-
             // stile del livello
             GeoJsonPolygonStyle style = layer.getDefaultPolygonStyle();
             style.setFillColor(getResources().getColor(R.color.base));

@@ -34,10 +34,6 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     private Uri data;
     private ImageView memoryImage;
 
-    //TODO: prelevare automaticamente i nomi dal KML
-    private static final String[] COUNTRIES = new String[]{
-            "Italy", "France", "Germany", "Israel", "Ireland"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +60,9 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         memoryImage.setOnClickListener(this);
 
         // campi
+        String[] countries = getResources().getStringArray(R.array.countries);
         AutoCompleteTextView country = findViewById(R.id.select_country);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, COUNTRIES);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
         country.setAdapter(adapter);
         if (countryName != null)
             country.setText(countryName);
@@ -132,8 +129,13 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        this.data = data.getData();
+
+        if(data != null){
+            this.data = data.getData();
+            memoryImage.setImageURI(this.data);
+        }
+
         this.resultCode = resultCode;
-        memoryImage.setImageURI(this.data);
+        
     }
 }
