@@ -55,7 +55,7 @@
     "featureType": "administrative.country",
     "stylers": [
       {
-        "visibility": "simplified"
+        "visibility": "on"
       }
     ]
   },

@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#7ba9f1</color>
     <color name="colorAccent">#ffffff</color>
     <color name="whiteTransparent">#aaffffff</color>
+
+    <!-- mappa -->
+    <color name="base">#FFFFDB</color>
+    <color name="visited">#7CE279</color>
+    <color name="wish">#FFFF66</color>
 </resources>

@@ -20,12 +20,6 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme">
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/visited"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Visited"
-                android:gravity="end"/>
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
