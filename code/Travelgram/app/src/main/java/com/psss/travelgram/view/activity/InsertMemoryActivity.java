@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,23 +14,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.psss.travelgram.R;
-import com.psss.travelgram.view.fragment.ScratchMapFragment;
 import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 
 
 public class InsertMemoryActivity extends AppCompatActivity implements OnClickListener {
 
     private InsertMemoryViewModel insertMemoryViewModel;
-    private EditText place;
+    AutoCompleteTextView country;
     private EditText description;
     private int resultCode;
-    private Uri data;
+    private Uri uri;
     private ImageView memoryImage;
 
 
@@ -61,7 +58,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
 
         // campi
         String[] countries = getResources().getStringArray(R.array.countries);
-        AutoCompleteTextView country = findViewById(R.id.select_country);
+        country = findViewById(R.id.select_country);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
         country.setAdapter(adapter);
         if (countryName != null)
@@ -115,7 +112,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         switch (item.getItemId()) {
             case R.id.share:
                 //TODO: if data!=null
-                insertMemoryViewModel.insertMemory(resultCode, data, place, description);
+                insertMemoryViewModel.insertMemory(resultCode, uri, country, description);
                 return true;
 
             default:
@@ -131,8 +128,8 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         super.onActivityResult(requestCode, resultCode, data);
 
         if(data != null){
-            this.data = data.getData();
-            memoryImage.setImageURI(this.data);
+            this.uri = data.getData();
+            memoryImage.setImageURI(this.uri);
         }
 
         this.resultCode = resultCode;

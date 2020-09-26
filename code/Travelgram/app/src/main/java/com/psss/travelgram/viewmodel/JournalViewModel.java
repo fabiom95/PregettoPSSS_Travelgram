@@ -4,11 +4,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+import com.psss.travelgram.model.entity.TravelJournal;
+
+public class JournalViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public JournalViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is dashboard fragment");
     }
@@ -16,4 +18,12 @@ public class DashboardViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
+
+
+    public void createAdapter(){
+        TravelJournal TJ = new TravelJournal();
+        //mAdapter = new MemoryAdapter(TJ, getActivity());
+    }
+
+
 }

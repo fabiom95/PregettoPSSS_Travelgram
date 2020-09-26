@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.psss.travelgram.view.fragment.DashboardFragment">
+    tools:context="com.psss.travelgram.view.fragment.JournalFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/memory_recycler"

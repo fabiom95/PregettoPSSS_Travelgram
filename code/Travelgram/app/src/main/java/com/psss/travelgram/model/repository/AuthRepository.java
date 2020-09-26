@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -76,7 +77,7 @@ public class AuthRepository {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     // comunica al ViewModel i dati da mostrare alla View
-                    createUser(username, email); // controllare permessi database
+                    createUser(username); // controllare permessi database
                     authViewModel.setTaskResult("success");
 
                 }
@@ -87,24 +88,15 @@ public class AuthRepository {
     }
 
     // Salvataggio dati utenti su Firestore
-    public void createUser(String username, String email){
+    public void createUser(String username){
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         Map<String, Object> data = new HashMap<>();
         data.put("Username", username);
 
         db.collection("Travelers")
-                .add(data)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
+                .document(userID)
+                .set(data);
     }
 
 }

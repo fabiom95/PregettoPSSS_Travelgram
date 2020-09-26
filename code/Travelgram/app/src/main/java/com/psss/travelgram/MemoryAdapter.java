@@ -1,43 +1,54 @@
 package com.psss.travelgram;
 
 
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHolder> {
-    private String[] mDataset;
+import com.bumptech.glide.Glide;
+import com.psss.travelgram.model.entity.Memory;
+import com.psss.travelgram.model.entity.TravelJournal;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+import java.util.ArrayList;
+
+
+public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHolder> {
+    private ArrayList<Memory> memories;
+    private Context context;
+
+    // ---- classe innestata
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView textView;
+        public ImageView image;
+        public TextView country;
+
         public MyViewHolder(View v) {
             super(v);
-            textView = v.findViewById(R.id.row_post_title);
+            country = v.findViewById(R.id.country);
+            image = v.findViewById(R.id.image);
         }
     }
+    // ---- fine classe innestata
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public MemoryAdapter(String[] myDataset) {
-        mDataset = myDataset;
+
+    // Costruttore
+    public MemoryAdapter(TravelJournal TJ, Context context) {
+        this.memories = TJ.getMemories();
+        this.context = context;
     }
+
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MemoryAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                         int viewType) {
-        // create a new view
+    public MemoryAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.prova, parent, false);
-
-        MyViewHolder vh = new MyViewHolder(v);
-        return vh;
+                .inflate(R.layout.journal_item, parent, false);
+        return new MyViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -45,13 +56,13 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.setText(mDataset[position]);
-
+        holder.country.setText(memories.get(position).getPlace());
+        Glide.with(context).load(memories.get(position).getImage()).into(holder.image);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return memories.size();
     }
 }

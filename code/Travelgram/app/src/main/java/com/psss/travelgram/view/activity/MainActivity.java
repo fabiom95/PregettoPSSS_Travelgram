@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.psss.travelgram.R;
-import com.psss.travelgram.view.fragment.DashboardFragment;
+import com.psss.travelgram.view.fragment.JournalFragment;
 import com.psss.travelgram.view.fragment.NotificationsFragment;
 import com.psss.travelgram.view.fragment.ScratchMapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentManager;
 public class MainActivity extends AppCompatActivity {
 
     final Fragment fragment1 = new ScratchMapFragment();
-    final Fragment fragment2 = new DashboardFragment();
+    final Fragment fragment2 = JournalFragment.newInstance();
     final Fragment fragment3 = new NotificationsFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
