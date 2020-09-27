@@ -1,28 +1,33 @@
 package com.psss.travelgram.viewmodel;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.psss.travelgram.MemoryAdapter;
 import com.psss.travelgram.model.entity.TravelJournal;
 
 public class JournalViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private MutableLiveData<MemoryAdapter> mAdapter;
+    private TravelJournal TJ;
+    private Context context;
 
-    public JournalViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+    public JournalViewModel(Context context) {
+        mAdapter = new MutableLiveData<>();
+        TJ = new TravelJournal(this);
+        this.context = context;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<MemoryAdapter> getAdapter() {
+        return mAdapter;
     }
 
 
     public void createAdapter(){
-        TravelJournal TJ = new TravelJournal();
-        //mAdapter = new MemoryAdapter(TJ, getActivity());
+        mAdapter.setValue(new MemoryAdapter(TJ, context));
     }
 
 

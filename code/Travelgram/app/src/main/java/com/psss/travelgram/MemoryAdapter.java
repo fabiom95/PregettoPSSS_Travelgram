@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.psss.travelgram.model.entity.Memory;
 import com.psss.travelgram.model.entity.TravelJournal;
 
@@ -57,7 +58,11 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.country.setText(memories.get(position).getPlace());
-        Glide.with(context).load(memories.get(position).getImage()).into(holder.image);
+        Glide.with(context)
+                .load(memories.get(position).getImage())
+                .apply(new RequestOptions().override(500))
+                .thumbnail(0.2f)
+                .into(holder.image);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

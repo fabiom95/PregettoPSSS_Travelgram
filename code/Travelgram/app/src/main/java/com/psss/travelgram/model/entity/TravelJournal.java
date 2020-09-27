@@ -14,11 +14,12 @@ public class TravelJournal {
     private ArrayList<Memory> memories;
     private String travelerUID;
     private MemoryRepository memoryRepo;
-    private JournalViewModel journalViewModel;
+    private JournalViewModel journalViewModel;      // osservatore
 
-    public TravelJournal(){
+    public TravelJournal(JournalViewModel journalVM){
         memories = new ArrayList<>();
         memoryRepo = new MemoryRepository();
+        journalViewModel = journalVM;
         loadMemories();
     }
 
@@ -32,6 +33,7 @@ public class TravelJournal {
 
     public void setMemories(ArrayList<Memory> memories){
         this.memories = memories;
+        journalViewModel.createAdapter();
     }
 
 

@@ -11,19 +11,21 @@ public class Traveler extends Observable {
     //TODO: eventualmente rimuovere singleton e observer
 
     // singleton
-    private static Traveler singleton = null;
+    //private static Traveler singleton = null;
 
-    private Traveler(){
+    //private
+    public Traveler(){
         visited_countries = new ArrayList<>();
     }
 
+    /*
     public static Traveler getInstance(){
         if(singleton == null){
             singleton = new Traveler();
         }
         return singleton;
     }
-
+*/
 
 
 

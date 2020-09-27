@@ -61,6 +61,18 @@
   },
   {
     "featureType": "administrative.country",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "on"
+      },
+      {
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
     "elementType": "geometry.stroke",
     "stylers": [
       {
