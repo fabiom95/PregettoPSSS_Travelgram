@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.psss.travelgram.R;
-import com.psss.travelgram.view.fragment.DashboardFragment;
+import com.psss.travelgram.view.fragment.JournalFragment;
 import com.psss.travelgram.view.fragment.NotificationsFragment;
 
 /**
@@ -32,11 +31,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         switch(position){
             case 0:
-                return new DashboardFragment();
+                return JournalFragment.newInstance();
             case 1:
                 return new NotificationsFragment();
             case 2:
-                return new DashboardFragment();
+                return new NotificationsFragment();
         }
         return null;
     }

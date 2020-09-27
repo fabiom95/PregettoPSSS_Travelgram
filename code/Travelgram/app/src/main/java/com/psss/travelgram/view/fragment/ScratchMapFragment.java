@@ -63,7 +63,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
             // stile del livello
             GeoJsonPolygonStyle style = layer.getDefaultPolygonStyle();
             style.setFillColor(getResources().getColor(R.color.base));
-            style.setStrokeWidth(3);
+            style.setStrokeWidth(4);
 
             layer.setOnFeatureClickListener(this);
 
@@ -109,7 +109,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
     public void colorCountry(int color, String countryName) {
         GeoJsonPolygonStyle style = new GeoJsonPolygonStyle();
         style.setFillColor(getResources().getColor(color));
-        style.setStrokeWidth(3);
+        style.setStrokeWidth(4);
 
         for (GeoJsonFeature feature : layer.getFeatures()) {
             if (feature.getProperty("name").equals(countryName)) {

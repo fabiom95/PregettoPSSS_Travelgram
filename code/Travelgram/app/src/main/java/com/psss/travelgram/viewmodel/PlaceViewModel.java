@@ -19,7 +19,7 @@ public class PlaceViewModel extends ViewModel {
 
 
     public PlaceViewModel() {
-        traveler = Traveler.getInstance();
+        //traveler = Traveler.getInstance();
     }
 
 

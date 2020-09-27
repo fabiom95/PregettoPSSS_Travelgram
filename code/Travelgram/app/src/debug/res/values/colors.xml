@@ -6,7 +6,7 @@
     <color name="whiteTransparent">#aaffffff</color>
 
     <!-- mappa -->
-    <color name="base">#FFFFDB</color>
-    <color name="visited">#7CE279</color>
-    <color name="wish">#FFFF66</color>
+    <color name="base">#F1F1E0</color>
+    <color name="visited">#AEE279</color>
+    <color name="wish">#FBF089</color>
 </resources>
