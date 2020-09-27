@@ -25,7 +25,7 @@ import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 public class InsertMemoryActivity extends AppCompatActivity implements OnClickListener {
 
     private InsertMemoryViewModel insertMemoryViewModel;
-    AutoCompleteTextView country;
+    private AutoCompleteTextView country;
     private EditText description;
     private int resultCode;
     private Uri uri;

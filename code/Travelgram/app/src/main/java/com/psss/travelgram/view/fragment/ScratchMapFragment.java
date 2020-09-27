@@ -88,7 +88,6 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //TODO: vedere se si può migliorare (pattern state, caricando dal database)
         switch (resultCode){
             case 1: // base
                 colorCountry(R.color.base, data.getStringExtra("countryName"));

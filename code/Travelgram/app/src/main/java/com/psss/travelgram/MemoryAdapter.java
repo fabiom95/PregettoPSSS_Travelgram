@@ -60,8 +60,8 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
         holder.country.setText(memories.get(position).getPlace());
         Glide.with(context)
                 .load(memories.get(position).getImage())
-                .apply(new RequestOptions().override(500))
-                .thumbnail(0.2f)
+                .apply(new RequestOptions().override(500))      // immagine a dimensione ridotta
+                .thumbnail(0.2f)                                // thumbnail per il caricamento
                 .into(holder.image);
     }
 

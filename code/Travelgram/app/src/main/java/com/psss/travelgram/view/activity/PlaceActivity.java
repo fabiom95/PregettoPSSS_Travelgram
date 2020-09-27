@@ -9,7 +9,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.psss.travelgram.viewmodel.PlaceViewModel;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,11 +76,11 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         Intent intent = new Intent();
         intent.putExtra("countryName", countryName);
         if(visited.isChecked())
-            setResult(2, intent);
+            setResult(2, intent);   // visited
         else if (wish.isChecked())
-            setResult(3, intent);
+            setResult(3, intent);   // wish
         else
-            setResult(1, intent);
+            setResult(1, intent);   // base
         super.onBackPressed();
     }
 
@@ -109,7 +108,7 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         switch (item.getItemId()) {
             case R.id.visited:
                 item.setChecked(!item.isChecked());
-                item.setIcon(item.isChecked() ? R.drawable.place_visited_checked : R.drawable.place_visited);
+                item.setIcon(item.isChecked() ? R.drawable.place_visited_checked : R.drawable.place_visited);   // if then else
                 return true;
 
             case R.id.wish:

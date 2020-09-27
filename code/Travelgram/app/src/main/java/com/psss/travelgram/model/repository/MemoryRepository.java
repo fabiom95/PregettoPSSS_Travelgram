@@ -41,13 +41,13 @@ public class MemoryRepository {
         storage = FirebaseStorage.getInstance();
         db = FirebaseFirestore.getInstance();
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        insertMemoryViewModel = null;
+        insertMemoryViewModel = null; ////////////
     }
 
 
     // ----------- INSERT MEMORY -----------
     public void insertMemory(Uri uri, final Memory memo, InsertMemoryViewModel insertMemoryVM){
-        insertMemoryViewModel = insertMemoryVM;
+        insertMemoryViewModel = insertMemoryVM; ///////////
 
         // caricamento immagine su Storage
         final StorageReference memoRef = storage.getReference().child( userID + "/" + uri.getLastPathSegment());

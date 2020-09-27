@@ -14,8 +14,8 @@ import com.psss.travelgram.model.repository.AuthRepository;
 
 public class AuthViewModel extends ViewModel {
 
-    private MutableLiveData<String> taskResult;
-    private MutableLiveData<String> textError;
+    private MutableLiveData<String> taskResult;     // avvisa se l'autenticazione è riuscita
+    private MutableLiveData<String> textError;      // avvisa se manca qualche campo
     private int targetID;
     private AuthRepository authRepo;
 
