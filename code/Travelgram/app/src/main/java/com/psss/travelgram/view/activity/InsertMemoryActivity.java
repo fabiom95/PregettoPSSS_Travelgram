@@ -136,6 +136,6 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         }
 
         this.resultCode = resultCode;
-        
+
     }
 }

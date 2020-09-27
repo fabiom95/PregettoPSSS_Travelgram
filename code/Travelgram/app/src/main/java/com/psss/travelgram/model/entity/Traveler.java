@@ -6,6 +6,7 @@ import java.util.Observer;
 
 public class Traveler extends Observable {
 
+    //Qui ci metto tutti i private
     private ArrayList<String> visited_countries;
 
     //TODO: eventualmente rimuovere singleton e observer
