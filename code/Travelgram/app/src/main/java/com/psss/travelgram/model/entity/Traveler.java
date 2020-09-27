@@ -1,5 +1,7 @@
 package com.psss.travelgram.model.entity;
 
+import com.psss.travelgram.model.repository.TravelerRepository;
+
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -7,6 +9,7 @@ import java.util.Observer;
 public class Traveler extends Observable {
 
     //Qui ci metto tutti i private
+    private TravelerRepository travelerRepo;
     private ArrayList<String> visited_countries;
 
     //TODO: eventualmente rimuovere singleton e observer
@@ -16,6 +19,7 @@ public class Traveler extends Observable {
 
     //private
     public Traveler(){
+        travelerRepo = new TravelerRepository();
         visited_countries = new ArrayList<>();
     }
 
@@ -34,7 +38,7 @@ public class Traveler extends Observable {
         //TODO: booleano
         if(!isCountryVisited(country)) {
             visited_countries.add(country);
-            //notifyObservers();
+            travelerRepo.addVisitedCountry(country);
         }
     }
 

@@ -83,6 +83,9 @@ public class MemoryRepository {
 
                                 db.collection("Memories")
                                         .add(data);
+
+                                TravelerRepository travelerRepo = new TravelerRepository();
+                                travelerRepo.addVisitedCountry(memo.getPlace());
                             }
                         }
                 );

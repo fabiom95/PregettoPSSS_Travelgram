@@ -19,6 +19,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.psss.travelgram.viewmodel.AuthViewModel;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,7 +94,8 @@ public class AuthRepository {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         Map<String, Object> data = new HashMap<>();
-        data.put("Username", username);
+        data.put("username", username);
+        data.put("visited_countries", Collections.emptyList());
 
         db.collection("Travelers")
                 .document(userID)
