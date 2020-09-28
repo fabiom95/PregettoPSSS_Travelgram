@@ -9,9 +9,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.psss.travelgram.viewmodel.PlaceViewModel;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,8 +21,9 @@ import android.view.View.OnClickListener;
 
 public class PlaceActivity extends AppCompatActivity implements OnClickListener {
 
-    private String countryName;
     private PlaceViewModel placeViewModel;
+
+    private String countryName;
     private MenuItem visited;
     private MenuItem wish;
     private Intent intent;
@@ -64,30 +63,6 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         // bottone aggiungi memory
         FloatingActionButton addMemoryBtn = findViewById(R.id.addMemoryBtn);
         addMemoryBtn.setOnClickListener(this);
-
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        if(visited.isChecked())
-            placeViewModel.addVisitedCountry();
-        else
-            placeViewModel.removeVisitedCountry();
-
-        if(wish.isChecked())
-            placeViewModel.addWishedCountry();
-
-        // calcolo risultato
-        Intent intent = new Intent();
-        intent.putExtra("countryName", countryName);
-        if(visited.isChecked())
-            setResult(2, intent);   // visited, ha la priorità
-        else if (wish.isChecked())
-            setResult(3, intent);   // wish, solo se non è visited
-        else
-            setResult(1, intent);   // base
-        super.onBackPressed();
     }
 
 
@@ -114,12 +89,28 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         switch (item.getItemId()) {
             case R.id.visited:
                 item.setChecked(!item.isChecked());
-                item.setIcon(item.isChecked() ? R.drawable.place_visited_checked : R.drawable.place_visited);   // if then else
+
+                if(item.isChecked()){
+                    item.setIcon(R.drawable.place_visited_checked);
+                    placeViewModel.addVisitedCountry();
+                }
+                else{
+                    item.setIcon(R.drawable.place_visited);
+                    placeViewModel.removeVisitedCountry();
+                }
                 return true;
 
             case R.id.wish:
                 item.setChecked(!item.isChecked());
-                item.setIcon(item.isChecked() ? R.drawable.place_wish_checked : R.drawable.place_wish);
+
+                if(item.isChecked()){
+                    item.setIcon(R.drawable.place_wish_checked);
+                    placeViewModel.addWishedCountry();
+                }
+                else{
+                    item.setIcon(R.drawable.place_wish);
+                    placeViewModel.removeWishedCountry();
+                }
                 return true;
 
             default:

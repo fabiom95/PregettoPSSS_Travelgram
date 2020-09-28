@@ -37,9 +37,12 @@ import java.util.ArrayList;
 public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, OnFeatureClickListener {
 
     private ScratchMapViewModel scratchMapViewModel;
+
     private GeoJsonLayer layer;
     private ArrayList<String> visitedCountries;
     private ArrayList<String> wishedCountries;
+    private String selectedCountry;
+
 
 
     @Override
@@ -71,29 +74,41 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
         scratchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(46,10), 3.5f));
 
         try {
+            // aggiunge il livello (i paesi)
             layer = new GeoJsonLayer(scratchMap, R.raw.world_j, getActivity().getApplicationContext());
             layer.addLayerToMap();
 
-            // stile del livello
+            // stile di base del livello
             GeoJsonPolygonStyle style = layer.getDefaultPolygonStyle();
             style.setFillColor(getResources().getColor(R.color.base));
             style.setStrokeWidth(4);
 
+            // rendiamo gli stati cliccabili
             layer.setOnFeatureClickListener(this);
 
+            // la prima volta che viene fatta la query aggiorniamo tutta la mappa
+            scratchMapViewModel.getFirstTime().observe(this, new Observer<Boolean>() {
+                @Override
+                public void onChanged(@Nullable Boolean firstTime) {
+                    updateMap();
+                }
+            });
+
+            // osserva i cambiamenti degli stati visitati (attraverso il ViewModel)
             scratchMapViewModel.getVisitedCountries().observe(this, new Observer<ArrayList<String>>() {
                 @Override
                 public void onChanged(@Nullable ArrayList<String> countries) {
                     visitedCountries = countries;
-                    colorVisitedCountries();
+                    updateMap();
                 }
             });
 
+            // osserva i cambiamenti degli stati da visitare (attraverso il ViewModel)
             scratchMapViewModel.getWishedCountries().observe(this, new Observer<ArrayList<String>>() {
                 @Override
                 public void onChanged(@Nullable ArrayList<String> countries) {
                     wishedCountries = countries;
-                    colorWishedCountries();
+                    updateMap();
                 }
             });
 
@@ -104,46 +119,21 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
 
 
 
-    // al click dello stato apre la PlaceActivity
+    // al click su uno stato apre una PlaceActivity.
+    // Passa alla PlaceActivity il nome dello stato cliccato e dei Boolean che indicano se lo
+    // stato è contrassegnato come "visited" o come "wished"
     @Override
     public void onFeatureClick(Feature feature) {
-        String countryName = feature.getProperty("name");
+        selectedCountry = feature.getProperty("name");
         Intent intent = new Intent(getActivity(), PlaceActivity.class);
-        intent.putExtra("countryName", countryName);
-        intent.putExtra("isVisited", visitedCountries.contains(countryName));
-        intent.putExtra("isWished", wishedCountries.contains(countryName));
-        startActivityForResult(intent,0);
+        intent.putExtra("countryName", selectedCountry);
+        intent.putExtra("isVisited", visitedCountries.contains(selectedCountry));
+        intent.putExtra("isWished", wishedCountries.contains(selectedCountry));
+        startActivity(intent);
     }
 
 
-    // al termine della PlaceActivity può colorare lo stato
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        String countryName = data.getStringExtra("countryName");
-
-        switch (resultCode){
-            case 1: // base
-                colorCountry(R.color.base, countryName);
-                visitedCountries.remove(countryName);
-                wishedCountries.remove(countryName);
-                break;
-            case 2: // visited
-                colorCountry(R.color.visited, countryName);
-                if(!visitedCountries.contains(countryName))
-                    visitedCountries.add(countryName);
-                break;
-            case 3: // wish
-                colorCountry(R.color.wish, countryName);
-                if(!wishedCountries.contains(countryName))
-                    wishedCountries.add(countryName);
-                break;
-            default:
-                break;
-        }
-    }
-
-
+    // imposta uno stile grafico
     public GeoJsonPolygonStyle setStyle(int color){
         GeoJsonPolygonStyle style = new GeoJsonPolygonStyle();
         style.setFillColor(getResources().getColor(color));
@@ -152,46 +142,44 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
     }
 
 
-    public void colorCountry(int color, String countryName) {
-        GeoJsonPolygonStyle style = setStyle(color);
+
+    // colora lo stato selezionato
+    public void updateMap() {
+        GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited);
+        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish);
+        GeoJsonPolygonStyle baseStyle = setStyle(R.color.base);
 
         for (GeoJsonFeature feature : layer.getFeatures()) {
-            String name = feature.getProperty("name");
-            if (name.equals(countryName)) {
-                feature.setPolygonStyle(style);
-                return;
+            String country = feature.getProperty("name");
+            if (visitedCountries.contains(country))
+                feature.setPolygonStyle(visitedStyle);
+            else if (wishedCountries.contains(country))
+                feature.setPolygonStyle(wishStyle);
+        }
+    }
+
+    // colora lo stato selezionato
+    public void updateCountry() {
+        GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited);
+        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish);
+        GeoJsonPolygonStyle baseStyle = setStyle(R.color.base);
+
+        for (GeoJsonFeature feature : layer.getFeatures()) {
+            String country = feature.getProperty("name");
+
+            // lavoriamo solo sullo stato selezionato
+            if (country.equals(selectedCountry)) {
+                if (visitedCountries.contains(country))
+                    feature.setPolygonStyle(visitedStyle);
+                else if (wishedCountries.contains(country))
+                    feature.setPolygonStyle(wishStyle);
+                else
+                    feature.setPolygonStyle(baseStyle);
+                return; // una volta trovato lo stato ci fermiamo
             }
         }
+
     }
-
-
-
-
-    public void colorVisitedCountries() {
-        GeoJsonPolygonStyle style = setStyle(R.color.visited);
-
-        for (GeoJsonFeature feature : layer.getFeatures()) {
-            String name = feature.getProperty("name");
-            if (visitedCountries.contains(name))
-                feature.setPolygonStyle(style);
-        }
-    }
-
-    public void colorWishedCountries() {
-        GeoJsonPolygonStyle style = setStyle(R.color.wish);
-
-        for (GeoJsonFeature feature : layer.getFeatures()) {
-            String name = feature.getProperty("name");
-            if (wishedCountries != null && wishedCountries.contains(name))
-                // coloriamo di giallo solo se non è gia stato visitato
-                if(visitedCountries == null)
-                    feature.setPolygonStyle(style);
-                else if(!visitedCountries.contains(name))
-                    feature.setPolygonStyle(style);
-        }
-    }
-
-
 
 
     // ---------------------------------------------------------------------------------------------

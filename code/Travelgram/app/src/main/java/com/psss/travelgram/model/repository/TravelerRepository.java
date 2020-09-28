@@ -4,13 +4,16 @@ package com.psss.travelgram.model.repository;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.psss.travelgram.model.entity.Memory;
@@ -33,7 +36,7 @@ public class TravelerRepository {
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
-
+/*
     public void loadTraveler(final Traveler traveler){
         db.collection("Travelers")
                 .document(userID)
@@ -52,6 +55,30 @@ public class TravelerRepository {
                             }
                         } else {
                             Log.d("PROVA", "get failed with ", task.getException());
+                        }
+                    }
+                });
+    }*/
+
+    // snapshotListener è come la get(), ma rimane in ascolto, avvisando in tempo reale
+    // di cambiamenti del documento
+    public void loadTraveler(final Traveler traveler){
+        db.collection("Travelers")
+                .document(userID)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w("PROVA", "Listen failed.", e);
+                            return;
+                        }
+
+                        if (snapshot != null && snapshot.exists()) {
+                            traveler.setUsername(snapshot.getData().get("username").toString());
+                            traveler.setVisitedCountries( (ArrayList<String>) (snapshot.getData().get("visited_countries")));
+                            traveler.setWishedCountries( (ArrayList<String>) (snapshot.getData().get("wished_countries")));
+                            traveler.ready();
                         }
                     }
                 });
@@ -74,6 +101,12 @@ public class TravelerRepository {
         db.collection("Travelers")
                 .document(userID)
                 .update("visited_countries", FieldValue.arrayRemove(country));
+    }
+
+    public void removeWishedCountry(String country){
+        db.collection("Travelers")
+                .document(userID)
+                .update("wished_countries", FieldValue.arrayRemove(country));
     }
 
 

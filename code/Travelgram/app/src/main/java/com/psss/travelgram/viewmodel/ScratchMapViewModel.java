@@ -23,6 +23,7 @@ import java.util.Observer;
 public class ScratchMapViewModel extends ViewModel implements Observer{
 
     private Traveler traveler;
+    private MutableLiveData<Boolean> firstTime;     // la prima volta che viene fatta la query
     private MutableLiveData<ArrayList<String>> visitedCountries;
     private MutableLiveData<ArrayList<String>> wishedCountries;
 
@@ -30,11 +31,15 @@ public class ScratchMapViewModel extends ViewModel implements Observer{
     public ScratchMapViewModel(){
         visitedCountries = new MutableLiveData<>();
         wishedCountries = new MutableLiveData<>();
+        firstTime = new MutableLiveData<>();
+        firstTime.setValue(false);
         traveler = new Traveler();
         traveler.addObserver(this);
     }
 
-
+    public MutableLiveData<Boolean> getFirstTime() {
+        return firstTime;
+    }
     public MutableLiveData<ArrayList<String>> getVisitedCountries() {
         return visitedCountries;
     }
@@ -42,11 +47,12 @@ public class ScratchMapViewModel extends ViewModel implements Observer{
         return wishedCountries;
     }
 
-
+    public void setFirstTime() {
+        this.firstTime.setValue(true);
+    }
     public void setVisitedCountries() {
         this.visitedCountries.setValue(traveler.getVisitedCountries());
     }
-
     public void setWishedCountries() {
         this.wishedCountries.setValue(traveler.getWishedCountries());
     }
@@ -55,10 +61,13 @@ public class ScratchMapViewModel extends ViewModel implements Observer{
     // l'update è chiamata quando traveler ha finito di caricare i dati dal database
     @Override
     public void update(Observable o, Object arg) {
-        if (arg.equals("visited"))
-            setVisitedCountries();
-        if (arg.equals("wish"))
-            setWishedCountries();
+        setVisitedCountries();
+        setWishedCountries();
+
+        // la prima volta serve per caricare tutta la mappa
+        if (firstTime.getValue())
+            setFirstTime();
+
     }
 
 }

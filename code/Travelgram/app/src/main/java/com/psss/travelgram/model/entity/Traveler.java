@@ -44,14 +44,10 @@ public class Traveler extends Observable {
 
     public void setVisitedCountries(ArrayList<String> visitedCountries) {
         this.visitedCountries = visitedCountries;
-        setChanged();
-        notifyObservers("visited");
     }
 
     public void setWishedCountries(ArrayList<String> wishedCountries) {
         this.wishedCountries = wishedCountries;
-        setChanged();
-        notifyObservers("wish");
     }
 
 
@@ -67,9 +63,14 @@ public class Traveler extends Observable {
         return wishedCountries.contains(country);
     }
 
+    // notifica gli observer
+    public void ready(){
+        setChanged();
+        notifyObservers();
+    }
 
 
-    // funzioni invocate da PlaceActivity
+    // funzioni invocate da PlaceViewModel
     public void addVisitedCountry(String country){
         if(!isCountryVisited(country)) {
             visitedCountries.add(country);
@@ -91,10 +92,12 @@ public class Traveler extends Observable {
         }
     }
 
-
-
-
-
+    public void removeWishedCountry(String country){
+        if(isCountryWished(country)) {
+            wishedCountries.remove(country);
+            travelerRepo.removeWishedCountry(country);
+        }
+    }
 
 
 }
