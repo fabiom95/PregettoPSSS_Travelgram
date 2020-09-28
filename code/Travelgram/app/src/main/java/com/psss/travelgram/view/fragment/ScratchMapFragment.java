@@ -99,7 +99,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
                 @Override
                 public void onChanged(@Nullable ArrayList<String> countries) {
                     visitedCountries = countries;
-                    updateMap();
+                    updateCountry();
                 }
             });
 
@@ -108,7 +108,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
                 @Override
                 public void onChanged(@Nullable ArrayList<String> countries) {
                     wishedCountries = countries;
-                    updateMap();
+                    updateCountry();
                 }
             });
 
@@ -143,11 +143,10 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
 
 
 
-    // colora lo stato selezionato
+    // colora tutta la mappa
     public void updateMap() {
         GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited);
         GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish);
-        GeoJsonPolygonStyle baseStyle = setStyle(R.color.base);
 
         for (GeoJsonFeature feature : layer.getFeatures()) {
             String country = feature.getProperty("name");

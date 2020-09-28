@@ -32,7 +32,7 @@ public class ScratchMapViewModel extends ViewModel implements Observer{
         visitedCountries = new MutableLiveData<>();
         wishedCountries = new MutableLiveData<>();
         firstTime = new MutableLiveData<>();
-        firstTime.setValue(false);
+        firstTime.setValue(true);
         traveler = new Traveler();
         traveler.addObserver(this);
     }
@@ -48,7 +48,7 @@ public class ScratchMapViewModel extends ViewModel implements Observer{
     }
 
     public void setFirstTime() {
-        this.firstTime.setValue(true);
+        this.firstTime.setValue(false);
     }
     public void setVisitedCountries() {
         this.visitedCountries.setValue(traveler.getVisitedCountries());
