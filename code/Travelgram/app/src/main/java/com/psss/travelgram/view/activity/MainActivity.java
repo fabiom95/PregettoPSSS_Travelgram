@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentManager;
 public class MainActivity extends AppCompatActivity {
 
     final Fragment fragment1 = new ScratchMapFragment();
-    final Fragment fragment2 = JournalFragment.newInstance();
+    final Fragment fragment2 = new NotificationsFragment();
     final Fragment fragment3 = new NotificationsFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;

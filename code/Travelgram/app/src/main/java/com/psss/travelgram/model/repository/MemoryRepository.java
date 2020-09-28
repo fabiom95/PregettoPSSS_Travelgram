@@ -10,12 +10,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.psss.travelgram.model.entity.Memory;
@@ -28,13 +26,10 @@ import java.util.Map;
 
 public class MemoryRepository {
 
-    // TODO: eventuale classe AccessManager per la connessione al database
     private FirebaseStorage storage;
     private FirebaseFirestore db;
     private InsertMemoryViewModel insertMemoryViewModel;
     private String userID;
-    //private Uri file;
-    //private String state;
 
     // costruttore
     public MemoryRepository(){
@@ -78,7 +73,7 @@ public class MemoryRepository {
                                 Map<String, Object> data = new HashMap<>();
                                 data.put("UID", userID);
                                 data.put("imageLink", uri.toString());
-                                data.put("place", memo.getPlace());
+                                data.put("country", memo.getPlace());
                                 data.put("description", memo.getDescription());
 
                                 db.collection("Memories")
@@ -109,7 +104,35 @@ public class MemoryRepository {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Memory memo = new Memory();
                                 memo.setImage(document.getData().get("imageLink").toString());
-                                memo.setPlace(document.getData().get("place").toString());
+                                memo.setPlace(document.getData().get("country").toString());
+                                memo.setDescription(document.getData().get("description").toString());
+                                Log.d("PROVA", " imageLink " + memo.getImage());
+                                memories.add(memo);
+                            }
+                            TJ.setMemories(memories);
+                        } else {
+                            Log.d("PROVA", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+
+    public void loadMemories(final TravelJournal TJ, String country){
+
+        db.collection("Memories")
+                .whereEqualTo("UID", userID)
+                .whereEqualTo("country", country)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<Memory> memories = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Memory memo = new Memory();
+                                memo.setImage(document.getData().get("imageLink").toString());
+                                memo.setPlace(document.getData().get("country").toString());
                                 memo.setDescription(document.getData().get("description").toString());
                                 Log.d("PROVA", " imageLink " + memo.getImage());
                                 memories.add(memo);

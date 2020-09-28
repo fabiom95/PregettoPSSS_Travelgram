@@ -16,30 +16,49 @@ import com.psss.travelgram.model.entity.Traveler;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ScratchMapViewModel extends ViewModel implements Observer {
+public class ScratchMapViewModel extends ViewModel implements Observer{
 
-    //TODO: eventualmente rimuovere observer
-    private MutableLiveData<String> mText;
     private Traveler traveler;
+    private MutableLiveData<ArrayList<String>> visitedCountries;
+    private MutableLiveData<ArrayList<String>> wishedCountries;
 
-    public ScratchMapViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("ciao");
-        traveler = new Traveler();//Traveler.getInstance();
+
+    public ScratchMapViewModel(){
+        visitedCountries = new MutableLiveData<>();
+        wishedCountries = new MutableLiveData<>();
+        traveler = new Traveler();
         traveler.addObserver(this);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+
+    public MutableLiveData<ArrayList<String>> getVisitedCountries() {
+        return visitedCountries;
+    }
+    public MutableLiveData<ArrayList<String>> getWishedCountries() {
+        return wishedCountries;
     }
 
 
+    public void setVisitedCountries() {
+        this.visitedCountries.setValue(traveler.getVisitedCountries());
+    }
+
+    public void setWishedCountries() {
+        this.wishedCountries.setValue(traveler.getWishedCountries());
+    }
+
+
+    // l'update è chiamata quando traveler ha finito di caricare i dati dal database
     @Override
     public void update(Observable o, Object arg) {
-        Log.d("PROVA", "ciao");
+        if (arg.equals("visited"))
+            setVisitedCountries();
+        if (arg.equals("wish"))
+            setWishedCountries();
     }
 
 }

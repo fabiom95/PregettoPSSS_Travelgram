@@ -20,9 +20,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
     private final Context mContext;
+    private String countryName;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, String countryName) {
         super(fm);
+        this.countryName = countryName;
         mContext = context;
     }
 
@@ -31,7 +33,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         switch(position){
             case 0:
-                return JournalFragment.newInstance();
+                return JournalFragment.newInstance(countryName);
             case 1:
                 return new NotificationsFragment();
             case 2:

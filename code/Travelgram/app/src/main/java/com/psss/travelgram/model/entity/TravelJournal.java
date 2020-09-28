@@ -12,23 +12,22 @@ import java.util.Observable;
 public class TravelJournal {
 
     private ArrayList<Memory> memories;
-    private String travelerUID;
     private MemoryRepository memoryRepo;
     private JournalViewModel journalViewModel;      // osservatore
 
-    public TravelJournal(JournalViewModel journalVM){
+    public TravelJournal(JournalViewModel journalVM, String countryName){
         memories = new ArrayList<>();
         memoryRepo = new MemoryRepository();
         journalViewModel = journalVM;
-        loadMemories();
+        loadMemories(countryName);
     }
 
     public ArrayList<Memory> getMemories(){
         return memories;
     }
 
-    public void loadMemories(){
-        memoryRepo.loadMemories(this);
+    public void loadMemories(String countryName){
+        memoryRepo.loadMemories(this, countryName);
     }
 
     public void setMemories(ArrayList<Memory> memories){
