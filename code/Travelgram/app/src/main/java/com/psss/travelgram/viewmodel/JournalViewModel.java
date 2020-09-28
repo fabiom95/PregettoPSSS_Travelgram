@@ -15,9 +15,9 @@ public class JournalViewModel extends ViewModel {
     private TravelJournal TJ;
     private Context context;
 
-    public JournalViewModel(Context context) {
+    public JournalViewModel(Context context, String countryName) {
         mAdapter = new MutableLiveData<>();
-        TJ = new TravelJournal(this);
+        TJ = new TravelJournal(this, countryName);
         this.context = context;
     }
 

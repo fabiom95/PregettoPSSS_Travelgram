@@ -1,12 +1,9 @@
 package com.psss.travelgram.view.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.psss.travelgram.MemoryAdapter;
 import com.psss.travelgram.R;
-import com.psss.travelgram.model.entity.Memory;
-import com.psss.travelgram.model.entity.TravelJournal;
-import com.psss.travelgram.view.activity.MainActivity;
 import com.psss.travelgram.viewmodel.JournalViewModel;
 
 public class JournalFragment extends Fragment {
@@ -30,9 +24,10 @@ public class JournalFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
 
 
-    public static JournalFragment newInstance() {
+    public static JournalFragment newInstance(String countryName) {
         JournalFragment fragment = new JournalFragment();
         Bundle bundle = new Bundle();
+        bundle.putString("countryName", countryName);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -52,7 +47,7 @@ public class JournalFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // view model
-        journalViewModel = new JournalViewModel(getActivity());
+        journalViewModel = new JournalViewModel(getActivity(), getArguments().getString("countryName"));
 
         // aspetta il via per l'azione successiva
         journalViewModel.getAdapter().observe(getViewLifecycleOwner(), new Observer<MemoryAdapter>() {

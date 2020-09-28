@@ -1,30 +1,17 @@
 package com.psss.travelgram.model.repository;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.psss.travelgram.viewmodel.AuthViewModel;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import static android.content.ContentValues.TAG;
 
 
 public class AuthRepository {
@@ -96,6 +83,7 @@ public class AuthRepository {
         Map<String, Object> data = new HashMap<>();
         data.put("username", username);
         data.put("visited_countries", Collections.emptyList());
+        data.put("wished_countries",  Collections.emptyList());
 
         db.collection("Travelers")
                 .document(userID)

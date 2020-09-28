@@ -21,10 +21,12 @@ import android.view.View.OnClickListener;
 
 public class PlaceActivity extends AppCompatActivity implements OnClickListener {
 
-    private String countryName;
     private PlaceViewModel placeViewModel;
+
+    private String countryName;
     private MenuItem visited;
     private MenuItem wish;
+    private Intent intent;
 
 
     @Override
@@ -33,18 +35,18 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         setContentView(R.layout.activity_place);
 
         // riceve il nome del paese
-        Intent intent = getIntent();
+        intent = getIntent();
         countryName = intent.getStringExtra("countryName");
 
         // l'adapter istanzia le pagine da mostrare nelle varie sezioni
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), countryName);
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
         // view model
-        placeViewModel = new PlaceViewModel();
+        placeViewModel = new PlaceViewModel(countryName);
 
         // Toolbar
         Toolbar mToolbar = findViewById(R.id.toolbar);
@@ -61,27 +63,6 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         // bottone aggiungi memory
         FloatingActionButton addMemoryBtn = findViewById(R.id.addMemoryBtn);
         addMemoryBtn.setOnClickListener(this);
-
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        if(visited.isChecked())
-            placeViewModel.addVisitedCountry(countryName);
-        //else remove visited
-        // if wish...else
-
-        // calcolo risultato
-        Intent intent = new Intent();
-        intent.putExtra("countryName", countryName);
-        if(visited.isChecked())
-            setResult(2, intent);   // visited
-        else if (wish.isChecked())
-            setResult(3, intent);   // wish
-        else
-            setResult(1, intent);   // base
-        super.onBackPressed();
     }
 
 
@@ -108,12 +89,28 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         switch (item.getItemId()) {
             case R.id.visited:
                 item.setChecked(!item.isChecked());
-                item.setIcon(item.isChecked() ? R.drawable.place_visited_checked : R.drawable.place_visited);   // if then else
+
+                if(item.isChecked()){
+                    item.setIcon(R.drawable.place_visited_checked);
+                    placeViewModel.addVisitedCountry();
+                }
+                else{
+                    item.setIcon(R.drawable.place_visited);
+                    placeViewModel.removeVisitedCountry();
+                }
                 return true;
 
             case R.id.wish:
                 item.setChecked(!item.isChecked());
-                item.setIcon(item.isChecked() ? R.drawable.place_wish_checked : R.drawable.place_wish);
+
+                if(item.isChecked()){
+                    item.setIcon(R.drawable.place_wish_checked);
+                    placeViewModel.addWishedCountry();
+                }
+                else{
+                    item.setIcon(R.drawable.place_wish);
+                    placeViewModel.removeWishedCountry();
+                }
                 return true;
 
             default:
@@ -128,8 +125,15 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.place_menu, menu);
+
         visited = menu.findItem(R.id.visited);
         wish = menu.findItem(R.id.wish);
+
+        visited.setChecked(intent.getBooleanExtra("isVisited", false));
+        wish.setChecked(intent.getBooleanExtra("isWished", false));
+
+        visited.setIcon(visited.isChecked() ? R.drawable.place_visited_checked : R.drawable.place_visited);   // if then else
+        wish.setIcon(wish.isChecked() ? R.drawable.place_wish_checked : R.drawable.place_wish);
 
         return true;
     }

@@ -3,15 +3,14 @@ package com.psss.travelgram.view.fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.maps.android.data.Layer;
 import com.google.maps.android.data.Layer.OnFeatureClickListener;
 import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
@@ -31,8 +30,6 @@ import com.google.maps.android.data.Feature;
 
 import org.json.JSONException;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -40,7 +37,27 @@ import java.util.ArrayList;
 public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, OnFeatureClickListener {
 
     private ScratchMapViewModel scratchMapViewModel;
+
     private GeoJsonLayer layer;
+    private ArrayList<String> visitedCountries;
+    private ArrayList<String> wishedCountries;
+    private String selectedCountry;
+
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
+
+        scratchMapViewModel = new ScratchMapViewModel();
+        visitedCountries = new ArrayList<String>();
+        wishedCountries = new ArrayList<String>();
+    }
 
 
 
@@ -57,15 +74,43 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
         scratchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(46,10), 3.5f));
 
         try {
+            // aggiunge il livello (i paesi)
             layer = new GeoJsonLayer(scratchMap, R.raw.world_j, getActivity().getApplicationContext());
             layer.addLayerToMap();
 
-            // stile del livello
+            // stile di base del livello
             GeoJsonPolygonStyle style = layer.getDefaultPolygonStyle();
             style.setFillColor(getResources().getColor(R.color.base));
             style.setStrokeWidth(4);
 
+            // rendiamo gli stati cliccabili
             layer.setOnFeatureClickListener(this);
+
+            // la prima volta che viene fatta la query aggiorniamo tutta la mappa
+            scratchMapViewModel.getFirstTime().observe(this, new Observer<Boolean>() {
+                @Override
+                public void onChanged(@Nullable Boolean firstTime) {
+                    updateMap();
+                }
+            });
+
+            // osserva i cambiamenti degli stati visitati (attraverso il ViewModel)
+            scratchMapViewModel.getVisitedCountries().observe(this, new Observer<ArrayList<String>>() {
+                @Override
+                public void onChanged(@Nullable ArrayList<String> countries) {
+                    visitedCountries = countries;
+                    updateCountry();
+                }
+            });
+
+            // osserva i cambiamenti degli stati da visitare (attraverso il ViewModel)
+            scratchMapViewModel.getWishedCountries().observe(this, new Observer<ArrayList<String>>() {
+                @Override
+                public void onChanged(@Nullable ArrayList<String> countries) {
+                    wishedCountries = countries;
+                    updateCountry();
+                }
+            });
 
         } catch (JSONException e) { e.printStackTrace();
         } catch (IOException e) { e.printStackTrace();
@@ -74,50 +119,66 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
 
 
 
-    // al click dello stato apre la PlaceActivity
+    // al click su uno stato apre una PlaceActivity.
+    // Passa alla PlaceActivity il nome dello stato cliccato e dei Boolean che indicano se lo
+    // stato è contrassegnato come "visited" o come "wished"
     @Override
     public void onFeatureClick(Feature feature) {
+        selectedCountry = feature.getProperty("name");
         Intent intent = new Intent(getActivity(), PlaceActivity.class);
-        intent.putExtra("countryName", feature.getProperty("name"));
-        startActivityForResult(intent,0);
+        intent.putExtra("countryName", selectedCountry);
+        intent.putExtra("isVisited", visitedCountries.contains(selectedCountry));
+        intent.putExtra("isWished", wishedCountries.contains(selectedCountry));
+        startActivity(intent);
     }
 
 
-    // al termine della PlaceActivity può colorare lo stato
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (resultCode){
-            case 1: // base
-                colorCountry(R.color.base, data.getStringExtra("countryName"));
-                break;
-            case 2: // visited
-                colorCountry(R.color.visited, data.getStringExtra("countryName"));
-                break;
-            case 3: // wish
-                colorCountry(R.color.wish, data.getStringExtra("countryName"));
-                break;
-            default:
-                break;
-        }
-    }
-
-
-    // stile di uno specifico stato
-    public void colorCountry(int color, String countryName) {
+    // imposta uno stile grafico
+    public GeoJsonPolygonStyle setStyle(int color){
         GeoJsonPolygonStyle style = new GeoJsonPolygonStyle();
         style.setFillColor(getResources().getColor(color));
         style.setStrokeWidth(4);
+        return style;
+    }
+
+
+
+    // colora tutta la mappa
+    public void updateMap() {
+        GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited);
+        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish);
 
         for (GeoJsonFeature feature : layer.getFeatures()) {
-            if (feature.getProperty("name").equals(countryName)) {
-                feature.setPolygonStyle(style);
-                return;
-            }
+            String country = feature.getProperty("name");
+            if (visitedCountries.contains(country))
+                feature.setPolygonStyle(visitedStyle);
+            else if (wishedCountries.contains(country))
+                feature.setPolygonStyle(wishStyle);
         }
     }
 
+    // colora lo stato selezionato
+    public void updateCountry() {
+        GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited);
+        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish);
+        GeoJsonPolygonStyle baseStyle = setStyle(R.color.base);
+
+        for (GeoJsonFeature feature : layer.getFeatures()) {
+            String country = feature.getProperty("name");
+
+            // lavoriamo solo sullo stato selezionato
+            if (country.equals(selectedCountry)) {
+                if (visitedCountries.contains(country))
+                    feature.setPolygonStyle(visitedStyle);
+                else if (wishedCountries.contains(country))
+                    feature.setPolygonStyle(wishStyle);
+                else
+                    feature.setPolygonStyle(baseStyle);
+                return; // una volta trovato lo stato ci fermiamo
+            }
+        }
+
+    }
 
 
     // ---------------------------------------------------------------------------------------------
@@ -130,15 +191,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
         return inflater.inflate(R.layout.fragment_scratchmap, container, false);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
-    }
+
 
 
 }
