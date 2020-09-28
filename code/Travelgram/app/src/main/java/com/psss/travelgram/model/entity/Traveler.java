@@ -8,7 +8,8 @@ import java.util.Observer;
 
 public class Traveler extends Observable {
 
-    //Qui ci metto tutti i private
+    //private String id;
+    //private String username;
     private TravelerRepository travelerRepo;
     private ArrayList<String> visited_countries;
 
