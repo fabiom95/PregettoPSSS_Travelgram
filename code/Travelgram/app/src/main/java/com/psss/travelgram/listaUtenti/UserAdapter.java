@@ -1,149 +1,129 @@
 package com.psss.travelgram.listaUtenti;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
-import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseUser;/*
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.koddev.instagramtest.Fragments.ProfileFragment;
-import com.koddev.instagramtest.MainActivity;
-import com.koddev.instagramtest.Model.User;
-import com.koddev.instagramtest.R;
+import com.koddev.instagramtest.R;*/
+import com.psss.travelgram.R;
+import com.psss.travelgram.model.entity.Traveler;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.content.Context.MODE_PRIVATE;
-
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ImageViewHolder> {
-
-    private Context mContext;
-    private List<User> mUsers;
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
+    private ArrayList<Traveler> travelers;
+    private Context context;
     private boolean isFragment;
 
-    private FirebaseUser firebaseUser;
+    private FirebaseUser firebaseUser;  /////////////
 
-    public UserAdapter(Context context, List<User> users, boolean isFragment){
-        mContext = context;
-        mUsers = users;
+    // ---- classe innestata
+    public static class MyViewHolder extends RecyclerView.ViewHolder {  // static l'ho aggiunto io
+        public TextView username;
+        public ToggleButton followBtn;
+
+        public MyViewHolder(View v) {
+            super(v);
+            username = v.findViewById(R.id.username);
+            followBtn = v.findViewById(R.id.followBtn);
+        }
+    }
+    // ---- fine classe innestata
+
+
+    // Costruttore
+    public UserAdapter(Context context, ArrayList<Traveler> travelers, boolean isFragment){
+        this.context = context;
+        this.travelers = travelers;
         this.isFragment = isFragment;
     }
 
     @NonNull
     @Override
-    public UserAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.user_item, parent, false);
-        return new UserAdapter.ImageViewHolder(view);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_item, parent, false);
+        return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final UserAdapter.ImageViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+        final Traveler traveler = travelers.get(position);
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        // bottone
+        //isFollowing(traveler.getId(), holder.followBtn);        /////non farla cosi
 
-        final User user = mUsers.get(position);
+        // username
+        holder.username.setText(traveler.getUsername());
 
-        holder.btn_follow.setVisibility(View.VISIBLE);
-        isFollowing(user.getId(), holder.btn_follow);
+        holder.followBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.followBtn.getText().toString().equals("follow")) {
 
-        holder.username.setText(user.getUsername());
-        holder.fullname.setText(user.getFullname());
-        Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
+                    // SPOSTARE NEL VIEW MODEL
+                    traveler.follow();  // metto il follow al traveler
+                    //addNotification(traveler.getId());
+                } else {
+                    traveler.unfollow();    // tolgo il follow al traveler
+                }
+            }
 
-        if (user.getId().equals(firebaseUser.getUid())){
-            holder.btn_follow.setVisibility(View.GONE);
-        }
-
+        });
+/*
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isFragment) {
-                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
-                    editor.putString("profileid", user.getId());
+                    SharedPreferences.Editor editor = context.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                    editor.putString("profileid", traveler.getId());
                     editor.apply();
 
-                    ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new ProfileFragment()).commit();
                 } else {
-                    Intent intent = new Intent(mContext, MainActivity.class);
-                    intent.putExtra("publisherid", user.getId());
-                    mContext.startActivity(intent);
+                    Intent intent = new Intent(context, MainActivity.class);
+                    intent.putExtra("publisherid", traveler.getId());
+                    context.startActivity(intent);
                 }
             }
-        });
+        });*/
 
-        holder.btn_follow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (holder.btn_follow.getText().toString().equals("follow")) {
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("following").child(user.getId()).setValue(true);
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
-                            .child("followers").child(firebaseUser.getUid()).setValue(true);
 
-                    addNotification(user.getId());
-                } else {
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("following").child(user.getId()).removeValue();
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
-                            .child("followers").child(firebaseUser.getUid()).removeValue();
-                }
-            }
-
-        });
     }
 
-    private void addNotification(String userid){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userid);
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("userid", firebaseUser.getUid());
-        hashMap.put("text", "started following you");
-        hashMap.put("postid", "");
-        hashMap.put("ispost", false);
-
-        reference.push().setValue(hashMap);
-    }
 
     @Override
     public int getItemCount() {
-        return mUsers.size();
+        return travelers.size();
     }
 
-    public class ImageViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView username;
-        public TextView fullname;
-        public CircleImageView image_profile;
-        public Button btn_follow;
+    /*
+        private void addNotification(String userid){
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userid);
 
-        public ImageViewHolder(View itemView) {
-            super(itemView);
+            HashMap<String, Object> hashMap = new HashMap<>();
+            hashMap.put("userid", firebaseUser.getUid());
+            hashMap.put("text", "started following you");
+            hashMap.put("postid", "");
+            hashMap.put("ispost", false);
 
-            username = itemView.findViewById(R.id.username);
-            fullname = itemView.findViewById(R.id.fullname);
-            image_profile = itemView.findViewById(R.id.image_profile);
-            btn_follow = itemView.findViewById(R.id.btn_follow);
-        }
-    }
+            reference.push().setValue(hashMap);
+        }*/
 
+/*
     private void isFollowing(final String userid, final Button button){
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -165,5 +145,5 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ImageViewHolde
 
             }
         });
-    }
+    }*/
 }

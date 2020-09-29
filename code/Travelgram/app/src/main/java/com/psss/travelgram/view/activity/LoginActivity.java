@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     private Button loginBtn;
     private ProgressBar progressBar;
     private EditText email, password;
+
     private AuthViewModel authViewModel;
 
 
@@ -113,7 +114,8 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        finish();
+        if(resultCode == 1)
+            finish();
     }
 
 

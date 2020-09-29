@@ -21,13 +21,11 @@ import android.view.View.OnClickListener;
 
 public class PlaceActivity extends AppCompatActivity implements OnClickListener {
 
-    private PlaceViewModel placeViewModel;
-
     private String countryName;
-    private MenuItem visited;
-    private MenuItem wish;
     private Intent intent;
 
+    private PlaceViewModel placeViewModel;
+    private SectionsPagerAdapter sectionsPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         countryName = intent.getStringExtra("countryName");
 
         // l'adapter istanzia le pagine da mostrare nelle varie sezioni
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), countryName);
+        sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), countryName);
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
@@ -126,8 +124,8 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.place_menu, menu);
 
-        visited = menu.findItem(R.id.visited);
-        wish = menu.findItem(R.id.wish);
+        MenuItem visited = menu.findItem(R.id.visited);
+        MenuItem wish = menu.findItem(R.id.wish);
 
         visited.setChecked(intent.getBooleanExtra("isVisited", false));
         wish.setChecked(intent.getBooleanExtra("isWished", false));

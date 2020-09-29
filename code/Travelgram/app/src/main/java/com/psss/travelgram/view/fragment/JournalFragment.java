@@ -18,10 +18,10 @@ import com.psss.travelgram.viewmodel.JournalViewModel;
 
 public class JournalFragment extends Fragment {
 
-    private JournalViewModel journalViewModel;
-
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+
+    private JournalViewModel journalViewModel;
 
 
     public static JournalFragment newInstance(String countryName) {

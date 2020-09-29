@@ -1,8 +1,7 @@
 package com.psss.travelgram.viewmodel;
 
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
+
 import androidx.lifecycle.ViewModel;
 
 import com.psss.travelgram.model.entity.Traveler;

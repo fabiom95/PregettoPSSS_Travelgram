@@ -4,7 +4,6 @@ package com.psss.travelgram.viewmodel;
 import android.content.Context;
 import android.widget.EditText;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -17,6 +16,7 @@ public class AuthViewModel extends ViewModel {
     private MutableLiveData<String> taskResult;     // avvisa se l'autenticazione è riuscita
     private MutableLiveData<String> textError;      // avvisa se manca qualche campo
     private int targetID;                           // id dell'EditText su cui mostrare l'errore
+
     private AuthRepository authRepo;
 
 
@@ -113,7 +113,7 @@ public class AuthViewModel extends ViewModel {
 
         // inoltra la richiesta ad AuthRepository, che si interfaccia con Firebase
         // Il riferimento "this" alla classe stessa serve per ricevere messaggi da AuthRepository
-        authRepo.signupUser(username, email, password, this);
+        authRepo.signupUser(username, email, password, this);   //TODO: observer
 
     }
 

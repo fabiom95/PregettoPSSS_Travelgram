@@ -18,7 +18,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.psss.travelgram.model.entity.Memory;
 import com.psss.travelgram.model.entity.TravelJournal;
-import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +27,6 @@ public class MemoryRepository {
 
     private FirebaseStorage storage;
     private FirebaseFirestore db;
-    private InsertMemoryViewModel insertMemoryViewModel;
     private String userID;
 
     // costruttore
@@ -36,13 +34,11 @@ public class MemoryRepository {
         storage = FirebaseStorage.getInstance();
         db = FirebaseFirestore.getInstance();
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        insertMemoryViewModel = null; ////////////
     }
 
 
     // ----------- INSERT MEMORY -----------
-    public void insertMemory(Uri uri, final Memory memo, InsertMemoryViewModel insertMemoryVM){
-        insertMemoryViewModel = insertMemoryVM; ///////////
+    public void insertMemory(Uri uri, final Memory memo){
 
         // caricamento immagine su Storage
         final StorageReference memoRef = storage.getReference().child( userID + "/" + uri.getLastPathSegment());

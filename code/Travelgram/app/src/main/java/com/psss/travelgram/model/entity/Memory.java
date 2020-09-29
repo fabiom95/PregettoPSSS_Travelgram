@@ -5,11 +5,14 @@ import android.net.Uri;
 import com.psss.travelgram.model.repository.MemoryRepository;
 import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 
-public class  Memory {
+import java.util.Observable;
+
+public class  Memory extends Observable {
 
     private String imageLink;
     private String place;
     private String description;
+
     private MemoryRepository memoryRepo;
 
 
@@ -35,10 +38,13 @@ public class  Memory {
     }
 
 
-
-    public void insertMemory(Uri uri, InsertMemoryViewModel insertMemoryVM){
-        memoryRepo.insertMemory(uri, this, insertMemoryVM);
-        //TODO: usare una nuova memory al posto di this
+    public void insertMemory(Uri uri){
+        memoryRepo.insertMemory(uri, this);
     }
 
+
+    public void ready(){
+        setChanged();
+        notifyObservers();
+    }
 }

@@ -1,24 +1,18 @@
 package com.psss.travelgram.model.entity;
 
-import android.util.Log;
-
 import com.psss.travelgram.model.repository.MemoryRepository;
-import com.psss.travelgram.model.repository.TravelJournalRepository_temp;
-import com.psss.travelgram.viewmodel.JournalViewModel;
-
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class TravelJournal {
+
+public class TravelJournal extends Observable{
 
     private ArrayList<Memory> memories;
     private MemoryRepository memoryRepo;
-    private JournalViewModel journalViewModel;      // osservatore
 
-    public TravelJournal(JournalViewModel journalVM, String countryName){
+    public TravelJournal(String countryName){
         memories = new ArrayList<>();
         memoryRepo = new MemoryRepository();
-        journalViewModel = journalVM;
         loadMemories(countryName);
     }
 
@@ -32,7 +26,8 @@ public class TravelJournal {
 
     public void setMemories(ArrayList<Memory> memories){
         this.memories = memories;
-        journalViewModel.createAdapter();
+        setChanged();
+        notifyObservers();
     }
 
 

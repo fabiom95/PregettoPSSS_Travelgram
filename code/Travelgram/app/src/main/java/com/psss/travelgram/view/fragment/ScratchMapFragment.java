@@ -36,13 +36,12 @@ import java.util.ArrayList;
 
 public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, OnFeatureClickListener {
 
-    private ScratchMapViewModel scratchMapViewModel;
-
     private GeoJsonLayer layer;
     private ArrayList<String> visitedCountries;
     private ArrayList<String> wishedCountries;
     private String selectedCountry;
 
+    private ScratchMapViewModel scratchMapViewModel;
 
 
     @Override

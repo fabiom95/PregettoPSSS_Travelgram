@@ -14,9 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class AuthRepository {
+public class AuthRepository {   //TODO: observer
 
-    private String result;
     private AuthViewModel authViewModel;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -84,6 +83,9 @@ public class AuthRepository {
         data.put("username", username);
         data.put("visited_countries", Collections.emptyList());
         data.put("wished_countries",  Collections.emptyList());
+        data.put("following",  Collections.emptyList());
+        data.put("followers",  Collections.emptyList());
+
 
         db.collection("Travelers")
                 .document(userID)

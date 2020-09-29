@@ -9,18 +9,22 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.psss.travelgram.model.entity.Memory;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import static android.app.Activity.RESULT_OK;
 
 
-public class InsertMemoryViewModel {
+public class InsertMemoryViewModel implements Observer {
 
     private Memory memory;
     private MutableLiveData<String> taskResult;
 
 
     public InsertMemoryViewModel(){
-        memory = new Memory();
         taskResult = new MutableLiveData<>();
+        memory = new Memory();
+        memory.addObserver(this);
     }
 
 
@@ -29,9 +33,9 @@ public class InsertMemoryViewModel {
 
     public LiveData<String> getTaskResult() {return taskResult;}
 
-    public void setTaskResult(String value) { taskResult.setValue(value); }
-
-
+    public void setTaskResult(String value) {
+        taskResult.setValue(value);
+    }
 
 
     public void insertMemory(int resultCode, Uri uri, AutoCompleteTextView country, EditText description){
@@ -39,8 +43,12 @@ public class InsertMemoryViewModel {
         if (resultCode == RESULT_OK) {
             memory.setPlace(country.getText().toString());
             memory.setDescription(description.getText().toString());
-            memory.insertMemory(uri, this);
+            memory.insertMemory(uri);
         }
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        setTaskResult("success");    // TODO: controllare se va, e personalizzare il messaggio (eventuale errore)
+    }
 }

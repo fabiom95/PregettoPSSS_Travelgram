@@ -4,7 +4,6 @@ package com.psss.travelgram.view.activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,6 +25,7 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
     private Button signupBtn;
     private ProgressBar progressBar;
     private EditText username, email, password, confirmPassword;
+
     private AuthViewModel authViewModel;
 
 
@@ -56,6 +56,7 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
             public void onChanged(@Nullable String s) {
             try{
                 if(s.equals("success")){
+                    setResult(1);
                     finish();
                     finishActivity(0);
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));

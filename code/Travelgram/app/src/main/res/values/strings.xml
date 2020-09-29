@@ -24,10 +24,13 @@
     <string name="email_required">e-mail is required</string>
     <string name="password_required">password is required</string>
     <string name="password_mismatch">passwords don\'t match</string>
-    <string name="password_too_short">Minimum lenght of password should be 6</string>
+    <string name="password_too_short">Minimum length of password should be 6</string>
 
     <!-- Insert Memory Activity -->
     <string name="share">share</string>
     <string name="new_memory">New Memory</string>
 
+    <!-- Search user -->
+    <string name="follow">follow</string>
+    <string name="following">following</string>
 </resources>
