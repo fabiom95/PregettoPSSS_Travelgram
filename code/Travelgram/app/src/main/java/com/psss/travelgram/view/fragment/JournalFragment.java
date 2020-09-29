@@ -19,7 +19,6 @@ import com.psss.travelgram.viewmodel.JournalViewModel;
 public class JournalFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
 
     private JournalViewModel journalViewModel;
 
@@ -43,8 +42,7 @@ public class JournalFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // view model
         journalViewModel = new JournalViewModel(getActivity(), getArguments().getString("countryName"));

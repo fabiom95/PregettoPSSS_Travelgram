@@ -4,10 +4,13 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.firebase.auth.FirebaseUser;/*
@@ -19,10 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.koddev.instagramtest.R;*/
 import com.psss.travelgram.R;
 import com.psss.travelgram.model.entity.Traveler;
+import com.psss.travelgram.model.entity.TravelerList;
 
 import java.util.ArrayList;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
+public class TravelerAdapter extends RecyclerView.Adapter<TravelerAdapter.MyViewHolder> {
     private ArrayList<Traveler> travelers;
     private Context context;
     private boolean isFragment;
@@ -44,10 +48,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
 
     // Costruttore
-    public UserAdapter(Context context, ArrayList<Traveler> travelers, boolean isFragment){
+    public TravelerAdapter(TravelerList TL, Context context){
         this.context = context;
-        this.travelers = travelers;
-        this.isFragment = isFragment;
+        this.travelers = TL.getTravelers();
+        //this.isFragment = isFragment;
     }
 
     @NonNull
@@ -70,12 +74,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         holder.followBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (holder.followBtn.getText().toString().equals("follow")) {
+                if (holder.followBtn.isChecked()) {
 
-                    // SPOSTARE NEL VIEW MODEL
+                    // TODO: SPOSTARE NEL VIEW MODEL
                     traveler.follow();  // metto il follow al traveler
                     //addNotification(traveler.getId());
+                    Toast.makeText(context,"follow "+traveler.getUsername(), Toast.LENGTH_SHORT).show();
+
                 } else {
+                    Toast.makeText(context,"unfollow "+traveler.getUsername(), Toast.LENGTH_SHORT).show();
                     traveler.unfollow();    // tolgo il follow al traveler
                 }
             }

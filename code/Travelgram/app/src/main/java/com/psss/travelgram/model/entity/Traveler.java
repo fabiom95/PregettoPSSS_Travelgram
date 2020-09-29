@@ -24,7 +24,6 @@ public class Traveler extends Observable {
         wishedCountries = new ArrayList<>();
         followers = new ArrayList<>();
         following = new ArrayList<>();
-        loadTraveler();
     }
 
 
@@ -134,18 +133,12 @@ public class Traveler extends Observable {
 
 
     // funzioni invocate da SearchViewModel
-    public void addFollower(String userID){
-        if(!isUserFollower(userID)) {
-            //followers.add(userID);
-            travelerRepo.addFollower(userID);
-        }
+    public void follow(){
+        travelerRepo.follow(userID);
     }
 
-    public void removeFollower(String userID){
-        if(isUserFollower(userID)) {
-            //followers.remove(userID);
-            travelerRepo.removeFollower(userID);
-        }
+    public void unfollow(){
+        travelerRepo.unfollow(userID);
     }
 
 

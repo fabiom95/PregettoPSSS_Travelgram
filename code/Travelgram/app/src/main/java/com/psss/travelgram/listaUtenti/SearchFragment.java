@@ -2,10 +2,6 @@ package com.psss.travelgram.listaUtenti;
 
 
 import android.os.Bundle;
-//import android.support.annotation.NonNull;
-//import android.support.v4.app.Fragment;
-//import android.support.v7.widget.LinearLayoutManager;
-//import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -13,116 +9,71 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.psss.travelgram.R;
+import com.psss.travelgram.viewmodel.SearchViewModel;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;/*
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.koddev.instagramtest.Adapter.UserAdapter;
-import com.koddev.instagramtest.Model.User;
-import com.koddev.instagramtest.R;*/
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SearchFragment extends Fragment {
-/*
+
     private RecyclerView recyclerView;
-    private UserAdapter userAdapter;
-    private List<User> userList;
 
-    EditText search_bar;
+    private SearchViewModel searchViewModel;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        recyclerView = view.findViewById(R.id.recycler_view);
+    public static SearchFragment newInstance() {
+        SearchFragment fragment = new SearchFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        //dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_search, container, false);
+
+        recyclerView = (RecyclerView) root.findViewById(R.id.search_recycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        search_bar = view.findViewById(R.id.search_bar);
+        // use a linear layout manager
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        userList = new ArrayList<>();
-        userAdapter = new UserAdapter(getContext(), userList, true);
-        recyclerView.setAdapter(userAdapter);
+        // view model
+        searchViewModel = new SearchViewModel(getActivity());
 
-        readUsers();
+        // aspetta il via per l'azione successiva
+        searchViewModel.getAdapter().observe(getViewLifecycleOwner(), new Observer<TravelerAdapter>() {
+            @Override
+            public void onChanged(@Nullable TravelerAdapter adapter) {
+                recyclerView.setAdapter(adapter);
+            }
+        });
+
+        // Search bar
+        EditText search_bar = root.findViewById(R.id.search_bar);
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                searchUsers(charSequence.toString().toLowerCase());
+                searchViewModel.searchTraveler(charSequence.toString().toLowerCase());
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
+            public void afterTextChanged(Editable editable) { }
         });
 
-        return view;
+        return root;
     }
 
-    private void searchUsers(String s){
-        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
-                .startAt(s)
-                .endAt(s+"\uf8ff");
-
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    User user = snapshot.getValue(User.class);
-                        userList.add(user);
-                }
-
-                userAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void readUsers() {
-
-        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (search_bar.getText().toString().equals("")) {
-                    userList.clear();
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        User user = snapshot.getValue(User.class);
-
-                        userList.add(user);
-
-                    }
-
-                    userAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }*/
 }
+

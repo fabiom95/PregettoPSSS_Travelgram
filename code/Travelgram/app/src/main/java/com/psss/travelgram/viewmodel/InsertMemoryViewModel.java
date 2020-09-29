@@ -6,6 +6,7 @@ import android.widget.EditText;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.psss.travelgram.model.entity.Memory;
 
@@ -15,7 +16,7 @@ import java.util.Observer;
 import static android.app.Activity.RESULT_OK;
 
 
-public class InsertMemoryViewModel implements Observer {
+public class InsertMemoryViewModel extends ViewModel implements Observer {
 
     private Memory memory;
     private MutableLiveData<String> taskResult;

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.psss.travelgram.R;
+import com.psss.travelgram.listaUtenti.SearchFragment;
 import com.psss.travelgram.view.fragment.NotificationsFragment;
 import com.psss.travelgram.view.fragment.ScratchMapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,7 +18,7 @@ import androidx.fragment.app.FragmentManager;
 public class MainActivity extends AppCompatActivity {
 
     final private Fragment fragment1 = new ScratchMapFragment();
-    final private Fragment fragment2 = new NotificationsFragment();
+    final private Fragment fragment2 = SearchFragment.newInstance();
     final private Fragment fragment3 = new NotificationsFragment();
     final private FragmentManager fm = getSupportFragmentManager();
     private Fragment active = fragment1;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.navigation_dashboard:
                         fm.beginTransaction().hide(active).show(fragment2).commit();
-                        getSupportActionBar().setTitle("Dashboard");
+                        getSupportActionBar().setTitle("Search");
                         active = fragment2;
                         return true;
 

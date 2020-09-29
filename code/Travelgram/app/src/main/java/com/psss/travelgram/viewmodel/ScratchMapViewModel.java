@@ -23,6 +23,7 @@ public class ScratchMapViewModel extends ViewModel implements Observer{
         firstTime = new MutableLiveData<>();
         firstTime.setValue(true);
         traveler = new Traveler();
+        traveler.loadTraveler();
         traveler.addObserver(this);
     }
 

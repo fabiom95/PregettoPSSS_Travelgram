@@ -25,17 +25,17 @@ public class JournalViewModel extends ViewModel implements Observer {
         this.context = context;
     }
 
-    public LiveData<MemoryAdapter> getAdapter() {
+    public MutableLiveData<MemoryAdapter> getAdapter() {
         return jAdapter;
     }
 
-    public void setjAdapter(MemoryAdapter jAdapter){
+    public void setJAdapter(MemoryAdapter jAdapter){
         this.jAdapter.setValue(jAdapter);
     }
 
     // TODO: magari togliere la dipendenza dal model
     @Override
     public void update(Observable o, Object arg) {
-        setjAdapter(new MemoryAdapter(TJ, context));
+        setJAdapter(new MemoryAdapter(TJ, context));
     }
 }
