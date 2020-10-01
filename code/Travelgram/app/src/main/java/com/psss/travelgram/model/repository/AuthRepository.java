@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.psss.travelgram.model.entity.Traveler;
 import com.psss.travelgram.viewmodel.AuthViewModel;
 
 import java.util.Collections;
@@ -16,13 +17,11 @@ import java.util.Map;
 
 public class AuthRepository {   //TODO: observer
 
-    private AuthViewModel authViewModel;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
     // costruttore
     public AuthRepository(){
-        authViewModel = null;
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
     }
@@ -30,8 +29,7 @@ public class AuthRepository {   //TODO: observer
 
     // ----------- LOG IN -----------
 
-    public void loginUser(String email, String password, AuthViewModel authVM){
-        authViewModel = authVM;
+    public void loginUser(String email, String password, final Traveler traveler){
 
         // registrazione su Firebase
         Task<AuthResult> task = mAuth.signInWithEmailAndPassword(email, password);
@@ -42,9 +40,9 @@ public class AuthRepository {   //TODO: observer
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful())
                         // comunica al ViewModel i dati da mostrare alla View
-                        authViewModel.setTaskResult("success");
+                        traveler.ready("success");
                     else
-                        authViewModel.setTaskResult(task.getException().getMessage());
+                        traveler.ready(task.getException().getMessage());
                 }
         });
     }
@@ -53,8 +51,7 @@ public class AuthRepository {   //TODO: observer
 
     // ----------- SIGN UP -----------
 
-    public void signupUser(final String username, final String email, final String password, AuthViewModel authVM){
-        authViewModel = authVM;
+    public void signupUser(final String username, final String email, final String password, final Traveler traveler){
 
          // registrazione su Firebase
         Task<AuthResult> task = mAuth.createUserWithEmailAndPassword(email, password);
@@ -66,11 +63,10 @@ public class AuthRepository {   //TODO: observer
                 if (task.isSuccessful()){
                     // comunica al ViewModel i dati da mostrare alla View
                     createUser(username); // controllare permessi database
-                    authViewModel.setTaskResult("success");
-
+                    traveler.ready("success");
                 }
                 else
-                    authViewModel.setTaskResult(task.getException().getMessage());
+                    traveler.ready(task.getException().getMessage());
             }
         });
     }

@@ -116,7 +116,7 @@
         android:background="@drawable/btn_style"
         android:onClick="onClick"
         android:text="@string/signupBtn"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

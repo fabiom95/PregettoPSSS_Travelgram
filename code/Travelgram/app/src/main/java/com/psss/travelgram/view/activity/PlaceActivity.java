@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.psss.travelgram.R;
-import com.psss.travelgram.SectionsPagerAdapter;
+import com.psss.travelgram.view.adapter.SectionsPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.psss.travelgram.viewmodel.PlaceViewModel;
@@ -71,12 +71,20 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
             case R.id.addMemoryBtn:
                 Intent intent = new Intent(getApplicationContext(), InsertMemoryActivity.class);
                 intent.putExtra("countryName", countryName);
-                startActivity(intent);
+                startActivityForResult(intent,0);
                 break;
 
             default:
                 break;
         }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 1)
+            finish();
     }
 
 

@@ -48,7 +48,8 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
         progressBar = findViewById(R.id.progressBar);
 
         // ViewModel
-        authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        //authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        authViewModel = new AuthViewModel();
 
         // aspetta il via per l'azione successiva
         authViewModel.getTaskResult().observe(this, new Observer<String>() {
@@ -58,7 +59,6 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
                 if(s.equals("success")){
                     setResult(1);
                     finish();
-                    finishActivity(0);
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
                 else {
@@ -112,8 +112,18 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
     // ----------- SIGN UP -----------
 
     private void registerUser() {
+        String usernameText = username.getText().toString();
+        String emailText = email.getText().toString();
+        String passwordText = password.getText().toString();
+        String confirmPasswordText = confirmPassword.getText().toString();
+
         // il controllo iniziale sul formato delle credenziali è affidato al ViewModel
-        boolean isValid = authViewModel.validCredentials(getApplicationContext(), username, email, password, confirmPassword);
+        boolean isValid = authViewModel.validCredentials(
+                getApplicationContext(),
+                usernameText,
+                emailText,
+                passwordText,
+                confirmPasswordText);
 
         if(isValid){
             progressBar.setVisibility(View.VISIBLE);
@@ -121,7 +131,7 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
 
             // la procedura di registrazione è affidata al ViewModel, che a sua volta
             // l'affiderà ad AuthRepository (nel package "model")
-            authViewModel.signupUser(username, email, password);
+            authViewModel.signupUser(usernameText, emailText, passwordText);
         }
     }
 

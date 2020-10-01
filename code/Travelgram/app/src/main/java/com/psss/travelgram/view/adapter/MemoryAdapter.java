@@ -1,4 +1,4 @@
-package com.psss.travelgram;
+package com.psss.travelgram.view.adapter;
 
 
 import android.content.Context;
@@ -6,31 +6,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.psss.travelgram.model.entity.Memory;
-import com.psss.travelgram.model.entity.TravelJournal;
+import com.psss.travelgram.R;
 
 import java.util.ArrayList;
 
 
 public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHolder> {
-    private ArrayList<Memory> memories;
+    private ArrayList<String> imageLinks;
     private Context context;
 
     // ---- classe innestata
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
-        public TextView country;
 
         public MyViewHolder(View v) {
             super(v);
-            country = v.findViewById(R.id.country);
             image = v.findViewById(R.id.image);
         }
     }
@@ -38,8 +34,8 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
 
 
     // Costruttore
-    public MemoryAdapter(TravelJournal TJ, Context context) {
-        this.memories = TJ.getMemories();
+    public MemoryAdapter(ArrayList<String> imageLink, Context context) {
+        this.imageLinks = imageLink;
         this.context = context;
     }
 
@@ -55,14 +51,10 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Memory memo = memories.get(position);
-
-        // testo "Country"
-        holder.country.setText(memo.getPlace());
 
         // immagine
         Glide.with(context)
-                .load(memo.getImage())
+                .load(imageLinks.get(position))
                 .apply(new RequestOptions().override(700))      // immagine a dimensione ridotta
                 .thumbnail(0.2f)                                // thumbnail per il caricamento
                 .into(holder.image);
@@ -71,6 +63,6 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return memories.size();
+        return imageLinks.size();
     }
 }

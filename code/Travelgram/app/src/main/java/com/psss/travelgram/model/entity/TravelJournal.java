@@ -30,5 +30,12 @@ public class TravelJournal extends Observable{
         notifyObservers();
     }
 
+    public ArrayList<String> getImageLinks(){
+        ArrayList<String> imageLinks = new ArrayList<>();
+        for(Memory memory : memories)
+            imageLinks.add(memory.getImage());
+        return imageLinks;
+    }
+
 
 }

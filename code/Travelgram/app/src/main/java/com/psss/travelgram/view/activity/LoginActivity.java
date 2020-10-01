@@ -51,7 +51,8 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
         progressBar = findViewById(R.id.progressBar);
 
         // ViewModel
-        authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        //authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        authViewModel = new AuthViewModel();
 
         // aspetta il via per l'azione successiva
         authViewModel.getTaskResult().observe(this, new Observer<String>() {
@@ -124,8 +125,15 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     // ----------- LOG IN -----------
 
     private void loginUser() {
+        String emailText = email.getText().toString();
+        String passwordText = password.getText().toString();
+
         // il controllo iniziale sul formato delle credenziali è affidato al ViewModel
-        boolean isValid = authViewModel.validCredentials(getApplicationContext(), email, password);
+        boolean isValid = authViewModel.validCredentials(
+                getApplicationContext(),
+                emailText,
+                passwordText);
+
 
         if(isValid){
             progressBar.setVisibility(View.VISIBLE);
@@ -133,7 +141,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
 
             // la procedura di login è affidata al ViewModel, che a sua volta
             // l'affiderà ad AuthRepository (nel package "model")
-            authViewModel.loginUser(email, password);
+            authViewModel.loginUser(emailText, passwordText);
         }
     }
 

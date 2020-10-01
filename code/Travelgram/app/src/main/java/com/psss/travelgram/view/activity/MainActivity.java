@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.psss.travelgram.R;
-import com.psss.travelgram.listaUtenti.SearchFragment;
+import com.psss.travelgram.view.fragment.SearchFragment;
 import com.psss.travelgram.view.fragment.NotificationsFragment;
 import com.psss.travelgram.view.fragment.ScratchMapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

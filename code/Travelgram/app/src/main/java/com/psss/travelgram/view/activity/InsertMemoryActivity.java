@@ -77,6 +77,8 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
                 try{
                     if(s.equals("success")){
                         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                        setResult(1);
+                        finish();
                         //TODO: far funzionare la finish
                     }
                     else {

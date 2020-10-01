@@ -1,5 +1,6 @@
 package com.psss.travelgram.model.entity;
 
+import com.psss.travelgram.model.repository.AuthRepository;
 import com.psss.travelgram.model.repository.TravelerRepository;
 
 import java.util.ArrayList;
@@ -15,11 +16,13 @@ public class Traveler extends Observable {
     private ArrayList<String> following;
 
     private TravelerRepository travelerRepo;
+    private AuthRepository authRepo;
 
 
     // costruttore
     public Traveler(){
         travelerRepo = new TravelerRepository();
+        authRepo = new AuthRepository();
         visitedCountries = new ArrayList<>();
         wishedCountries = new ArrayList<>();
         followers = new ArrayList<>();
@@ -88,17 +91,14 @@ public class Traveler extends Observable {
     public boolean isCountryWished(String country){
         return wishedCountries.contains(country);
     }
-    public boolean isUserFollower(String userID){
-        return followers.contains(userID);
-    }
-    public boolean isUserFollowing(String userID){
-        return following.contains(userID);
+    public boolean isFollowedByCurrentUser(){
+        return followers.contains(travelerRepo.getCurrentUserID());
     }
 
     // notifica gli observer
-    public void ready(){
+    public void ready(String s){
         setChanged();
-        notifyObservers();
+        notifyObservers(s);
     }
 
 
@@ -141,6 +141,15 @@ public class Traveler extends Observable {
         travelerRepo.unfollow(userID);
     }
 
+
+    // funzioni di autenticazione
+    public void loginUser(String email, String password){
+        authRepo.loginUser(email, password, this);
+    }
+
+    public void signupUser(String username, String email, String password){
+        authRepo.signupUser(username, email, password, this);
+    }
 
 
 }

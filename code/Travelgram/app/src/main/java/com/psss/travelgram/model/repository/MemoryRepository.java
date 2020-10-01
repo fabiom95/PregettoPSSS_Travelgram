@@ -51,6 +51,7 @@ public class MemoryRepository {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 Log.d("PROVA","memory non caricata!");
+                memo.ready("error");
             }
         });
 
@@ -75,8 +76,7 @@ public class MemoryRepository {
                                 db.collection("Memories")
                                         .add(data);
 
-                                TravelerRepository travelerRepo = new TravelerRepository();
-                                travelerRepo.addVisitedCountry(memo.getPlace());
+                                memo.ready("success");
                             }
                         }
                 );
@@ -99,6 +99,7 @@ public class MemoryRepository {
                             ArrayList<Memory> memories = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Memory memo = new Memory();
+                                memo.setId(document.getId());
                                 memo.setImage(document.getData().get("imageLink").toString());
                                 memo.setPlace(document.getData().get("country").toString());
                                 memo.setDescription(document.getData().get("description").toString());
@@ -127,6 +128,7 @@ public class MemoryRepository {
                             ArrayList<Memory> memories = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Memory memo = new Memory();
+                                memo.setId(document.getId());
                                 memo.setImage(document.getData().get("imageLink").toString());
                                 memo.setPlace(document.getData().get("country").toString());
                                 memo.setDescription(document.getData().get("description").toString());

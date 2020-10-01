@@ -1,4 +1,4 @@
-package com.psss.travelgram;
+package com.psss.travelgram.view.adapter;
 
 import android.content.Context;
 
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.psss.travelgram.R;
 import com.psss.travelgram.view.fragment.JournalFragment;
 import com.psss.travelgram.view.fragment.NotificationsFragment;
 

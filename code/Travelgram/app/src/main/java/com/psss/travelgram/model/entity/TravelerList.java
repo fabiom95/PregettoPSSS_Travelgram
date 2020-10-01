@@ -29,6 +29,16 @@ public class TravelerList extends Observable {
         notifyObservers();
     }
 
+    public ArrayList<String> getUsernames(){
+        ArrayList<String> usernames = new ArrayList<>();
+        for(Traveler traveler : travelers)
+            usernames.add(traveler.getUsername());
+        return usernames;
+    }
+
+
+
+
 
 
 }

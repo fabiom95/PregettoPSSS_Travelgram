@@ -9,6 +9,7 @@ import java.util.Observable;
 
 public class  Memory extends Observable {
 
+    private String id;
     private String imageLink;
     private String place;
     private String description;
@@ -21,12 +22,14 @@ public class  Memory extends Observable {
     }
 
 
+    public void setId(String id){ this.id = id;}
     public void setImage(String imageLink){
         this.imageLink = imageLink;
     }
     public void setPlace(String place) { this.place = place; }
     public void setDescription(String description) { this.description = description; }
 
+    public String getId(){return id;}
     public String getImage() {
         return imageLink;
     }
@@ -43,8 +46,8 @@ public class  Memory extends Observable {
     }
 
 
-    public void ready(){
+    public void ready(String s){
         setChanged();
-        notifyObservers();
+        notifyObservers(s);
     }
 }

@@ -1,11 +1,10 @@
-package com.psss.travelgram.listaUtenti;
+package com.psss.travelgram.view.adapter;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,25 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.google.firebase.auth.FirebaseUser;/*
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.koddev.instagramtest.R;*/
 import com.psss.travelgram.R;
-import com.psss.travelgram.model.entity.Traveler;
-import com.psss.travelgram.model.entity.TravelerList;
+import com.psss.travelgram.viewmodel.SearchViewModel;
 
 import java.util.ArrayList;
 
 public class TravelerAdapter extends RecyclerView.Adapter<TravelerAdapter.MyViewHolder> {
-    private ArrayList<Traveler> travelers;
+    private ArrayList<String> usernames;
     private Context context;
-    private boolean isFragment;
+    private SearchViewModel searchViewModel;
+    private boolean isFollowed; // true se l'utente è già seguito dal current user
 
-    private FirebaseUser firebaseUser;  /////////////
 
     // ---- classe innestata
     public static class MyViewHolder extends RecyclerView.ViewHolder {  // static l'ho aggiunto io
@@ -48,10 +39,10 @@ public class TravelerAdapter extends RecyclerView.Adapter<TravelerAdapter.MyView
 
 
     // Costruttore
-    public TravelerAdapter(TravelerList TL, Context context){
+    public TravelerAdapter(ArrayList<String> usernames, Context context, SearchViewModel searchViewModel){
         this.context = context;
-        this.travelers = TL.getTravelers();
-        //this.isFragment = isFragment;
+        this.searchViewModel = searchViewModel;
+        this.usernames = usernames;
     }
 
     @NonNull
@@ -63,27 +54,25 @@ public class TravelerAdapter extends RecyclerView.Adapter<TravelerAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        final Traveler traveler = travelers.get(position);
-
         // bottone
         //isFollowing(traveler.getId(), holder.followBtn);        /////non farla cosi
 
         // username
-        holder.username.setText(traveler.getUsername());
+        holder.username.setText(usernames.get(position));
+        holder.followBtn.setChecked(searchViewModel.isFollowed(position));
 
         holder.followBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (holder.followBtn.isChecked()) {
+                    searchViewModel.follow(position);   // metto il follow al traveler
 
-                    // TODO: SPOSTARE NEL VIEW MODEL
-                    traveler.follow();  // metto il follow al traveler
                     //addNotification(traveler.getId());
-                    Toast.makeText(context,"follow "+traveler.getUsername(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"follow " + usernames.get(position), Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(context,"unfollow "+traveler.getUsername(), Toast.LENGTH_SHORT).show();
-                    traveler.unfollow();    // tolgo il follow al traveler
+                    Toast.makeText(context,"unfollow " + usernames.get(position), Toast.LENGTH_SHORT).show();
+                    searchViewModel.unfollow(position);    // tolgo il follow al traveler
                 }
             }
 
@@ -113,7 +102,7 @@ public class TravelerAdapter extends RecyclerView.Adapter<TravelerAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return travelers.size();
+        return usernames.size();
     }
 
 

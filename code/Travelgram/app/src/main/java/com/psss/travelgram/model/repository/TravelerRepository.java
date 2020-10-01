@@ -34,6 +34,9 @@ public class TravelerRepository {
         myUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
+    public String getCurrentUserID(){
+        return myUserID;
+    }
 
     // snapshotListener è come la get(), ma rimane in ascolto, avvisando in tempo reale
     // di cambiamenti del documento
@@ -56,7 +59,7 @@ public class TravelerRepository {
                             traveler.setWishedCountries( (ArrayList<String>) (snapshot.getData().get("wished_countries")));
                             traveler.setFollowers( (ArrayList<String>) (snapshot.getData().get("followers")));
                             traveler.setFollowing( (ArrayList<String>) (snapshot.getData().get("following")));
-                            traveler.ready();
+                            traveler.ready("loaded");
                         }
                     }
                 });

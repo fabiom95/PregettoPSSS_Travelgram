@@ -2,11 +2,10 @@ package com.psss.travelgram.viewmodel;
 
 import android.content.Context;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.psss.travelgram.MemoryAdapter;
+import com.psss.travelgram.view.adapter.MemoryAdapter;
 import com.psss.travelgram.model.entity.TravelJournal;
 
 import java.util.Observable;
@@ -33,9 +32,8 @@ public class JournalViewModel extends ViewModel implements Observer {
         this.jAdapter.setValue(jAdapter);
     }
 
-    // TODO: magari togliere la dipendenza dal model
     @Override
     public void update(Observable o, Object arg) {
-        setJAdapter(new MemoryAdapter(TJ, context));
+        setJAdapter(new MemoryAdapter(TJ.getImageLinks(), context));
     }
 }

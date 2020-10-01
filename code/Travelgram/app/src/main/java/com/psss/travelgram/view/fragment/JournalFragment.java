@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.psss.travelgram.MemoryAdapter;
+import com.psss.travelgram.view.adapter.MemoryAdapter;
 import com.psss.travelgram.R;
 import com.psss.travelgram.viewmodel.JournalViewModel;
 
