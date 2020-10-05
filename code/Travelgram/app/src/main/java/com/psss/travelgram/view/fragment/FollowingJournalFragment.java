@@ -12,28 +12,22 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.psss.travelgram.view.adapter.MemoryAdapter;
 import com.psss.travelgram.R;
+import com.psss.travelgram.view.adapter.MemoryAdapter;
+import com.psss.travelgram.viewmodel.FollowingJournalViewModel;
 import com.psss.travelgram.viewmodel.JournalViewModel;
 
-public class JournalFragment extends Fragment {
+public class FollowingJournalFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
-    private JournalViewModel journalViewModel;
+    private FollowingJournalViewModel followingJournalViewModel;
 
 
-    public static JournalFragment newInstance(String countryName) {
-        JournalFragment fragment = new JournalFragment();
+    public static FollowingJournalFragment newInstance(String countryName) {
+        FollowingJournalFragment fragment = new FollowingJournalFragment();
         Bundle bundle = new Bundle();
         bundle.putString("countryName", countryName);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
-
-    public static JournalFragment newInstance() {
-        JournalFragment fragment = new JournalFragment();
-        Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -52,13 +46,10 @@ public class JournalFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // view model
-        if(getArguments().isEmpty())
-            journalViewModel = new JournalViewModel(getActivity());
-        else
-            journalViewModel = new JournalViewModel(getActivity(), getArguments().getString("countryName"));
+        followingJournalViewModel = new FollowingJournalViewModel(getActivity(), getArguments().getString("countryName"));
 
         // aspetta il via per l'azione successiva
-        journalViewModel.getAdapter().observe(getViewLifecycleOwner(), new Observer<MemoryAdapter>() {
+        followingJournalViewModel.getAdapter().observe(getViewLifecycleOwner(), new Observer<MemoryAdapter>() {
             @Override
             public void onChanged(@Nullable MemoryAdapter adapter) {
                 recyclerView.setAdapter(adapter);

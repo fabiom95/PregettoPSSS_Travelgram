@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,23 +20,34 @@ import java.util.ArrayList;
 
 public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHolder> {
     private ArrayList<String> imageLinks;
+    private ArrayList<String> usernames;
+    private ArrayList<String> countries;
     private Context context;
 
     // ---- classe innestata
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
+        public TextView username;
+        public TextView country;
 
         public MyViewHolder(View v) {
             super(v);
             image = v.findViewById(R.id.image);
+            username = v.findViewById(R.id.username);
+            country = v.findViewById(R.id.country);
+
+            username.setVisibility(View.GONE);
+            country.setVisibility(View.GONE);
         }
     }
     // ---- fine classe innestata
 
 
     // Costruttore
-    public MemoryAdapter(ArrayList<String> imageLink, Context context) {
-        this.imageLinks = imageLink;
+    public MemoryAdapter(ArrayList<String> imageLinks, ArrayList<String> usernames, ArrayList<String> countries, Context context) {
+        this.imageLinks = imageLinks;
+        this.usernames = usernames;
+        this.countries = countries;
         this.context = context;
     }
 
@@ -51,6 +63,16 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+
+        if(usernames != null){
+            holder.username.setVisibility(View.VISIBLE);
+            holder.username.setText(usernames.get(position));
+        }
+
+        if(countries != null){
+            holder.country.setVisibility(View.VISIBLE);
+            holder.country.setText(countries.get(position));
+        }
 
         // immagine
         Glide.with(context)

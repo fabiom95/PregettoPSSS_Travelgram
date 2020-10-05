@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.psss.travelgram.R;
+import com.psss.travelgram.view.fragment.JournalFragment;
 import com.psss.travelgram.view.fragment.SearchFragment;
 import com.psss.travelgram.view.fragment.NotificationsFragment;
 import com.psss.travelgram.view.fragment.ScratchMapFragment;
@@ -18,8 +19,8 @@ import androidx.fragment.app.FragmentManager;
 public class MainActivity extends AppCompatActivity {
 
     final private Fragment fragment1 = new ScratchMapFragment();
-    final private Fragment fragment2 = SearchFragment.newInstance();
-    final private Fragment fragment3 = new NotificationsFragment();
+    final private Fragment fragment2 = JournalFragment.newInstance();
+    final private Fragment fragment3 = SearchFragment.newInstance();
     final private FragmentManager fm = getSupportFragmentManager();
     private Fragment active = fragment1;
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").hide(fragment3).commit();
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment1, "1").commit();
-        getSupportActionBar().setTitle("Scratch-map");
+        getSupportActionBar().setTitle(R.string.title_scratchmap);
 
         navView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,19 +44,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_scratchmap:
                         fm.beginTransaction().hide(active).show(fragment1).commit();
-                        getSupportActionBar().setTitle("Scratch-map");
+                        getSupportActionBar().setTitle(R.string.title_scratchmap);
                         active = fragment1;
                         return true;
 
-                    case R.id.navigation_dashboard:
+                    case R.id.navigation_journal:
                         fm.beginTransaction().hide(active).show(fragment2).commit();
-                        getSupportActionBar().setTitle("Search");
+                        getSupportActionBar().setTitle(R.string.title_journal);
                         active = fragment2;
                         return true;
 
-                    case R.id.navigation_notifications:
+                    case R.id.navigation_search:
                         fm.beginTransaction().hide(active).show(fragment3).commit();
-                        getSupportActionBar().setTitle("Notifications");
+                        getSupportActionBar().setTitle(R.string.title_search);
                         active = fragment3;
                         return true;
                 }

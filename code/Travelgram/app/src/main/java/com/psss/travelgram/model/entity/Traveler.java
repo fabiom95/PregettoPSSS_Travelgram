@@ -1,5 +1,7 @@
 package com.psss.travelgram.model.entity;
 
+import android.util.Log;
+
 import com.psss.travelgram.model.repository.AuthRepository;
 import com.psss.travelgram.model.repository.TravelerRepository;
 
@@ -14,6 +16,8 @@ public class Traveler extends Observable {
     private ArrayList<String> wishedCountries;
     private ArrayList<String> followers;
     private ArrayList<String> following;
+    private TravelJournal TJ;
+    private TravelerList TL;
 
     private TravelerRepository travelerRepo;
     private AuthRepository authRepo;
@@ -27,6 +31,8 @@ public class Traveler extends Observable {
         wishedCountries = new ArrayList<>();
         followers = new ArrayList<>();
         following = new ArrayList<>();
+        TJ = new TravelJournal();
+        TL = null;
     }
 
 
@@ -55,6 +61,7 @@ public class Traveler extends Observable {
         return following;
     }
 
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -80,6 +87,19 @@ public class Traveler extends Observable {
     }
 
 
+
+
+    public void setTJ(TravelerList TL, String country){
+        this.TL = TL;
+        this.TJ.loadFollowingMemories(this, country, userID);
+    }
+
+    public int getMemoryCount(){
+        if(TJ != null)
+            return TJ.getMemoryCount();
+        return 0;
+    }
+
     // altre funzioni
     public void loadTraveler(){
         travelerRepo.loadTraveler(this);
@@ -95,8 +115,16 @@ public class Traveler extends Observable {
         return followers.contains(travelerRepo.getCurrentUserID());
     }
 
+    public ArrayList<String> getImageLinks(){
+        if(TJ != null)
+            return TJ.getImageLinks();
+        return null;
+    }
+
     // notifica gli observer
     public void ready(String s){
+        if(TL != null && s.equals("TJ ready"))
+            TL.ready();
         setChanged();
         notifyObservers(s);
     }
@@ -105,28 +133,24 @@ public class Traveler extends Observable {
     // funzioni invocate da PlaceViewModel
     public void addVisitedCountry(String country){
         if(!isCountryVisited(country)) {
-            //visitedCountries.add(country);
             travelerRepo.addVisitedCountry(country);
         }
     }
 
     public void addWishedCountry(String country){
         if(!isCountryWished(country)) {
-            //wishedCountries.add(country);
             travelerRepo.addWishedCountry(country);
         }
     }
 
     public void removeVisitedCountry(String country){
         if(isCountryVisited(country)) {
-            //visitedCountries.remove(country);
             travelerRepo.removeVisitedCountry(country);
         }
     }
 
     public void removeWishedCountry(String country){
         if(isCountryWished(country)) {
-            //wishedCountries.remove(country);
             travelerRepo.removeWishedCountry(country);
         }
     }

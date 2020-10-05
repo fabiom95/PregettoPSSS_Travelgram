@@ -15,6 +15,7 @@ public class PlaceViewModel extends ViewModel {
     // costruttore
     public PlaceViewModel(String country) {
         traveler = new Traveler();
+        traveler.loadTraveler();
         this.country = country;
     }
 

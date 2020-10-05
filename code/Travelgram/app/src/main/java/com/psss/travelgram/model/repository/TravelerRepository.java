@@ -11,12 +11,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.psss.travelgram.model.entity.Memory;
+import com.psss.travelgram.model.entity.TravelJournal;
 import com.psss.travelgram.model.entity.Traveler;
 import com.psss.travelgram.model.entity.TravelerList;
 
@@ -60,6 +62,35 @@ public class TravelerRepository {
                             traveler.setFollowers( (ArrayList<String>) (snapshot.getData().get("followers")));
                             traveler.setFollowing( (ArrayList<String>) (snapshot.getData().get("following")));
                             traveler.ready("loaded");
+                        }
+                    }
+                });
+    }
+
+
+    public void loadFollowingTravelers(final TravelerList TL, ArrayList<String> userIDs){
+
+        db.collection("Travelers")
+                .whereIn(FieldPath.documentId(), userIDs)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<Traveler> travelers = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Traveler traveler = new Traveler();
+                                traveler.setUsername(document.getData().get("username").toString());
+                                traveler.setUserID(document.getId());
+                                traveler.setVisitedCountries( (ArrayList<String>) (document.getData().get("visited_countries")));
+                                traveler.setWishedCountries( (ArrayList<String>) (document.getData().get("wished_countries")));
+                                traveler.setFollowers( (ArrayList<String>) (document.getData().get("followers")));
+                                traveler.setFollowing( (ArrayList<String>) (document.getData().get("following")));
+                                travelers.add(traveler);
+                            }
+                            TL.setTravelers(travelers);
+                        } else {
+                            Log.d("PROVA", "Error getting documents: ", task.getException());
                         }
                     }
                 });

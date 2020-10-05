@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.psss.travelgram.R;
+import com.psss.travelgram.view.fragment.FollowingJournalFragment;
 import com.psss.travelgram.view.fragment.JournalFragment;
 import com.psss.travelgram.view.fragment.NotificationsFragment;
 
@@ -19,7 +20,7 @@ import com.psss.travelgram.view.fragment.NotificationsFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
+    private static final int[] TAB_TITLES = new int[]{R.string.MyMemories, R.string.Memories, R.string.Reviews, R.string.Guides};
     private final Context mContext;
     private String countryName;
 
@@ -36,8 +37,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return JournalFragment.newInstance(countryName);
             case 1:
-                return new NotificationsFragment();
+                return FollowingJournalFragment.newInstance(countryName);
             case 2:
+                return new NotificationsFragment();
+            case 3:
                 return new NotificationsFragment();
         }
         return null;
@@ -51,7 +54,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 3 total pages.
-        return 3;
+        // Show 4 total pages.
+        return 4;
     }
 }
