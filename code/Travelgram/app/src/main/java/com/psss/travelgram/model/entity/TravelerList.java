@@ -38,8 +38,9 @@ public class TravelerList extends Observable {
     }
 
     public void ready(){
-        count = count+1;
-        if(count == travelers.size()){
+        if(count != travelers.size())
+            count = count+1;
+        else{
             setChanged();
             notifyObservers("TJ ready");
         }

@@ -70,30 +70,32 @@ public class TravelerRepository {
 
     public void loadFollowingTravelers(final TravelerList TL, ArrayList<String> userIDs){
 
-        db.collection("Travelers")
-                .whereIn(FieldPath.documentId(), userIDs)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            ArrayList<Traveler> travelers = new ArrayList<>();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Traveler traveler = new Traveler();
-                                traveler.setUsername(document.getData().get("username").toString());
-                                traveler.setUserID(document.getId());
-                                traveler.setVisitedCountries( (ArrayList<String>) (document.getData().get("visited_countries")));
-                                traveler.setWishedCountries( (ArrayList<String>) (document.getData().get("wished_countries")));
-                                traveler.setFollowers( (ArrayList<String>) (document.getData().get("followers")));
-                                traveler.setFollowing( (ArrayList<String>) (document.getData().get("following")));
-                                travelers.add(traveler);
+        if(!userIDs.isEmpty()) {
+            db.collection("Travelers")
+                    .whereIn(FieldPath.documentId(), userIDs)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                ArrayList<Traveler> travelers = new ArrayList<>();
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Traveler traveler = new Traveler();
+                                    traveler.setUsername(document.getData().get("username").toString());
+                                    traveler.setUserID(document.getId());
+                                    traveler.setVisitedCountries((ArrayList<String>) (document.getData().get("visited_countries")));
+                                    traveler.setWishedCountries((ArrayList<String>) (document.getData().get("wished_countries")));
+                                    traveler.setFollowers((ArrayList<String>) (document.getData().get("followers")));
+                                    traveler.setFollowing((ArrayList<String>) (document.getData().get("following")));
+                                    travelers.add(traveler);
+                                }
+                                TL.setTravelers(travelers);
+                            } else {
+                                Log.d("PROVA", "Error getting documents: ", task.getException());
                             }
-                            TL.setTravelers(travelers);
-                        } else {
-                            Log.d("PROVA", "Error getting documents: ", task.getException());
                         }
-                    }
-                });
+                    });
+        }
     }
 
 
