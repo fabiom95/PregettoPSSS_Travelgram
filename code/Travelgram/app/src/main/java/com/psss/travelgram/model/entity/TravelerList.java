@@ -16,6 +16,7 @@ public class TravelerList extends Observable {
     public TravelerList(){
         travelers = new ArrayList<>();
         travelerRepo = new TravelerRepository();
+        count = 0;
     }
 
     public ArrayList<Traveler> getTravelers(){
@@ -38,9 +39,9 @@ public class TravelerList extends Observable {
     }
 
     public void ready(){
-        if(count != travelers.size())
+        if(count < travelers.size())
             count = count+1;
-        else{
+        if(count == travelers.size()){
             setChanged();
             notifyObservers("TJ ready");
         }
