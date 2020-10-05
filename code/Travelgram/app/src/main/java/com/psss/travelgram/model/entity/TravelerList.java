@@ -77,6 +77,14 @@ public class TravelerList extends Observable {
         return imageLinks;
     }
 
+    //
+    public ArrayList<String> getMemoryIDs(){
+        ArrayList<String> memoryIDs = new ArrayList<>();
+        for(Traveler traveler : travelers)
+            for(int i=0; i<traveler.getMemoryCount(); i++)
+                memoryIDs.addAll(traveler.getMemoryIDs());
+        return memoryIDs;
+    }
 
 
 

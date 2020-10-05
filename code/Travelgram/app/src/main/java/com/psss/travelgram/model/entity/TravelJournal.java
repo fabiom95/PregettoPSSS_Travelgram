@@ -57,6 +57,13 @@ public class TravelJournal extends Observable{
         return imageLinks;
     }
 
+    public ArrayList<String> getMemoryIDs(){
+        ArrayList<String> memoryIDs = new ArrayList<>();
+        for(Memory memory : memories)
+            memoryIDs.add(memory.getId());
+        return memoryIDs;
+    }
+
     public ArrayList<String> getCountries(){
         ArrayList<String> countries = new ArrayList<>();
         for(Memory memory : memories)

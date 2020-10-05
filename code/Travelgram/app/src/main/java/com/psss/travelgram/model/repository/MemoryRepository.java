@@ -11,7 +11,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -36,7 +38,8 @@ public class MemoryRepository {
     public MemoryRepository(){
         storage = FirebaseStorage.getInstance();
         db = FirebaseFirestore.getInstance();
-        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
+            userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
 
@@ -90,6 +93,28 @@ public class MemoryRepository {
 
 
     // --------------- CARICA MEMORY DA DB ---------------
+    public void loadMemory(final Memory memo){
+        db.collection("Memories")
+                .document(memo.getId())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            memo.setImage(document.getData().get("imageLink").toString());
+                            memo.setPlace(document.getData().get("country").toString());
+                            memo.setDescription(document.getData().get("description").toString());
+                            memo.ready("info loaded");
+                        } else {
+                            Log.d("PROVA", "get failed with ", task.getException());
+                        }
+                    }
+                });
+
+    }
+
+
     public void loadMemories(final TravelJournal TJ){
 
         db.collection("Memories")
@@ -174,28 +199,6 @@ public class MemoryRepository {
                     }
                 });
 
-                /*
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            ArrayList<Memory> memories = new ArrayList<>();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Memory memo = new Memory();
-                                memo.setId(document.getId());
-                                memo.setImage(document.getData().get("imageLink").toString());
-                                memo.setPlace(document.getData().get("country").toString());
-                                memo.setDescription(document.getData().get("description").toString());
-                                Log.d("PROVA", " imageLink " + memo.getImage());
-                                memories.add(memo);
-                            }
-                            TJ.setMemories(memories);
-                        } else {
-                            Log.d("PROVA", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });*/
     }
 
 

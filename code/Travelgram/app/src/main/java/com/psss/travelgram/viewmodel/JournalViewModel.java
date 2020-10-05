@@ -47,9 +47,9 @@ public class JournalViewModel extends ViewModel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if(countryName == null)
-            setJAdapter(new MemoryAdapter(TJ.getImageLinks(), null, TJ.getCountries(), context));
+            setJAdapter(new MemoryAdapter(TJ.getMemoryIDs(), TJ.getImageLinks(), null, TJ.getCountries(), context));
         else
-            setJAdapter(new MemoryAdapter(TJ.getImageLinks(), null, null, context));
+            setJAdapter(new MemoryAdapter(TJ.getMemoryIDs(), TJ.getImageLinks(), null, null, context));
 
     }
 }

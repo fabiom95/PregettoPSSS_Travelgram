@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").hide(fragment3).commit();
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment1, "1").commit();
-        getSupportActionBar().setTitle(R.string.title_scratchmap);
+        //getSupportActionBar().setTitle(R.string.title_scratchmap);
 
         navView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,19 +44,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_scratchmap:
                         fm.beginTransaction().hide(active).show(fragment1).commit();
-                        getSupportActionBar().setTitle(R.string.title_scratchmap);
+                        //getSupportActionBar().setTitle(R.string.title_scratchmap);
                         active = fragment1;
                         return true;
 
                     case R.id.navigation_journal:
                         fm.beginTransaction().hide(active).show(fragment2).commit();
-                        getSupportActionBar().setTitle(R.string.title_journal);
+                        //getSupportActionBar().setTitle(R.string.title_journal);
                         active = fragment2;
                         return true;
 
                     case R.id.navigation_search:
                         fm.beginTransaction().hide(active).show(fragment3).commit();
-                        getSupportActionBar().setTitle(R.string.title_search);
+                        //getSupportActionBar().setTitle(R.string.title_search);
                         active = fragment3;
                         return true;
                 }

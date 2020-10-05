@@ -15,9 +15,12 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.psss.travelgram.R;
 import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 
@@ -29,8 +32,9 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     private int resultCode;
     private Uri uri;
     private ImageView memoryImage;
-
+    private MenuItem shareBtn;
     private InsertMemoryViewModel insertMemoryViewModel;
+    private FrameLayout progressBar;
 
 
     @Override
@@ -56,6 +60,9 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         // Immagine
         memoryImage = findViewById(R.id.memoryImage);
         memoryImage.setOnClickListener(this);
+
+        // progress Bar
+        progressBar = findViewById(R.id.progressBar);
 
         // campi
         String[] countries = getResources().getStringArray(R.array.countries);
@@ -94,6 +101,8 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.insert_memory_menu, menu);
+        shareBtn = menu.findItem(R.id.share);
+        shareBtn.setEnabled(false);
         return true;
     }
 
@@ -114,7 +123,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.share:
-                //TODO: if data!=null
+                progressBar.setVisibility(View.VISIBLE);
                 insertMemoryViewModel.insertMemory(resultCode, uri, country, description);
                 return true;
 
@@ -131,8 +140,14 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         super.onActivityResult(requestCode, resultCode, data);
 
         if(data != null){
+            shareBtn.setEnabled(true);
             this.uri = data.getData();
-            memoryImage.setImageURI(this.uri);
+            // immagine
+            Glide.with(getApplicationContext())
+                    .load(this.uri)
+                    .apply(new RequestOptions().override(700))      // immagine a dimensione ridotta
+                    .thumbnail(0.2f)                                // thumbnail per il caricamento
+                    .into(memoryImage);
         }
 
         this.resultCode = resultCode;

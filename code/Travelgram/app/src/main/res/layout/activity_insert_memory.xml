@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.activity.InsertMemoryActivity">
+    tools:context=".view.activity.InsertMemoryActivity"
+    android:background="@drawable/gradient2">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -38,66 +39,142 @@
             <ImageView
                 android:id="@+id/memoryImage"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:maxHeight="300dp"
+                android:adjustViewBounds="true"
                 android:clickable="true"
-                app:srcCompat="@drawable/ic_image_24" />
+                app:srcCompat="@drawable/ic_add_photo_24dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                app:hintTextColor="@color/colorPrimary">
+                android:layout_height="1dp"
+                android:background="@drawable/gradient_line" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/select_country"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_place_24dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:hint="type the country"
-                    android:completionThreshold="1"
-                    android:popupBackground="@color/colorAccent"/>
+                    app:hintTextColor="@color/colorPrimary">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:id="@+id/select_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:hint="country"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:background="@drawable/edittext_style2"
+                        android:maxLines="1"
+                        android:completionThreshold="1"
+                        android:popupBackground="@color/colorAccent"/>
 
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-
-            <com.google.android.material.textfield.TextInputLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                app:hintTextColor="@color/colorPrimary">
+                android:layout_height="1dp"
+                android:background="@drawable/gradient_line" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/select_city"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_city_24" />
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:hint="type the city"
-                    android:completionThreshold="1"
-                    android:popupBackground="@color/colorAccent"/>
+                    app:hintTextColor="@color/colorPrimary">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:id="@+id/select_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:hint="city"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:background="@drawable/edittext_style2"
+                        android:completionThreshold="1"
+                        android:maxLines="1"
+                        android:popupBackground="@color/colorAccent"/>
 
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-
-            <com.google.android.material.textfield.TextInputLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                app:hintTextColor="@color/colorPrimary">
+                android:layout_height="1dp"
+                android:background="@drawable/gradient_line" />
 
-                <EditText
-                    android:id="@+id/description"
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_description_24dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:hint="description"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    app:hintTextColor="@color/colorPrimary">
+
+                    <EditText
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:background="@drawable/edittext_style2"
+                        android:hint="description"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+
+    <FrameLayout
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
+        android:background="#55000000">
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            android:layout_gravity="center"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

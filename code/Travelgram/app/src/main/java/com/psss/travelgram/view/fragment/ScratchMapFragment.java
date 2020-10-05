@@ -70,7 +70,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
         scratchMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(
                 getActivity().getApplicationContext(), R.raw.country_style));
 
-        scratchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(46,10), 3.5f));
+        scratchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(46,10), 4f));
 
         try {
             // aggiunge il livello (i paesi)
@@ -81,6 +81,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
             GeoJsonPolygonStyle style = layer.getDefaultPolygonStyle();
             style.setFillColor(getResources().getColor(R.color.base));
             style.setStrokeWidth(4);
+            style.setStrokeColor(getResources().getColor(R.color.baseDark));
 
             // rendiamo gli stati cliccabili
             layer.setOnFeatureClickListener(this);
@@ -133,10 +134,11 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
 
 
     // imposta uno stile grafico
-    public GeoJsonPolygonStyle setStyle(int color){
+    public GeoJsonPolygonStyle setStyle(int color, int colorDark){
         GeoJsonPolygonStyle style = new GeoJsonPolygonStyle();
         style.setFillColor(getResources().getColor(color));
         style.setStrokeWidth(4);
+        style.setStrokeColor(getResources().getColor(colorDark));
         return style;
     }
 
@@ -144,8 +146,8 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
 
     // colora tutta la mappa
     public void updateMap() {
-        GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited);
-        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish);
+        GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited, R.color.visitedDark);
+        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish, R.color.wishDark);
 
         for (GeoJsonFeature feature : layer.getFeatures()) {
             String country = feature.getProperty("name");
@@ -158,9 +160,9 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
 
     // colora lo stato selezionato
     public void updateCountry() {
-        GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited);
-        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish);
-        GeoJsonPolygonStyle baseStyle = setStyle(R.color.base);
+        GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited, R.color.visitedDark);
+        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish, R.color.wishDark);
+        GeoJsonPolygonStyle baseStyle = setStyle(R.color.base, R.color.baseDark);
 
         for (GeoJsonFeature feature : layer.getFeatures()) {
             String country = feature.getProperty("name");

@@ -61,18 +61,6 @@
   },
   {
     "featureType": "administrative.country",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "on"
-      },
-      {
-        "weight": 2
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.country",
     "elementType": "geometry.stroke",
     "stylers": [
       {
@@ -80,6 +68,18 @@
       },
       {
         "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "on"
+      },
+      {
+        "weight": 2
       }
     ]
   },
@@ -130,6 +130,14 @@
     "stylers": [
       {
         "color": "#b8b8b8"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural.terrain",
+    "stylers": [
+      {
+        "color": "#212121"
       }
     ]
   },

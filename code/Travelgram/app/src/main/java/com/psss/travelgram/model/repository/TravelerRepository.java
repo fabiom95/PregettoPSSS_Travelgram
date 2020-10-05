@@ -33,7 +33,8 @@ public class TravelerRepository {
     // costruttore
     public TravelerRepository(){
         db = FirebaseFirestore.getInstance();
-        myUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
+            myUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
     public String getCurrentUserID(){

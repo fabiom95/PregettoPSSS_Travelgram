@@ -42,16 +42,6 @@ public class FollowingJournalViewModel extends ViewModel implements Observer {
         allFriendsImageLinks = new ArrayList<>();
         usernames = new ArrayList<>();
 
-
-/*
-        TravelerList ()
-
-        for(String id : following){
-            TravelJournal TJ = new TravelJournal(countryName, id);
-            TJ.loadFriendMemories(countryName, id);
-            allFriendsImageLinks.addAll(TJ.getImageLinks());
-            usernames.addAll()
-        }*/
     }
 
     public MutableLiveData<MemoryAdapter> getAdapter() {
@@ -79,6 +69,6 @@ public class FollowingJournalViewModel extends ViewModel implements Observer {
         }
 
         else if(arg.toString().equals("TJ ready"))
-            setJAdapter(new MemoryAdapter(TL.getImageLinks(), TL.getTotalUsernames(), null, context));
+            setJAdapter(new MemoryAdapter(TL.getMemoryIDs(), TL.getImageLinks(), TL.getTotalUsernames(), null, context));
     }
 }

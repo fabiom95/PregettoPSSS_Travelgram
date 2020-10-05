@@ -45,6 +45,9 @@ public class  Memory extends Observable {
         memoryRepo.insertMemory(uri, this);
     }
 
+    public void loadMemory(){
+        memoryRepo.loadMemory(this);
+    }
 
     public void ready(String s){
         setChanged();

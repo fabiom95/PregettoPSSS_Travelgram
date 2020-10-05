@@ -121,6 +121,12 @@ public class Traveler extends Observable {
         return null;
     }
 
+    public ArrayList<String> getMemoryIDs(){
+        if(TJ != null)
+            return TJ.getMemoryIDs();
+        return null;
+    }
+
     // notifica gli observer
     public void ready(String s){
         if(TL != null && s.equals("TJ ready"))
