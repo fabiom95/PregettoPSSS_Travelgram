@@ -38,12 +38,13 @@ public class InsertMemoryViewModel extends ViewModel implements Observer {
     }
 
 
-    public void insertMemory(int resultCode, Uri uri, String country, String city, String description){
+    public void insertMemory(int resultCode, Uri uri, String country, String city, String description, String date){
 
         if (resultCode == RESULT_OK) {
             memory.setCountry(country);
             memory.setCity(city);
             memory.setDescription(description);
+            memory.setDate(date);
             memory.insertMemory(uri);
         }
     }

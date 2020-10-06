@@ -3,11 +3,13 @@ package com.psss.travelgram.view.activity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,12 +19,16 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.psss.travelgram.R;
+import com.psss.travelgram.view.fragment.DatePickerFragment;
 import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
+
+import java.util.Calendar;
 
 
 public class InsertMemoryActivity extends AppCompatActivity implements OnClickListener {
@@ -33,6 +39,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     private int resultCode;
     private Uri uri;
     private ImageView memoryImage;
+    private TextView date;
     private MenuItem shareBtn;
     private InsertMemoryViewModel insertMemoryViewModel;
     private FrameLayout progressBar;
@@ -61,6 +68,15 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         // Immagine
         memoryImage = findViewById(R.id.memoryImage);
         memoryImage.setOnClickListener(this);
+
+        // data
+        date = findViewById(R.id.date);
+        date.setOnClickListener(this);
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        date.setText(day + "/" + (month+1) + "/" + year);
 
         // progress Bar
         progressBar = findViewById(R.id.progressBar);
@@ -119,6 +135,11 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 0);
                 break;
+            case R.id.date:
+                Log.e("PROVA","prova");
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getSupportFragmentManager(), "datePicker");
+                break;
         }
     }
 
@@ -131,7 +152,9 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
                 insertMemoryViewModel.insertMemory(resultCode, uri,
                         country.getText().toString(),
                         city.getText().toString(),
-                        description.getText().toString());
+                        description.getText().toString(),
+                        date.getText().toString()
+                );
                 return true;
 
             default:

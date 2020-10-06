@@ -13,6 +13,7 @@ public class  Memory extends Observable {
     private String country;
     private String city;
     private String description;
+    private String date;
 
     private MemoryRepository memoryRepo;
 
@@ -29,6 +30,7 @@ public class  Memory extends Observable {
     public void setCountry(String country) { this.country = country; }
     public void setCity(String city) { this.city = city; }
     public void setDescription(String description) { this.description = description; }
+    public void setDate(String date) { this.date = date; }
 
     public String getId(){return id;}
     public String getImage() {
@@ -42,6 +44,9 @@ public class  Memory extends Observable {
     }
     public String getDescription() {
         return description;
+    }
+    public String getDate() {
+        return date;
     }
 
 

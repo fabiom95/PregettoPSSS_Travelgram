@@ -77,6 +77,7 @@ public class MemoryRepository {
                                 data.put("country", memo.getCountry());
                                 data.put("city", memo.getCity());
                                 data.put("description", memo.getDescription());
+                                data.put("date", memo.getDate());
 
                                 db.collection("Memories")
                                         .add(data);
@@ -105,6 +106,7 @@ public class MemoryRepository {
                             memo.setCountry(document.getData().get("country").toString());
                             memo.setCity(document.getData().get("city").toString());
                             memo.setDescription(document.getData().get("description").toString());
+                            memo.setDate(document.getData().get("date").toString());
                             memo.ready("info loaded");
                         } else {
                             Log.d("PROVA", "get failed with ", task.getException());
@@ -132,7 +134,7 @@ public class MemoryRepository {
                                 memo.setCountry(document.getData().get("country").toString());
                                 memo.setCity(document.getData().get("city").toString());
                                 memo.setDescription(document.getData().get("description").toString());
-                                Log.d("PROVA", " imageLink " + memo.getImage());
+                                memo.setDate(document.getData().get("date").toString());
                                 memories.add(memo);
                             }
                             TJ.setMemories(memories);
@@ -162,6 +164,7 @@ public class MemoryRepository {
                                 memo.setCountry(document.getData().get("country").toString());
                                 memo.setCity(document.getData().get("city").toString());
                                 memo.setDescription(document.getData().get("description").toString());
+                                memo.setDate(document.getData().get("date").toString());
                                 Log.d("PROVA", " imageLink " + memo.getImage());
                                 memories.add(memo);
                             }
@@ -195,6 +198,7 @@ public class MemoryRepository {
                             memo.setCountry(document.getData().get("country").toString());
                             memo.setCity(document.getData().get("city").toString());
                             memo.setDescription(document.getData().get("description").toString());
+                            memo.setDate(document.getData().get("date").toString());
                             Log.d("PROVA", " imageLink " + memo.getImage());
                             memories.add(memo);
                         }

@@ -23,7 +23,6 @@ public class MemoryInfoViewModel implements Observer {
     public void setReady(Boolean ready){
         this.ready.setValue(ready);
     }
-
     public MutableLiveData<Boolean> getReady() {
         return ready;
     }
@@ -31,17 +30,17 @@ public class MemoryInfoViewModel implements Observer {
     public String getImage(){
         return memory.getImage();
     }
-
     public String getCountry(){
         return memory.getCountry();
     }
-
     public String getCity(){
         return memory.getCity();
     }
-
     public String getDescription(){
         return memory.getDescription();
+    }
+    public String getDate(){
+        return memory.getDate();
     }
 
 

@@ -37,6 +37,7 @@ public class MemoryInfoActivity extends AppCompatActivity {
         final TextView country = findViewById(R.id.country);
         final TextView city = findViewById(R.id.city);
         final TextView description = findViewById(R.id.description);
+        final TextView date = findViewById(R.id.date);
 
         TextView user = findViewById(R.id.username);
 
@@ -57,6 +58,7 @@ public class MemoryInfoActivity extends AppCompatActivity {
                     country.setText(memoryInfoViewModel.getCountry());
                     city.setText(memoryInfoViewModel.getCity());
                     description.setText(memoryInfoViewModel.getDescription());
+                    date.setText(memoryInfoViewModel.getDate());
 
                     Glide.with(getApplicationContext())
                             .load(memoryInfoViewModel.getImage())
