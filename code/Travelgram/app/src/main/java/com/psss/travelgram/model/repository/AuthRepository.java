@@ -15,15 +15,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class AuthRepository {   //TODO: observer
+public class AuthRepository {
 
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
 
     // costruttore
     public AuthRepository(){
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
     }
 
 
@@ -62,7 +60,7 @@ public class AuthRepository {   //TODO: observer
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     // comunica al ViewModel i dati da mostrare alla View
-                    createUser(username); // controllare permessi database
+                    traveler.createUser(username); // controllare permessi database
                     traveler.ready("success");
                 }
                 else
@@ -71,21 +69,5 @@ public class AuthRepository {   //TODO: observer
         });
     }
 
-    // Salvataggio dati utenti su Firestore
-    public void createUser(String username){
-        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        Map<String, Object> data = new HashMap<>();
-        data.put("username", username);
-        data.put("visited_countries", Collections.emptyList());
-        data.put("wished_countries",  Collections.emptyList());
-        data.put("following",  Collections.emptyList());
-        data.put("followers",  Collections.emptyList());
-
-
-        db.collection("Travelers")
-                .document(userID)
-                .set(data);
-    }
 
 }

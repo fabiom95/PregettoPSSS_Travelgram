@@ -32,8 +32,12 @@ public class MemoryInfoViewModel implements Observer {
         return memory.getImage();
     }
 
-    public String getPlace(){
-        return memory.getPlace();
+    public String getCountry(){
+        return memory.getCountry();
+    }
+
+    public String getCity(){
+        return memory.getCity();
     }
 
     public String getDescription(){

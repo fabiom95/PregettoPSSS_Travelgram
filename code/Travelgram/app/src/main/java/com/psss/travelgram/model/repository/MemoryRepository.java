@@ -13,7 +13,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -32,14 +31,14 @@ public class MemoryRepository {
 
     private FirebaseStorage storage;
     private FirebaseFirestore db;
-    private String userID;
+    private String myUserID;
 
     // costruttore
     public MemoryRepository(){
         storage = FirebaseStorage.getInstance();
         db = FirebaseFirestore.getInstance();
         if(FirebaseAuth.getInstance().getCurrentUser() != null)
-            userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            myUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
 
@@ -47,10 +46,9 @@ public class MemoryRepository {
     public void insertMemory(Uri uri, final Memory memo){
 
         // caricamento immagine su Storage
-        final StorageReference memoRef = storage.getReference().child( userID + "/" + uri.getLastPathSegment());
+        final StorageReference memoRef = storage.getReference().child( myUserID + "/" + uri.getLastPathSegment());
         UploadTask uploadTask = memoRef.putFile(uri);
-        //TODO: check campi non nulli
-        //TODO: check immagine con quel nome già esiste
+        //TODO: check immagine con quel nome già esiste (nome dell'immagine: orario)
 
         // failure Listener
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -74,9 +72,10 @@ public class MemoryRepository {
                             public void onSuccess(Uri uri) {
 
                                 Map<String, Object> data = new HashMap<>();
-                                data.put("UID", userID);
+                                data.put("UID", myUserID);
                                 data.put("imageLink", uri.toString());
-                                data.put("country", memo.getPlace());
+                                data.put("country", memo.getCountry());
+                                data.put("city", memo.getCity());
                                 data.put("description", memo.getDescription());
 
                                 db.collection("Memories")
@@ -103,7 +102,8 @@ public class MemoryRepository {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             memo.setImage(document.getData().get("imageLink").toString());
-                            memo.setPlace(document.getData().get("country").toString());
+                            memo.setCountry(document.getData().get("country").toString());
+                            memo.setCity(document.getData().get("city").toString());
                             memo.setDescription(document.getData().get("description").toString());
                             memo.ready("info loaded");
                         } else {
@@ -118,7 +118,7 @@ public class MemoryRepository {
     public void loadMemories(final TravelJournal TJ){
 
         db.collection("Memories")
-                .whereEqualTo("UID", userID)
+                .whereEqualTo("UID", myUserID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -129,7 +129,8 @@ public class MemoryRepository {
                                 Memory memo = new Memory();
                                 memo.setId(document.getId());
                                 memo.setImage(document.getData().get("imageLink").toString());
-                                memo.setPlace(document.getData().get("country").toString());
+                                memo.setCountry(document.getData().get("country").toString());
+                                memo.setCity(document.getData().get("city").toString());
                                 memo.setDescription(document.getData().get("description").toString());
                                 Log.d("PROVA", " imageLink " + memo.getImage());
                                 memories.add(memo);
@@ -146,7 +147,7 @@ public class MemoryRepository {
     public void loadMemories(final TravelJournal TJ, String country){
 
         db.collection("Memories")
-                .whereEqualTo("UID", userID)
+                .whereEqualTo("UID", myUserID)
                 .whereEqualTo("country", country)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -158,7 +159,8 @@ public class MemoryRepository {
                                 Memory memo = new Memory();
                                 memo.setId(document.getId());
                                 memo.setImage(document.getData().get("imageLink").toString());
-                                memo.setPlace(document.getData().get("country").toString());
+                                memo.setCountry(document.getData().get("country").toString());
+                                memo.setCity(document.getData().get("city").toString());
                                 memo.setDescription(document.getData().get("description").toString());
                                 Log.d("PROVA", " imageLink " + memo.getImage());
                                 memories.add(memo);
@@ -172,7 +174,7 @@ public class MemoryRepository {
     }
 
 
-    public void loadFollowingMemories(final TravelJournal TJ, String country, String userID){
+    public void loadMemories(final TravelJournal TJ, String country, String userID){
 
         db.collection("Memories")
                 .whereEqualTo("UID", userID)
@@ -190,7 +192,8 @@ public class MemoryRepository {
                             Memory memo = new Memory();
                             memo.setId(document.getId());
                             memo.setImage(document.getData().get("imageLink").toString());
-                            memo.setPlace(document.getData().get("country").toString());
+                            memo.setCountry(document.getData().get("country").toString());
+                            memo.setCity(document.getData().get("city").toString());
                             memo.setDescription(document.getData().get("description").toString());
                             Log.d("PROVA", " imageLink " + memo.getImage());
                             memories.add(memo);

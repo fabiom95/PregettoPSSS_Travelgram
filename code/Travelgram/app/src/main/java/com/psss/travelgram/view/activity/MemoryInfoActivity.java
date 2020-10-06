@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -36,7 +34,8 @@ public class MemoryInfoActivity extends AppCompatActivity {
         Log.d("PROVA", "id: "+memID);
 
         final ImageView image = findViewById(R.id.image);
-        final TextView place = findViewById(R.id.country);
+        final TextView country = findViewById(R.id.country);
+        final TextView city = findViewById(R.id.city);
         final TextView description = findViewById(R.id.description);
 
         TextView user = findViewById(R.id.username);
@@ -55,7 +54,8 @@ public class MemoryInfoActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable Boolean ready) {
                 if(ready){
-                    place.setText(memoryInfoViewModel.getPlace());
+                    country.setText(memoryInfoViewModel.getCountry());
+                    city.setText(memoryInfoViewModel.getCity());
                     description.setText(memoryInfoViewModel.getDescription());
 
                     Glide.with(getApplicationContext())

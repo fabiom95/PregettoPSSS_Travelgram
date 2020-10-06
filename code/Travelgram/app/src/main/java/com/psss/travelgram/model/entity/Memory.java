@@ -3,7 +3,6 @@ package com.psss.travelgram.model.entity;
 import android.net.Uri;
 
 import com.psss.travelgram.model.repository.MemoryRepository;
-import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 
 import java.util.Observable;
 
@@ -11,7 +10,8 @@ public class  Memory extends Observable {
 
     private String id;
     private String imageLink;
-    private String place;
+    private String country;
+    private String city;
     private String description;
 
     private MemoryRepository memoryRepo;
@@ -26,15 +26,19 @@ public class  Memory extends Observable {
     public void setImage(String imageLink){
         this.imageLink = imageLink;
     }
-    public void setPlace(String place) { this.place = place; }
+    public void setCountry(String country) { this.country = country; }
+    public void setCity(String city) { this.city = city; }
     public void setDescription(String description) { this.description = description; }
 
     public String getId(){return id;}
     public String getImage() {
         return imageLink;
     }
-    public String getPlace() {
-        return place;
+    public String getCountry() {
+        return country;
+    }
+    public String getCity() {
+        return city;
     }
     public String getDescription() {
         return description;

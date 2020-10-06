@@ -23,9 +23,6 @@ public class FollowingJournalViewModel extends ViewModel implements Observer {
     private Context context;
     private String countryName;
 
-    ArrayList<String> allFriendsImageLinks;
-    ArrayList<String> usernames;
-
     public FollowingJournalViewModel(Context context, String countryName) {
         jAdapter = new MutableLiveData<>();
         this.countryName = countryName;
@@ -38,9 +35,6 @@ public class FollowingJournalViewModel extends ViewModel implements Observer {
         TL.addObserver(this);
 
         this.context = context;
-
-        allFriendsImageLinks = new ArrayList<>();
-        usernames = new ArrayList<>();
 
     }
 

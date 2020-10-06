@@ -23,6 +23,9 @@ import com.psss.travelgram.model.entity.Traveler;
 import com.psss.travelgram.model.entity.TravelerList;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TravelerRepository {
 
@@ -39,6 +42,23 @@ public class TravelerRepository {
 
     public String getCurrentUserID(){
         return myUserID;
+    }
+
+    // Salvataggio dati utenti su Firestore
+    public void createUser(String username){
+        myUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("username", username);
+        data.put("visited_countries", Collections.emptyList());
+        data.put("wished_countries",  Collections.emptyList());
+        data.put("following",  Collections.emptyList());
+        data.put("followers",  Collections.emptyList());
+
+
+        db.collection("Travelers")
+                .document(myUserID)
+                .set(data);
     }
 
     // snapshotListener è come la get(), ma rimane in ascolto, avvisando in tempo reale

@@ -1,7 +1,5 @@
 package com.psss.travelgram.model.entity;
 
-import android.util.Log;
-
 import com.psss.travelgram.model.repository.AuthRepository;
 import com.psss.travelgram.model.repository.TravelerRepository;
 
@@ -91,7 +89,7 @@ public class Traveler extends Observable {
 
     public void setTJ(TravelerList TL, String country){
         this.TL = TL;
-        this.TJ.loadFollowingMemories(this, country, userID);
+        this.TJ.loadMemories(this, country, userID);
     }
 
     public int getMemoryCount(){
@@ -103,6 +101,10 @@ public class Traveler extends Observable {
     // altre funzioni
     public void loadTraveler(){
         travelerRepo.loadTraveler(this);
+    }
+
+    public void createUser(String username){
+        travelerRepo.createUser(username);
     }
 
     public boolean isCountryVisited(String country){

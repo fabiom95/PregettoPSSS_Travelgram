@@ -1,8 +1,6 @@
 package com.psss.travelgram.viewmodel;
 
 import android.net.Uri;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,7 +8,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.psss.travelgram.model.entity.Memory;
 import com.psss.travelgram.model.entity.Traveler;
-import com.psss.travelgram.model.repository.TravelerRepository;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -41,11 +38,12 @@ public class InsertMemoryViewModel extends ViewModel implements Observer {
     }
 
 
-    public void insertMemory(int resultCode, Uri uri, AutoCompleteTextView country, EditText description){
+    public void insertMemory(int resultCode, Uri uri, String country, String city, String description){
 
         if (resultCode == RESULT_OK) {
-            memory.setPlace(country.getText().toString());
-            memory.setDescription(description.getText().toString());
+            memory.setCountry(country);
+            memory.setCity(city);
+            memory.setDescription(description);
             memory.insertMemory(uri);
         }
     }
@@ -55,6 +53,6 @@ public class InsertMemoryViewModel extends ViewModel implements Observer {
         setTaskResult(arg.toString());    // TODO: controllare se va, e personalizzare il messaggio (eventuale errore)
 
         Traveler traveler = new Traveler();
-        traveler.addVisitedCountry(memory.getPlace());
+        traveler.addVisitedCountry(memory.getCountry());
     }
 }

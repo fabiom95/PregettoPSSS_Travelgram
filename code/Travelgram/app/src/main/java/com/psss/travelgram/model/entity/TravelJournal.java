@@ -36,9 +36,9 @@ public class TravelJournal extends Observable{
         memoryRepo.loadMemories(this, countryName);
     }
 
-    public void loadFollowingMemories(Traveler traveler, String countryName, String userID){
+    public void loadMemories(Traveler traveler, String countryName, String userID){
         this.traveler = traveler;
-        memoryRepo.loadFollowingMemories(this, countryName, userID);
+        memoryRepo.loadMemories(this, countryName, userID);
     }
 
 
@@ -67,7 +67,7 @@ public class TravelJournal extends Observable{
     public ArrayList<String> getCountries(){
         ArrayList<String> countries = new ArrayList<>();
         for(Memory memory : memories)
-            countries.add(memory.getPlace());
+            countries.add(memory.getCountry());
         return countries;
     }
 

@@ -28,6 +28,7 @@ import com.psss.travelgram.viewmodel.InsertMemoryViewModel;
 public class InsertMemoryActivity extends AppCompatActivity implements OnClickListener {
 
     private AutoCompleteTextView country;
+    private AutoCompleteTextView city;
     private EditText description;
     private int resultCode;
     private Uri uri;
@@ -65,13 +66,16 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         progressBar = findViewById(R.id.progressBar);
 
         // campi
-        String[] countries = getResources().getStringArray(R.array.countries);
         country = findViewById(R.id.select_country);
+        city = findViewById(R.id.select_city);
+        description = findViewById(R.id.description);
+
+        String[] countries = getResources().getStringArray(R.array.countries);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
+
         country.setAdapter(adapter);
         if (countryName != null)
             country.setText(countryName);
-        description = findViewById(R.id.description);
 
 
         // ViewModel
@@ -124,7 +128,10 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         switch (item.getItemId()) {
             case R.id.share:
                 progressBar.setVisibility(View.VISIBLE);
-                insertMemoryViewModel.insertMemory(resultCode, uri, country, description);
+                insertMemoryViewModel.insertMemory(resultCode, uri,
+                        country.getText().toString(),
+                        city.getText().toString(),
+                        description.getText().toString());
                 return true;
 
             default:
