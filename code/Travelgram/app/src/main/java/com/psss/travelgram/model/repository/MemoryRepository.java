@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,11 +26,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class MemoryRepository {
 
     private FirebaseStorage storage;
     private FirebaseFirestore db;
     private String myUserID;
+
 
     // costruttore
     public MemoryRepository(){
@@ -42,8 +43,8 @@ public class MemoryRepository {
     }
 
 
-    // ----------- INSERT MEMORY -----------
-    public void insertMemory(Uri uri, final Memory memo){
+    // inserimento nuova Memory su Firestore
+    public void createMemory(Uri uri, final Memory memo){
 
         // caricamento immagine su Storage
         final StorageReference memoRef = storage.getReference().child( myUserID + "/" + uri.getLastPathSegment());
@@ -53,7 +54,6 @@ public class MemoryRepository {
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                 // caricamento metadati su FireStore
                 memoRef.getDownloadUrl().addOnSuccessListener(
                         new OnSuccessListener<Uri>() {
@@ -61,18 +61,22 @@ public class MemoryRepository {
                             public void onSuccess(Uri uri) {
 
                                 Map<String, Object> data = new HashMap<>();
-                                data.put("traveler/UID", myUserID);
+                                Map<String, Object> traveler = new HashMap<>();
+
+                                traveler.put("UID", myUserID);
+                                traveler.put("username", memo.getTravelerUsername());
+
+                                data.put("traveler", traveler);
                                 data.put("imageLink", uri.toString());
                                 data.put("country", memo.getCountry());
                                 data.put("city", memo.getCity());
                                 data.put("description", memo.getDescription());
                                 data.put("date", memo.getDate());
-                                data.put("traveler/username", memo.getOwner());
 
                                 db.collection("Memories")
                                         .add(data);
 
-                                memo.ready("success");
+                                memo.callback("success");
                             }
                         }
                 );
@@ -81,8 +85,32 @@ public class MemoryRepository {
     }
 
 
+    // eliminazione Memory da Firestore
+    public void deleteMemory(final Memory memo) {
 
-    // --------------- CARICA MEMORY DA DB ---------------
+        // eliminazione da Storage
+        StorageReference photoRef = storage.getReferenceFromUrl(memo.getImageLink());
+        photoRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                // eliminazione da Firestore
+                db.collection("Memories")
+                        .document(memo.getId())
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                memo.callback("removed");
+                            }
+                        });
+            }
+        });
+
+
+    }
+
+
+    // caricamento Memory da Firestore
     public void loadMemory(final Memory memo){
         db.collection("Memories")
                 .document(memo.getId())
@@ -92,13 +120,16 @@ public class MemoryRepository {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
-                            memo.setImage(document.getData().get("imageLink").toString());
-                            memo.setCountry(document.getData().get("country").toString());
-                            memo.setCity(document.getData().get("city").toString());
-                            memo.setDescription(document.getData().get("description").toString());
-                            memo.setDate(document.getData().get("date").toString());
-                            memo.setOwner(document.getData().get("owner").toString());
-                            memo.ready("info loaded");
+                            memo.setImageLink(document.get("imageLink").toString());
+                            memo.setCountry(document.get("country").toString());
+                            memo.setCity(document.get("city").toString());
+                            memo.setDescription(document.get("description").toString());
+                            memo.setDate(document.get("date").toString());
+
+                            Map <String,String> travelerInfo = (Map<String, String>) document.get("traveler");
+                            memo.setTravelerUsername(travelerInfo.get("username"));
+
+                            memo.callback("info loaded");
                         } else {
                             Log.d("PROVA", "get failed with ", task.getException());
                         }
@@ -108,72 +139,68 @@ public class MemoryRepository {
     }
 
 
+    // caricamento di più Memory da Firestore
     public void loadMemories(final TravelJournal TJ){
 
         db.collection("Memories")
-                .whereEqualTo("UID", myUserID)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .whereEqualTo("traveler.UID", myUserID)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            ArrayList<Memory> memories = new ArrayList<>();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Memory memo = new Memory();
-                                memo.setId(document.getId());
-                                memo.setImage(document.getData().get("imageLink").toString());
-                                memo.setCountry(document.getData().get("country").toString());
-                                memo.setCity(document.getData().get("city").toString());
-                                memo.setDescription(document.getData().get("description").toString());
-                                memo.setDate(document.getData().get("date").toString());
-                                memo.setOwner(document.getData().get("owner").toString());
-                                memories.add(memo);
-                            }
-                            TJ.setMemories(memories);
-                        } else {
-                            Log.d("PROVA", "Error getting documents: ", task.getException());
+                    public void onEvent(@Nullable QuerySnapshot value,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) return;
+
+                        ArrayList<Memory> memories = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : value) {
+
+                            Memory memo = new Memory();
+                            memo.setId(document.getId());
+                            memo.setImageLink(document.get("imageLink").toString());
+                            memo.setCountry(document.get("country").toString());
+                            memories.add(memo);
                         }
+                        TJ.setMemories(memories);
+                        TJ.callback("TJ ready");
                     }
                 });
     }
 
 
+
+    // caricamento di più Memory da Firestore (dato un paese)
     public void loadMemories(final TravelJournal TJ, String country){
 
         db.collection("Memories")
-                .whereEqualTo("UID", myUserID)
+                .whereEqualTo("traveler.UID", myUserID)
                 .whereEqualTo("country", country)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            ArrayList<Memory> memories = new ArrayList<>();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Memory memo = new Memory();
-                                memo.setId(document.getId());
-                                memo.setImage(document.getData().get("imageLink").toString());
-                                memo.setCountry(document.getData().get("country").toString());
-                                memo.setCity(document.getData().get("city").toString());
-                                memo.setDescription(document.getData().get("description").toString());
-                                memo.setDate(document.getData().get("date").toString());
-                                memo.setOwner(document.getData().get("owner").toString());
-                                memories.add(memo);
-                            }
-                            TJ.setMemories(memories);
-                        } else {
-                            Log.d("PROVA", "Error getting documents: ", task.getException());
+                    public void onEvent(@Nullable QuerySnapshot value,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) return;
+
+                        ArrayList<Memory> memories = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : value) {
+                            Memory memo = new Memory();
+                            memo.setId(document.getId());
+                            memo.setImageLink(document.get("imageLink").toString());
+                            memo.setCountry(document.get("country").toString());
+                            memories.add(memo);
                         }
+                        TJ.setMemories(memories);
+                        TJ.callback("TJ ready");
                     }
                 });
     }
 
 
+
+    // caricamento di più Memory da Firestore (dato un paese, data una lista utenti)
     public void loadMemories(final TravelJournal TJ, String country, ArrayList<String> userIDs){
 
         if(!userIDs.isEmpty()) {
             db.collection("Memories")
-                    .whereIn("UID", userIDs)
+                    .whereIn("traveler.UID", userIDs)
                     .whereEqualTo("country", country)
                     .addSnapshotListener(new EventListener<QuerySnapshot>() {
                         @Override
@@ -185,15 +212,14 @@ public class MemoryRepository {
                             for (QueryDocumentSnapshot document : value) {
                                 Memory memo = new Memory();
                                 memo.setId(document.getId());
-                                memo.setImage(document.getData().get("imageLink").toString());
-                                memo.setCountry(document.getData().get("country").toString());
-                                //memo.setCity(document.getData().get("city").toString());
-                                //memo.setDescription(document.getData().get("description").toString());
-                                //memo.setDate(document.getData().get("date").toString());
-                                memo.setOwner(document.getData().get("owner").toString());
+                                memo.setImageLink(document.get("imageLink").toString());
+                                memo.setCountry(document.get("country").toString());
+                                Map <String,String> travelerInfo = (Map<String, String>) document.get("traveler");
+                                memo.setTravelerUsername(travelerInfo.get("username"));
                                 memories.add(memo);
                             }
                             TJ.setMemories(memories);
+                            TJ.callback("TJ ready");
                         }
                     });
         }

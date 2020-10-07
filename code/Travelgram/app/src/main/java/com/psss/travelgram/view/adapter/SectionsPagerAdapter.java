@@ -38,9 +38,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return JournalFragment.newInstance(countryName,true);
             case 2:
-                return PlaceholderFragment.newInstance("Work In Progress - Reviews");
+                return PlaceholderFragment.newInstance("Work In Progress - Reviews", R.drawable.ic_star_50);
             case 3:
-                return PlaceholderFragment.newInstance("Work In Progress - Guides");
+                return PlaceholderFragment.newInstance("Work In Progress - Guides", R.drawable.ic_guide_50);
         }
         return null;
     }

@@ -22,10 +22,13 @@ public class JournalViewModel extends ViewModel implements Observer {
     private TravelJournal TJ;
     private Context context;
     private String countryName;
-    private Boolean following; // indica se siamo nella schermata dei following o in quella nostra
+    private Boolean following; // indica se siamo nel tab "Friends Memories" o "My Memories"
 
+
+    // costruttore
     public JournalViewModel(Context context, String countryName, Boolean following) {
         jAdapter = new MutableLiveData<>();
+        this.context = context;
         this.countryName = countryName;
         this.following = following;
 
@@ -41,20 +44,18 @@ public class JournalViewModel extends ViewModel implements Observer {
             TJ.loadMemories(countryName);   // carica le mie memory di un luogo
         else
             TJ.loadMemories();              // carica tutte le mie memory
-
-        this.context = context;
     }
 
-    public MutableLiveData<MemoryAdapter> getAdapter() {
-        return jAdapter;
-    }
 
+    // set e get
     public void setJAdapter(MemoryAdapter jAdapter){
         this.jAdapter.setValue(jAdapter);
     }
+    public MutableLiveData<MemoryAdapter> getAdapter() { return jAdapter; }
 
 
 
+    // ricezione notifica dai Subject (il Traveler e il TravelJournal)
     @Override
     public void update(Observable o, Object arg) {
 

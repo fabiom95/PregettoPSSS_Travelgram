@@ -2,14 +2,12 @@ package com.psss.travelgram.viewmodel;
 
 
 import android.content.Context;
-import android.widget.EditText;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.psss.travelgram.R;
 import com.psss.travelgram.model.entity.Traveler;
-import com.psss.travelgram.model.repository.AuthRepository;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -24,6 +22,7 @@ public class AuthViewModel extends ViewModel implements Observer {
     private Traveler traveler;
 
 
+    // costruttore
     public AuthViewModel() {
         taskResult = new MutableLiveData<>();
         textError = new MutableLiveData<>();
@@ -33,20 +32,24 @@ public class AuthViewModel extends ViewModel implements Observer {
     }
 
 
-    // ----------- operazioni sul Live Data -----------
+    // set e get
+    public void setTaskResult(String value) { taskResult.setValue(value); }
+    public void setTextError(String value) { textError.setValue(value); }
 
     public MutableLiveData<String> getTaskResult() {return taskResult;}
     public MutableLiveData<String> getTextError() {return textError;}
     public int getTargetID() {return targetID;}
 
-    public void setTaskResult(String value) { taskResult.setValue(value); }
-    public void setTextError(String value) { textError.setValue(value); }
 
 
-    // ----------- operazioni per il LOG IN --------------
+    // validazione credenziali LOGIN
+    public boolean validCredentials(
+            Context context,
+            String emailText,
+            String passwordText){
 
-    public boolean validCredentials(Context context, String emailText, String passwordText){
-        String email = emailText.trim();   // trim elimina gli spazi all'inizio e alla fine
+        // trim elimina gli spazi all'inizio e alla fine
+        String email = emailText.trim();
         String password = passwordText.trim();
 
         if (email.isEmpty()) {
@@ -62,21 +65,15 @@ public class AuthViewModel extends ViewModel implements Observer {
         return true;
     }
 
-    public void loginUser(String emailText, String passwordText) {
-        String email = emailText.trim();   // trim elimina gli spazi all'inizio e alla fine
-        String password = passwordText.trim();
 
-        // inoltra la richiesta ad AuthRepository, che si interfaccia con Firebase
-        // Il riferimento "this" alla classe stessa serve per ricevere messaggi da AuthRepository
-        traveler.loginUser(email, password);
-    }
+    // validazione credenziali SIGNUP
+    public boolean validCredentials(
+            Context context,
+            String usernameText,
+            String emailText,
+            String passwordText,
+            String confirmPasswordText){
 
-
-
-
-    // ----------- operazioni per il SIGN UP -----------
-
-    public boolean validCredentials(Context context, String usernameText, String emailText, String passwordText, String confirmPasswordText){
         String username = usernameText.trim();
         String email = emailText.trim();
         String password = passwordText.trim();
@@ -86,7 +83,6 @@ public class AuthViewModel extends ViewModel implements Observer {
             targetID = R.id.signupUsername;
             setTextError(context.getString(R.string.username_required));
             return false;
-            //TODO: controllare che sia univoco
         }
         if (email.isEmpty()) {
             targetID = R.id.signupEmail;
@@ -111,17 +107,26 @@ public class AuthViewModel extends ViewModel implements Observer {
         return true;
     }
 
+
+
+    // log in
+    public void loginUser(String emailText, String passwordText) {
+        String email = emailText.trim();   // trim elimina gli spazi all'inizio e alla fine
+        String password = passwordText.trim();
+        traveler.loginUser(email, password);
+    }
+
+
+    // sign up
     public void signupUser(String usernameText, String emailText, String passwordText) {
         String username = usernameText.trim();
         String email = emailText.trim();
         String password = passwordText.trim();
-
-        // inoltra la richiesta ad AuthRepository, che si interfaccia con Firebase
-        // Il riferimento "this" alla classe stessa serve per ricevere messaggi da AuthRepository
         traveler.signupUser(username, email, password);
-
     }
 
+
+    // ricezione notifica dal Subject (il Traveler)
     @Override
     public void update(Observable o, Object arg) {
         if(!arg.toString().equals("loaded"))

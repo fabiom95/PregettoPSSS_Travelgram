@@ -6,6 +6,7 @@ import com.psss.travelgram.model.repository.TravelerRepository;
 import java.util.ArrayList;
 import java.util.Observable;
 
+
 public class Traveler extends Observable {
 
     private String username;
@@ -30,85 +31,71 @@ public class Traveler extends Observable {
     }
 
 
-    // get e set
+    // set e get
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+    public void setVisitedCountries(ArrayList<String> visitedCountries) { this.visitedCountries = visitedCountries;}
+    public void setWishedCountries(ArrayList<String> wishedCountries) { this.wishedCountries = wishedCountries;}
+    public void setFollowers(ArrayList<String> followers) {
+        this.followers = followers;
+    }
+    public void setFollowing(ArrayList<String> following) {
+        this.following = following;
+    }
+
     public String getUsername() {
         return username;
     }
-
     public String getUserID() {
         return userID;
     }
-
     public ArrayList<String> getVisitedCountries() {
         return visitedCountries;
     }
-
     public ArrayList<String> getWishedCountries() {
         return wishedCountries;
     }
-
     public ArrayList<String> getFollowers() {
         return followers;
     }
-
     public ArrayList<String> getFollowing() {
         return following;
     }
 
 
-    public void setUsername(String username) {
-        this.username = username;
+    // inserimento nuovo Traveler su Firestore
+    public void createTraveler(String username){
+        travelerRepo.createTraveler(username);
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public void setVisitedCountries(ArrayList<String> visitedCountries) {
-        this.visitedCountries = visitedCountries;
-    }
-
-    public void setWishedCountries(ArrayList<String> wishedCountries) {
-        this.wishedCountries = wishedCountries;
-    }
-
-    public void setFollowers(ArrayList<String> followers) {
-        this.followers = followers;
-    }
-
-    public void setFollowing(ArrayList<String> following) {
-        this.following = following;
-    }
-
-
-
-    // altre funzioni
+    // caricamento Traveler da Firestore
     public void loadTraveler(){
         travelerRepo.loadTraveler(this);
     }
 
-    public void createUser(String username){
-        travelerRepo.createUser(username);
-    }
-
+    // funzioni di utilità
     public boolean isCountryVisited(String country){
         return visitedCountries.contains(country);
     }
     public boolean isCountryWished(String country){
         return wishedCountries.contains(country);
     }
-    public boolean isFollowedByCurrentUser(){
-        return followers.contains(travelerRepo.getCurrentUserID());
-    }
+    public boolean isFollowedByCurrentUser(){ return followers.contains(travelerRepo.getCurrentUserID()); }
 
+
+    // callback, chiamata da travelerRepo quando è arrivato il risultato della query
     // notifica gli observer
-    public void ready(String s){
+    public void callback(String s){
         setChanged();
         notifyObservers(s);
     }
 
 
-    // funzioni invocate da PlaceViewModel
+    // funzioni per PlaceViewModel
     public void addVisitedCountry(String country){
         if(!isCountryVisited(country)) {
             travelerRepo.addVisitedCountry(country);
@@ -134,7 +121,7 @@ public class Traveler extends Observable {
     }
 
 
-    // funzioni invocate da SearchViewModel
+    // funzioni per SearchViewModel
     public void follow(){
         travelerRepo.follow(userID);
     }

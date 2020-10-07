@@ -10,38 +10,52 @@ public class TravelJournal extends Observable{
     private ArrayList<Memory> memories;
     private MemoryRepository memoryRepo;
 
+
+    // costruttore
     public TravelJournal(){
         memories = new ArrayList<>();
         memoryRepo = new MemoryRepository();
     }
 
+
+    // set e get
+    public void setMemories(ArrayList<Memory> memories){
+        this.memories = memories;
+    }
     public ArrayList<Memory> getMemories(){
         return memories;
     }
 
+
+    // caricamento di più Memory da Firestore
     public void loadMemories(){
         memoryRepo.loadMemories(this);
     }
 
+    // caricamento di più Memory da Firestore (dato un paese)
     public void loadMemories(String countryName){
         memoryRepo.loadMemories(this, countryName);
     }
 
+    // caricamento di più Memory da Firestore (dato un paese, data una lista utenti)
     public void loadMemories(String countryName, ArrayList<String> userIDs){
         memoryRepo.loadMemories(this, countryName, userIDs);
     }
 
 
-    public void setMemories(ArrayList<Memory> memories){
-        this.memories = memories;
+    // callback, chiamata da memoryRepo quando è arrivato il risultato della query
+    // notifica gli observer
+    public void callback(String s) {
         setChanged();
-        notifyObservers("TJ ready");
+        notifyObservers(s);
     }
 
+
+    // get dei campi delle memory
     public ArrayList<String> getImageLinks(){
         ArrayList<String> imageLinks = new ArrayList<>();
         for(Memory memory : memories)
-            imageLinks.add(memory.getImage());
+            imageLinks.add(memory.getImageLink());
         return imageLinks;
     }
 
@@ -62,7 +76,7 @@ public class TravelJournal extends Observable{
     public ArrayList<String> getUsernames(){
         ArrayList<String> usernames = new ArrayList<>();
         for(Memory memory : memories)
-            usernames.add(memory.getOwner());
+            usernames.add(memory.getTravelerUsername());
         return usernames;
     }
 

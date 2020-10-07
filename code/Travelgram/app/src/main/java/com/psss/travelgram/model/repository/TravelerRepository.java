@@ -17,8 +17,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.psss.travelgram.model.entity.Memory;
-import com.psss.travelgram.model.entity.TravelJournal;
 import com.psss.travelgram.model.entity.Traveler;
 import com.psss.travelgram.model.entity.TravelerList;
 
@@ -26,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class TravelerRepository {
 
@@ -40,12 +39,14 @@ public class TravelerRepository {
             myUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
+
     public String getCurrentUserID(){
         return myUserID;
     }
 
-    // Salvataggio dati utenti su Firestore
-    public void createUser(String username){
+
+    // inserimento nuovo Traveler su Firestore
+    public void createTraveler(String username){
         myUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         Map<String, Object> data = new HashMap<>();
@@ -55,14 +56,16 @@ public class TravelerRepository {
         data.put("following",  Collections.emptyList());
         data.put("followers",  Collections.emptyList());
 
-
         db.collection("Travelers")
                 .document(myUserID)
                 .set(data);
     }
 
+
     // snapshotListener è come la get(), ma rimane in ascolto, avvisando in tempo reale
     // di cambiamenti del documento
+
+    // caricamento Traveler da Firestore
     public void loadTraveler(final Traveler traveler){
         db.collection("Travelers")
                 .document(myUserID)
@@ -70,56 +73,23 @@ public class TravelerRepository {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot snapshot,
                                         @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            Log.w("PROVA", "Listen failed.", e);
-                            return;
-                        }
+                        if (e != null) return;
 
                         if (snapshot != null && snapshot.exists()) {
                             traveler.setUsername(snapshot.getData().get("username").toString());
                             traveler.setUserID(myUserID);
-                            traveler.setVisitedCountries( (ArrayList<String>) (snapshot.getData().get("visited_countries")));
-                            traveler.setWishedCountries( (ArrayList<String>) (snapshot.getData().get("wished_countries")));
-                            traveler.setFollowers( (ArrayList<String>) (snapshot.getData().get("followers")));
-                            traveler.setFollowing( (ArrayList<String>) (snapshot.getData().get("following")));
-                            traveler.ready("loaded");
+                            traveler.setVisitedCountries( (ArrayList<String>) (snapshot.get("visited_countries")));
+                            traveler.setWishedCountries( (ArrayList<String>) (snapshot.get("wished_countries")));
+                            traveler.setFollowers( (ArrayList<String>) (snapshot.get("followers")));
+                            traveler.setFollowing( (ArrayList<String>) (snapshot.get("following")));
+                            traveler.callback("loaded");
                         }
                     }
                 });
     }
 
 
-    public void loadFollowingTravelers(final TravelerList TL, ArrayList<String> userIDs){
-
-        if(!userIDs.isEmpty()) {
-            db.collection("Travelers")
-                    .whereIn(FieldPath.documentId(), userIDs)
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                ArrayList<Traveler> travelers = new ArrayList<>();
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Traveler traveler = new Traveler();
-                                    traveler.setUsername(document.getData().get("username").toString());
-                                    traveler.setUserID(document.getId());
-                                    traveler.setVisitedCountries((ArrayList<String>) (document.getData().get("visited_countries")));
-                                    traveler.setWishedCountries((ArrayList<String>) (document.getData().get("wished_countries")));
-                                    traveler.setFollowers((ArrayList<String>) (document.getData().get("followers")));
-                                    traveler.setFollowing((ArrayList<String>) (document.getData().get("following")));
-                                    travelers.add(traveler);
-                                }
-                                TL.setTravelers(travelers);
-                            } else {
-                                Log.d("PROVA", "Error getting documents: ", task.getException());
-                            }
-                        }
-                    });
-        }
-    }
-
-
+    // ricerca del traveler (per il SearchViewModel)
     public void searchTravelers(final TravelerList TL, String s){
 
         if(s.length() == 0)
@@ -140,15 +110,16 @@ public class TravelerRepository {
                                         Traveler traveler = new Traveler();
                                         traveler.setUsername(document.getData().get("username").toString());
                                         traveler.setUserID(document.getId());
-                                        traveler.setVisitedCountries((ArrayList<String>) (document.getData().get("visited_countries")));
-                                        traveler.setWishedCountries((ArrayList<String>) (document.getData().get("wished_countries")));
-                                        traveler.setFollowers((ArrayList<String>) (document.getData().get("followers")));
-                                        traveler.setFollowing((ArrayList<String>) (document.getData().get("following")));
+                                        traveler.setVisitedCountries((ArrayList<String>) (document.get("visited_countries")));
+                                        traveler.setWishedCountries((ArrayList<String>) (document.get("wished_countries")));
+                                        traveler.setFollowers((ArrayList<String>) (document.get("followers")));
+                                        traveler.setFollowing((ArrayList<String>) (document.get("following")));
                                         travelers.add(traveler);
                                     }
                                 }
 
                                 TL.setTravelers(travelers);
+                                TL.callback("TL ready");
                             } else {
                                 Log.d("PROVA", "Error getting documents: ", task.getException());
                             }
@@ -159,7 +130,7 @@ public class TravelerRepository {
 
 
 
-    // funzioni per PlaceActivity
+    // funzioni per PlaceViewModel
     public void addVisitedCountry(String country){
         db.collection("Travelers")
                 .document(myUserID)
@@ -186,7 +157,7 @@ public class TravelerRepository {
 
 
 
-    // funzioni per SearchFragment
+    // funzioni per SearchViewModel
     public void follow(String userID){
         db.collection("Travelers")
                 .document(userID)

@@ -9,26 +9,25 @@ import java.util.Observer;
 
 public class MemoryInfoViewModel implements Observer {
 
-    private MutableLiveData<Boolean> ready;
+    private MutableLiveData<String> message;
     private Memory memory;
 
     public MemoryInfoViewModel(){
-        ready = new MutableLiveData<>();
-        ready.setValue(false);
-
+        message = new MutableLiveData<>();
+        message.setValue("");
         memory = new Memory();
         memory.addObserver(this);
     }
 
-    public void setReady(Boolean ready){
-        this.ready.setValue(ready);
+    public void setMessage(String message){
+        this.message.setValue(message);
     }
-    public MutableLiveData<Boolean> getReady() {
-        return ready;
+    public MutableLiveData<String> getMessage() {
+        return message;
     }
 
     public String getImage(){
-        return memory.getImage();
+        return memory.getImageLink();
     }
     public String getCountry(){
         return memory.getCountry();
@@ -42,8 +41,8 @@ public class MemoryInfoViewModel implements Observer {
     public String getDate(){
         return memory.getDate();
     }
-    public String getOwner(){
-        return memory.getOwner();
+    public String getTravelerUsername(){
+        return memory.getTravelerUsername();
     }
 
 
@@ -52,9 +51,13 @@ public class MemoryInfoViewModel implements Observer {
         memory.loadMemory();
     }
 
+    public void deleteMemory(){
+        memory.deleteMemory();
+    }
+
 
     @Override
     public void update(Observable o, Object arg) {
-        setReady(true);
+        setMessage(arg.toString());
     }
 }

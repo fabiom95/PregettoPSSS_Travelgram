@@ -146,7 +146,7 @@
                         android:id="@+id/description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
+                        android:inputType="textMultiLine"
                         android:textCursorDrawable="@drawable/cursor"
                         android:background="@drawable/edittext_style2"
                         android:hint="description"/>
