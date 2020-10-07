@@ -9,9 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.psss.travelgram.R;
-import com.psss.travelgram.view.fragment.FollowingJournalFragment;
 import com.psss.travelgram.view.fragment.JournalFragment;
-import com.psss.travelgram.view.fragment.NotificationsFragment;
+import com.psss.travelgram.view.fragment.PlaceholderFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -35,13 +34,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         switch(position){
             case 0:
-                return JournalFragment.newInstance(countryName);
+                return JournalFragment.newInstance(countryName,false);
             case 1:
-                return FollowingJournalFragment.newInstance(countryName);
+                return JournalFragment.newInstance(countryName,true);
             case 2:
-                return new NotificationsFragment();
+                return PlaceholderFragment.newInstance("Work In Progress - Reviews");
             case 3:
-                return new NotificationsFragment();
+                return PlaceholderFragment.newInstance("Work In Progress - Guides");
         }
         return null;
     }

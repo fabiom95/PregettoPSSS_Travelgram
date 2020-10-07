@@ -71,6 +71,7 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
             case R.id.addMemoryBtn:
                 Intent intent = new Intent(getApplicationContext(), InsertMemoryActivity.class);
                 intent.putExtra("countryName", countryName);
+                intent.putExtra("username", placeViewModel.getUsername());
                 startActivityForResult(intent,0);
                 break;
 

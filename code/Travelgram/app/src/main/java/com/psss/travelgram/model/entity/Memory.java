@@ -14,6 +14,7 @@ public class  Memory extends Observable {
     private String city;
     private String description;
     private String date;
+    private String owner;   // username dell'autore
 
     private MemoryRepository memoryRepo;
 
@@ -31,6 +32,7 @@ public class  Memory extends Observable {
     public void setCity(String city) { this.city = city; }
     public void setDescription(String description) { this.description = description; }
     public void setDate(String date) { this.date = date; }
+    public void setOwner(String owner) { this.owner = owner; }
 
     public String getId(){return id;}
     public String getImage() {
@@ -48,7 +50,9 @@ public class  Memory extends Observable {
     public String getDate() {
         return date;
     }
-
+    public String getOwner() {
+        return owner;
+    }
 
     public void insertMemory(Uri uri){
         memoryRepo.insertMemory(uri, this);

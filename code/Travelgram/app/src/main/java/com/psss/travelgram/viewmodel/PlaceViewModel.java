@@ -35,7 +35,6 @@ public class PlaceViewModel extends ViewModel {
         traveler.removeWishedCountry(country);
     }
 
-
-
+    public String getUsername() { return traveler.getUsername();}
 
 }

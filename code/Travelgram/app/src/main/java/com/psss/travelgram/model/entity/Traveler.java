@@ -14,8 +14,6 @@ public class Traveler extends Observable {
     private ArrayList<String> wishedCountries;
     private ArrayList<String> followers;
     private ArrayList<String> following;
-    private TravelJournal TJ;
-    private TravelerList TL;
 
     private TravelerRepository travelerRepo;
     private AuthRepository authRepo;
@@ -29,8 +27,6 @@ public class Traveler extends Observable {
         wishedCountries = new ArrayList<>();
         followers = new ArrayList<>();
         following = new ArrayList<>();
-        TJ = new TravelJournal();
-        TL = null;
     }
 
 
@@ -86,18 +82,6 @@ public class Traveler extends Observable {
 
 
 
-
-    public void setTJ(TravelerList TL, String country){
-        this.TL = TL;
-        this.TJ.loadMemories(this, country, userID);
-    }
-
-    public int getMemoryCount(){
-        if(TJ != null)
-            return TJ.getMemoryCount();
-        return 0;
-    }
-
     // altre funzioni
     public void loadTraveler(){
         travelerRepo.loadTraveler(this);
@@ -117,22 +101,8 @@ public class Traveler extends Observable {
         return followers.contains(travelerRepo.getCurrentUserID());
     }
 
-    public ArrayList<String> getImageLinks(){
-        if(TJ != null)
-            return TJ.getImageLinks();
-        return null;
-    }
-
-    public ArrayList<String> getMemoryIDs(){
-        if(TJ != null)
-            return TJ.getMemoryIDs();
-        return null;
-    }
-
     // notifica gli observer
     public void ready(String s){
-        if(TL != null && s.equals("TJ ready"))
-            TL.ready();
         setChanged();
         notifyObservers(s);
     }

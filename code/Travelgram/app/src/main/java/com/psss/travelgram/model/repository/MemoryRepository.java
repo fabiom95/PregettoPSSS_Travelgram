@@ -50,20 +50,9 @@ public class MemoryRepository {
         UploadTask uploadTask = memoRef.putFile(uri);
         //TODO: check immagine con quel nome già esiste (nome dell'immagine: orario)
 
-        // failure Listener
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.d("PROVA","memory non caricata!");
-                memo.ready("error");
-            }
-        });
-
-        // success listener
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.d("PROVA","memory caricata con successo!");
 
                 // caricamento metadati su FireStore
                 memoRef.getDownloadUrl().addOnSuccessListener(
@@ -72,12 +61,13 @@ public class MemoryRepository {
                             public void onSuccess(Uri uri) {
 
                                 Map<String, Object> data = new HashMap<>();
-                                data.put("UID", myUserID);
+                                data.put("traveler/UID", myUserID);
                                 data.put("imageLink", uri.toString());
                                 data.put("country", memo.getCountry());
                                 data.put("city", memo.getCity());
                                 data.put("description", memo.getDescription());
                                 data.put("date", memo.getDate());
+                                data.put("traveler/username", memo.getOwner());
 
                                 db.collection("Memories")
                                         .add(data);
@@ -107,6 +97,7 @@ public class MemoryRepository {
                             memo.setCity(document.getData().get("city").toString());
                             memo.setDescription(document.getData().get("description").toString());
                             memo.setDate(document.getData().get("date").toString());
+                            memo.setOwner(document.getData().get("owner").toString());
                             memo.ready("info loaded");
                         } else {
                             Log.d("PROVA", "get failed with ", task.getException());
@@ -135,6 +126,7 @@ public class MemoryRepository {
                                 memo.setCity(document.getData().get("city").toString());
                                 memo.setDescription(document.getData().get("description").toString());
                                 memo.setDate(document.getData().get("date").toString());
+                                memo.setOwner(document.getData().get("owner").toString());
                                 memories.add(memo);
                             }
                             TJ.setMemories(memories);
@@ -165,7 +157,7 @@ public class MemoryRepository {
                                 memo.setCity(document.getData().get("city").toString());
                                 memo.setDescription(document.getData().get("description").toString());
                                 memo.setDate(document.getData().get("date").toString());
-                                Log.d("PROVA", " imageLink " + memo.getImage());
+                                memo.setOwner(document.getData().get("owner").toString());
                                 memories.add(memo);
                             }
                             TJ.setMemories(memories);
@@ -177,35 +169,34 @@ public class MemoryRepository {
     }
 
 
-    public void loadMemories(final TravelJournal TJ, String country, String userID){
+    public void loadMemories(final TravelJournal TJ, String country, ArrayList<String> userIDs){
 
-        db.collection("Memories")
-                .whereEqualTo("UID", userID)
-                .whereEqualTo("country", country)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value,
-                                        @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            return;
+        if(!userIDs.isEmpty()) {
+            db.collection("Memories")
+                    .whereIn("UID", userIDs)
+                    .whereEqualTo("country", country)
+                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable QuerySnapshot value,
+                                            @Nullable FirebaseFirestoreException e) {
+                            if (e != null) return;
+
+                            ArrayList<Memory> memories = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : value) {
+                                Memory memo = new Memory();
+                                memo.setId(document.getId());
+                                memo.setImage(document.getData().get("imageLink").toString());
+                                memo.setCountry(document.getData().get("country").toString());
+                                //memo.setCity(document.getData().get("city").toString());
+                                //memo.setDescription(document.getData().get("description").toString());
+                                //memo.setDate(document.getData().get("date").toString());
+                                memo.setOwner(document.getData().get("owner").toString());
+                                memories.add(memo);
+                            }
+                            TJ.setMemories(memories);
                         }
-
-                        ArrayList<Memory> memories = new ArrayList<>();
-                        for (QueryDocumentSnapshot document : value) {
-                            Memory memo = new Memory();
-                            memo.setId(document.getId());
-                            memo.setImage(document.getData().get("imageLink").toString());
-                            memo.setCountry(document.getData().get("country").toString());
-                            memo.setCity(document.getData().get("city").toString());
-                            memo.setDescription(document.getData().get("description").toString());
-                            memo.setDate(document.getData().get("date").toString());
-                            Log.d("PROVA", " imageLink " + memo.getImage());
-                            memories.add(memo);
-                        }
-                        TJ.setMemories(memories);
-                    }
-                });
-
+                    });
+        }
     }
 
 

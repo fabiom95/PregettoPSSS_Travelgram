@@ -99,8 +99,6 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
             public void onClick(View v) {
                 Intent intent = new Intent(context, MemoryInfoActivity.class);
                 intent.putExtra("memID", memoryIDs.get(position));
-                if (usernames != null)
-                   intent.putExtra("username", usernames.get(position));
                 context.startActivity(intent);
             }
         });

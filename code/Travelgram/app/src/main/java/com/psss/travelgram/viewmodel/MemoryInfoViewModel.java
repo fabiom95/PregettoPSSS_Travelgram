@@ -42,6 +42,9 @@ public class MemoryInfoViewModel implements Observer {
     public String getDate(){
         return memory.getDate();
     }
+    public String getOwner(){
+        return memory.getOwner();
+    }
 
 
     public void loadMemory(String memID){

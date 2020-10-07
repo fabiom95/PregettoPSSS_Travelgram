@@ -43,6 +43,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     private MenuItem shareBtn;
     private InsertMemoryViewModel insertMemoryViewModel;
     private FrameLayout progressBar;
+    private String username;
 
 
     @Override
@@ -52,6 +53,8 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
 
         Intent intent = getIntent();
         String countryName = intent.getStringExtra("countryName");
+        username = intent.getStringExtra("username");
+
 
         // Toolbar
         Toolbar mToolbar = findViewById(R.id.toolbar);
@@ -153,7 +156,8 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
                         country.getText().toString(),
                         city.getText().toString(),
                         description.getText().toString(),
-                        date.getText().toString()
+                        date.getText().toString(),
+                        username
                 );
                 return true;
 

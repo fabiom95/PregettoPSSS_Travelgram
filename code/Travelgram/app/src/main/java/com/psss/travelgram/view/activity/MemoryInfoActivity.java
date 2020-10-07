@@ -29,7 +29,6 @@ public class MemoryInfoActivity extends AppCompatActivity {
         // riceve l'id della memory
         Intent intent = getIntent();
         String memID = intent.getStringExtra("memID");
-        String username = intent.getStringExtra("username");
 
         Log.d("PROVA", "id: "+memID);
 
@@ -38,14 +37,7 @@ public class MemoryInfoActivity extends AppCompatActivity {
         final TextView city = findViewById(R.id.city);
         final TextView description = findViewById(R.id.description);
         final TextView date = findViewById(R.id.date);
-
-        TextView user = findViewById(R.id.username);
-
-        if(username != null) {
-            user.setText(username);
-            findViewById(R.id.username_layout).setVisibility(View.VISIBLE);
-            findViewById(R.id.username_line).setVisibility(View.VISIBLE);
-        }
+        final TextView user = findViewById(R.id.username);
 
         // view model
         memoryInfoViewModel = new MemoryInfoViewModel();
@@ -59,6 +51,13 @@ public class MemoryInfoActivity extends AppCompatActivity {
                     city.setText(memoryInfoViewModel.getCity());
                     description.setText(memoryInfoViewModel.getDescription());
                     date.setText(memoryInfoViewModel.getDate());
+
+                    String username = memoryInfoViewModel.getOwner();
+                    if(!username.equals("")) {
+                        user.setText(username);
+                        findViewById(R.id.username_layout).setVisibility(View.VISIBLE);
+                        findViewById(R.id.username_line).setVisibility(View.VISIBLE);
+                    }
 
                     Glide.with(getApplicationContext())
                             .load(memoryInfoViewModel.getImage())

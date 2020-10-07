@@ -9,19 +9,10 @@ public class TravelJournal extends Observable{
 
     private ArrayList<Memory> memories;
     private MemoryRepository memoryRepo;
-    private Traveler traveler;
 
     public TravelJournal(){
         memories = new ArrayList<>();
         memoryRepo = new MemoryRepository();
-        traveler = null;
-    }
-
-    public TravelJournal(String countryName){
-        memories = new ArrayList<>();
-        memoryRepo = new MemoryRepository();
-        traveler = null;
-        loadMemories(countryName);
     }
 
     public ArrayList<Memory> getMemories(){
@@ -36,18 +27,15 @@ public class TravelJournal extends Observable{
         memoryRepo.loadMemories(this, countryName);
     }
 
-    public void loadMemories(Traveler traveler, String countryName, String userID){
-        this.traveler = traveler;
-        memoryRepo.loadMemories(this, countryName, userID);
+    public void loadMemories(String countryName, ArrayList<String> userIDs){
+        memoryRepo.loadMemories(this, countryName, userIDs);
     }
 
 
     public void setMemories(ArrayList<Memory> memories){
         this.memories = memories;
-        if(traveler != null)
-            traveler.ready("TJ ready");
         setChanged();
-        notifyObservers();
+        notifyObservers("TJ ready");
     }
 
     public ArrayList<String> getImageLinks(){
@@ -71,9 +59,11 @@ public class TravelJournal extends Observable{
         return countries;
     }
 
-
-    public int getMemoryCount(){
-        return memories.size();
+    public ArrayList<String> getUsernames(){
+        ArrayList<String> usernames = new ArrayList<>();
+        for(Memory memory : memories)
+            usernames.add(memory.getOwner());
+        return usernames;
     }
 
 
