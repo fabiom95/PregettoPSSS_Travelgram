@@ -25,17 +25,17 @@ public class Memory extends Observable {
 
 
     // set e get
-    public void setId(String id){ this.id = id;}
-    public void setImageLink(String imageLink){ this.imageLink = imageLink; }
+    public void setId(String id) { this.id = id;}
+    public void setImageLink(String imageLink) { this.imageLink = imageLink; }
     public void setCountry(String country) { this.country = country; }
     public void setCity(String city) { this.city = city; }
     public void setDescription(String description) { this.description = description; }
     public void setDate(String date) { this.date = date; }
     public void setTravelerUsername(String travelerUsername) { this.travelerUsername = travelerUsername; }
 
-    public String getId(){return id;}
+    public String getId() { return id;}
     public String getImageLink() { return imageLink; }
-    public String getCountry() {return country; }
+    public String getCountry() { return country; }
     public String getCity() { return city; }
     public String getDescription() { return description; }
     public String getDate() { return date; }
@@ -47,10 +47,12 @@ public class Memory extends Observable {
         memoryRepo.createMemory(uri, this);
     }
 
+
     // caricamento Memory da Firestore
     public void loadMemory(){
         memoryRepo.loadMemory(this);
     }
+
 
     // eliminazione Memory da Firestore
     public void deleteMemory(){

@@ -25,8 +25,8 @@ public class AuthViewModel extends ViewModel implements Observer {
     // costruttore
     public AuthViewModel() {
         taskResult = new MutableLiveData<>();
-        textError = new MutableLiveData<>();
-        traveler = new Traveler();
+        textError  = new MutableLiveData<>();
+        traveler   = new Traveler();
         traveler.addObserver(this);
         targetID = 0;
     }
@@ -36,10 +36,9 @@ public class AuthViewModel extends ViewModel implements Observer {
     public void setTaskResult(String value) { taskResult.setValue(value); }
     public void setTextError(String value) { textError.setValue(value); }
 
-    public MutableLiveData<String> getTaskResult() {return taskResult;}
-    public MutableLiveData<String> getTextError() {return textError;}
-    public int getTargetID() {return targetID;}
-
+    public MutableLiveData<String> getTaskResult() { return taskResult; }
+    public MutableLiveData<String> getTextError() { return textError; }
+    public int getTargetID() { return targetID; }
 
 
     // validazione credenziali LOGIN

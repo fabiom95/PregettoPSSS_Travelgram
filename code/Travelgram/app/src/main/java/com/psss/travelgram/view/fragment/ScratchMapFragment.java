@@ -44,14 +44,26 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
     private ScratchMapViewModel scratchMapViewModel;
 
 
+    // creazione della view
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_scratchmap, container, false);
+    }
+
+
+    // appena esiste la view:
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) {
+
+        if (mapFragment != null)
             mapFragment.getMapAsync(this);
-        }
 
         scratchMapViewModel = new ScratchMapViewModel();
         visitedCountries = new ArrayList<String>();
@@ -59,25 +71,26 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
     }
 
 
-
+    // appena è pronta la mappa:
     @Override
     public void onMapReady(final GoogleMap scratchMap) {
 
+        // impostazioni camera
         scratchMap.setMinZoomPreference(3.0f);
         scratchMap.setMaxZoomPreference(6.0f);
-
-        // stile della mappa di base
-        scratchMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(
-                getActivity().getApplicationContext(), R.raw.country_style));
-
         scratchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(46,10), 4f));
 
+        // stile grafico della mappa
+        scratchMap.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                        getActivity().getApplicationContext(), R.raw.country_style));
+
         try {
-            // aggiunge il livello (i paesi)
+            // livello GeoJson (i paesi del mondo)
             layer = new GeoJsonLayer(scratchMap, R.raw.world_j, getActivity().getApplicationContext());
             layer.addLayerToMap();
 
-            // stile di base del livello
+            // stile di default del livello
             GeoJsonPolygonStyle style = layer.getDefaultPolygonStyle();
             style.setFillColor(getResources().getColor(R.color.base));
             style.setStrokeWidth(4);
@@ -86,7 +99,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
             // rendiamo gli stati cliccabili
             layer.setOnFeatureClickListener(this);
 
-            // la prima volta che viene fatta la query aggiorniamo tutta la mappa
+            // si attiva la prima volta che carichiamo i dati della mappa da Firestore
             scratchMapViewModel.getFirstTime().observe(this, new Observer<Boolean>() {
                 @Override
                 public void onChanged(@Nullable Boolean firstTime) {
@@ -94,7 +107,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
                 }
             });
 
-            // osserva i cambiamenti degli stati visitati (attraverso il ViewModel)
+            // si attiva quando i dati della mappa su Firestore cambiano
             scratchMapViewModel.getVisitedCountries().observe(this, new Observer<ArrayList<String>>() {
                 @Override
                 public void onChanged(@Nullable ArrayList<String> countries) {
@@ -103,7 +116,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
                 }
             });
 
-            // osserva i cambiamenti degli stati da visitare (attraverso il ViewModel)
+            // si attiva quando i dati della mappa su Firestore cambiano
             scratchMapViewModel.getWishedCountries().observe(this, new Observer<ArrayList<String>>() {
                 @Override
                 public void onChanged(@Nullable ArrayList<String> countries) {
@@ -120,7 +133,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
 
 
     // al click su uno stato apre una PlaceActivity.
-    // Passa alla PlaceActivity il nome dello stato cliccato e dei Boolean che indicano se lo
+    // Passa alla PlaceActivity il nome dello stato cliccato e i Boolean che indicano se lo
     // stato è contrassegnato come "visited" o come "wished"
     @Override
     public void onFeatureClick(Feature feature) {
@@ -143,8 +156,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
     }
 
 
-
-    // colora tutta la mappa
+    // aggiorna tutta la mappa
     public void updateMap() {
         GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited, R.color.visitedDark);
         GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish, R.color.wishDark);
@@ -158,11 +170,12 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
         }
     }
 
-    // colora lo stato selezionato
+
+    // aggiorna lo stato selezionato
     public void updateCountry() {
         GeoJsonPolygonStyle visitedStyle = setStyle(R.color.visited, R.color.visitedDark);
-        GeoJsonPolygonStyle wishStyle = setStyle(R.color.wish, R.color.wishDark);
-        GeoJsonPolygonStyle baseStyle = setStyle(R.color.base, R.color.baseDark);
+        GeoJsonPolygonStyle wishStyle    = setStyle(R.color.wish, R.color.wishDark);
+        GeoJsonPolygonStyle baseStyle    = setStyle(R.color.base, R.color.baseDark);
 
         for (GeoJsonFeature feature : layer.getFeatures()) {
             String country = feature.getProperty("name");
@@ -178,21 +191,6 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
                 return; // una volta trovato lo stato ci fermiamo
             }
         }
-
     }
-
-
-    // ---------------------------------------------------------------------------------------------
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_scratchmap, container, false);
-    }
-
-
-
 
 }

@@ -18,6 +18,8 @@ public class SearchViewModel extends ViewModel implements Observer {
     private TravelerList TL;
     private Context context;
 
+
+    // costruttore
     public SearchViewModel(Context context) {
         tAdapter = new MutableLiveData<>();
         TL = new TravelerList();
@@ -25,24 +27,19 @@ public class SearchViewModel extends ViewModel implements Observer {
         this.context = context;
     }
 
-    public MutableLiveData<TravelerAdapter> getAdapter() {
-        return tAdapter;
-    }
 
-    public void setTAdapter(TravelerAdapter tAdapter){
-        this.tAdapter.setValue(tAdapter);
-    }
+    // set e get
+    public void setTAdapter(TravelerAdapter tAdapter) { this.tAdapter.setValue(tAdapter); }
+    public MutableLiveData<TravelerAdapter> getAdapter() { return tAdapter; }
 
+
+    // ricerca di un traveler
     public void searchTraveler(String s){
         TL.searchTraveler(s);
     }
 
-    // TODO: magari togliere la dipendenza dal model
-    @Override
-    public void update(Observable o, Object arg) {
-        setTAdapter(new TravelerAdapter(TL.getUsernames(), context, this));
-    }
 
+    // funzioni per il follow
     public void follow(int position){
         TL.getTravelers().get(position).follow();
     }
@@ -53,6 +50,13 @@ public class SearchViewModel extends ViewModel implements Observer {
 
     public boolean isFollowed(int position){
         return TL.getTravelers().get(position).isFollowedByCurrentUser();
+    }
+
+
+    // ricezione notifica dal Subject (TravelerList)
+    @Override
+    public void update(Observable o, Object arg) {
+        setTAdapter(new TravelerAdapter(TL.getUsernames(), context, this));
     }
 
 }

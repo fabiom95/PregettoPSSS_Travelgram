@@ -32,10 +32,8 @@ public class InsertMemoryViewModel extends ViewModel implements Observer {
 
 
     // set e get
-    public void setTaskResult(String value) {
-        taskResult.setValue(value);
-    }
-    public MutableLiveData<String> getTaskResult() {return taskResult;}
+    public void setTaskResult(String value) { taskResult.setValue(value); }
+    public MutableLiveData<String> getTaskResult() { return taskResult; }
 
 
     // inserimento nuova Memory su Firestore

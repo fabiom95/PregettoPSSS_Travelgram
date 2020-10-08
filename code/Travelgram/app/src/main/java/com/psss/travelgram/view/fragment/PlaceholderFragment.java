@@ -15,6 +15,8 @@ import com.psss.travelgram.R;
 
 public class PlaceholderFragment extends Fragment {
 
+    // Android Best Practice: usare uno Static Factory Method al posto
+    // del costruttore per passare argomenti al nuovo Fragment
     public static PlaceholderFragment newInstance(String text, int icon) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle args = new Bundle();
@@ -24,6 +26,8 @@ public class PlaceholderFragment extends Fragment {
         return fragment;
     }
 
+
+    // creazione della view
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

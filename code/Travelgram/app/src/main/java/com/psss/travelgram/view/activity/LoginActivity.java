@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,31 +29,31 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     private AuthViewModel authViewModel;
 
 
+    // creazione della view
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // e-mail e password
-        email = (EditText) findViewById(R.id.loginEmail);
-        password = (EditText) findViewById(R.id.loginPassword);
+        // credenziali
+        email    = findViewById(R.id.loginEmail);
+        password = findViewById(R.id.loginPassword);
 
         // testo per registrarsi
-        TextView login = (TextView) findViewById(R.id.clickSignup);
+        TextView login = findViewById(R.id.clickSignup);
         login.setOnClickListener(this);
 
-        // bottone LogIn
+        // pulsante Log in
         loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(this);
 
         // progress bar
         progressBar = findViewById(R.id.progressBar);
 
-        // ViewModel
-        //authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        // view model
         authViewModel = new AuthViewModel();
 
-        // aspetta il via per l'azione successiva
+        // si attiva al termine dell'operazione di login
         authViewModel.getTaskResult().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -72,7 +71,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
             }
         });
 
-        // mostra errore
+        // si attiva quando c'è un errore da mostrare
         authViewModel.getTextError().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -96,13 +95,17 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     }
 
 
-
+    // gestione dei click sulla view
     @Override
     public void onClick(View v) {
         switch(v.getId()){
+
+            // testo di sign up
             case R.id.clickSignup:
                 startActivityForResult(new Intent(getApplicationContext(), SignUpActivity.class),0);
                 break;
+
+            // pulsante Log in
             case R.id.loginBtn:
                 loginUser();
                 break;
@@ -112,6 +115,8 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     }
 
 
+    // si attiva quando termina l'eventuale operazione di Sign up (per chiudere
+    // anche la schermata di login)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -120,27 +125,20 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     }
 
 
-
-
-    // ----------- LOG IN -----------
-
+    // Log in
     private void loginUser() {
-        String emailText = email.getText().toString();
+        String emailText    = email.getText().toString();
         String passwordText = password.getText().toString();
 
-        // il controllo iniziale sul formato delle credenziali è affidato al ViewModel
+        // controllo sul formato delle credenziali
         boolean isValid = authViewModel.validCredentials(
                 getApplicationContext(),
                 emailText,
                 passwordText);
 
-
         if(isValid){
             progressBar.setVisibility(View.VISIBLE);
             loginBtn.setVisibility(View.GONE);
-
-            // la procedura di login è affidata al ViewModel, che a sua volta
-            // l'affiderà ad AuthRepository (nel package "model")
             authViewModel.loginUser(emailText, passwordText);
         }
     }

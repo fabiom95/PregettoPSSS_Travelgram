@@ -11,7 +11,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -110,10 +109,7 @@ public class TravelerRepository {
                                         Traveler traveler = new Traveler();
                                         traveler.setUsername(document.getData().get("username").toString());
                                         traveler.setUserID(document.getId());
-                                        traveler.setVisitedCountries((ArrayList<String>) (document.get("visited_countries")));
-                                        traveler.setWishedCountries((ArrayList<String>) (document.get("wished_countries")));
                                         traveler.setFollowers((ArrayList<String>) (document.get("followers")));
-                                        traveler.setFollowing((ArrayList<String>) (document.get("following")));
                                         travelers.add(traveler);
                                     }
                                 }

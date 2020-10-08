@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,24 +21,24 @@ public class MemoryInfoActivity extends AppCompatActivity implements View.OnClic
     private MemoryInfoViewModel memoryInfoViewModel;
 
 
+    // creazione della view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory_info);
 
-        // riceve l'id della memory
+        // parametri passati dal MemoryAdapter
         Intent intent = getIntent();
         String memID = intent.getStringExtra("memID");
         final Boolean isMine = intent.getBooleanExtra("isMine",false);
 
-        Log.d("PROVA", "id: " + memID);
 
-        final ImageView image = findViewById(R.id.image);
-        final TextView country = findViewById(R.id.country);
-        final TextView city = findViewById(R.id.city);
-        final TextView description = findViewById(R.id.description);
-        final TextView date = findViewById(R.id.date);
-        final TextView user = findViewById(R.id.username);
+        final ImageView image       = findViewById(R.id.image);
+        final TextView  country     = findViewById(R.id.country);
+        final TextView  city        = findViewById(R.id.city);
+        final TextView  description = findViewById(R.id.description);
+        final TextView  date        = findViewById(R.id.date);
+        final TextView  user        = findViewById(R.id.username);
 
         final ImageView deleteBtn = findViewById(R.id.deleteBtn);
         deleteBtn.setOnClickListener(this);
@@ -48,6 +47,7 @@ public class MemoryInfoActivity extends AppCompatActivity implements View.OnClic
         memoryInfoViewModel = new MemoryInfoViewModel();
         memoryInfoViewModel.loadMemory(memID);
 
+        // si attiva quando termina l'operazione di caricamento Memory da Firestore
         memoryInfoViewModel.getMessage().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String message) {
@@ -82,13 +82,11 @@ public class MemoryInfoActivity extends AppCompatActivity implements View.OnClic
     }
 
 
+    // gestione dei click sulla view
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.deleteBtn:
-                memoryInfoViewModel.deleteMemory();
-                break;
-            //case:
-        }
+        // pulsante elimina Memory
+        if (v.getId() == R.id.deleteBtn)
+            memoryInfoViewModel.deleteMemory();
     }
 }

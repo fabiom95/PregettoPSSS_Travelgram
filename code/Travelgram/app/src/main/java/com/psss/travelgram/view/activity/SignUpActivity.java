@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.psss.travelgram.R;
 import com.psss.travelgram.viewmodel.AuthViewModel;
@@ -29,48 +28,48 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
     private AuthViewModel authViewModel;
 
 
+    // create view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        // e-mail e password
-        username = (EditText) findViewById(R.id.signupUsername);
-        email = (EditText) findViewById(R.id.signupEmail);
-        password = (EditText) findViewById(R.id.signupPassword);
-        confirmPassword = (EditText) findViewById(R.id.signupPassword2);
+        // credenziali
+        username        = findViewById(R.id.signupUsername);
+        email           = findViewById(R.id.signupEmail);
+        password        = findViewById(R.id.signupPassword);
+        confirmPassword = findViewById(R.id.signupPassword2);
 
-        // bottone SignUp
+        // pulsante Sign Up
         signupBtn = findViewById(R.id.signupBtn);
         signupBtn.setOnClickListener(this);
 
         // progress bar
         progressBar = findViewById(R.id.progressBar);
 
-        // ViewModel
-        //authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        // view model
         authViewModel = new AuthViewModel();
 
-        // aspetta il via per l'azione successiva
+        // si attiva al termine dell'operazione di signup
         authViewModel.getTaskResult().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-            try{
-                if(s.equals("success")){
-                    setResult(1);
-                    finish();
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                try{
+                    if(s.equals("success")){
+                        setResult(1);
+                        finish();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    }
+                    else {
+                        progressBar.setVisibility(View.GONE);
+                        signupBtn.setVisibility(View.VISIBLE);
+                        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                    }
+                }catch(NullPointerException e) {e.printStackTrace();}
                 }
-                else {
-                    progressBar.setVisibility(View.GONE);
-                    signupBtn.setVisibility(View.VISIBLE);
-                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                }
-            }catch(NullPointerException e) {e.printStackTrace();}
-            }
         });
 
-        // mostra errore
+        // si attiva quando c'è un errore da mostrare
         authViewModel.getTextError().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -94,30 +93,24 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
     }
 
 
-
+    // gestione dei click sulla view
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.signupBtn:
-                registerUser();
-                break;
-
-            //TODO: bottone freccia indietro
+        // pulsante Sign up
+        if (view.getId() == R.id.signupBtn) {
+            registerUser();
         }
     }
 
 
-
-
-    // ----------- SIGN UP -----------
-
+    // Sign up
     private void registerUser() {
-        String usernameText = username.getText().toString();
-        String emailText = email.getText().toString();
-        String passwordText = password.getText().toString();
+        String usernameText        = username.getText().toString();
+        String emailText           = email.getText().toString();
+        String passwordText        = password.getText().toString();
         String confirmPasswordText = confirmPassword.getText().toString();
 
-        // il controllo iniziale sul formato delle credenziali è affidato al ViewModel
+        // controllo sul formato delle credenziali
         boolean isValid = authViewModel.validCredentials(
                 getApplicationContext(),
                 usernameText,
@@ -128,9 +121,6 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
         if(isValid){
             progressBar.setVisibility(View.VISIBLE);
             signupBtn.setVisibility(View.GONE);
-
-            // la procedura di registrazione è affidata al ViewModel, che a sua volta
-            // l'affiderà ad AuthRepository (nel package "model")
             authViewModel.signupUser(usernameText, emailText, passwordText);
         }
     }

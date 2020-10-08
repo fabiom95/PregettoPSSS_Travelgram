@@ -19,37 +19,46 @@ import com.psss.travelgram.view.fragment.PlaceholderFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.MyMemories, R.string.Memories, R.string.Reviews, R.string.Guides};
+    private static final int[] TAB_TITLES = new int[]{
+            R.string.MyMemories,
+            R.string.Memories,
+            R.string.Reviews,
+            R.string.Guides};
     private final Context mContext;
     private String countryName;
 
+
+    // costruttore
     public SectionsPagerAdapter(Context context, FragmentManager fm, String countryName) {
         super(fm);
         this.countryName = countryName;
         mContext = context;
     }
 
+
+    // getItem is called to instantiate the fragment for the given page.
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
         switch(position){
             case 0:
                 return JournalFragment.newInstance(countryName,false);
             case 1:
                 return JournalFragment.newInstance(countryName,true);
             case 2:
-                return PlaceholderFragment.newInstance("Work In Progress - Reviews", R.drawable.ic_star_50);
+                return PlaceholderFragment.newInstance("Future Updates - Reviews", R.drawable.ic_star_50);
             case 3:
-                return PlaceholderFragment.newInstance("Work In Progress - Guides", R.drawable.ic_guide_50);
+                return PlaceholderFragment.newInstance("Future Updates - Guides", R.drawable.ic_guide_50);
         }
         return null;
     }
+
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         return mContext.getResources().getString(TAB_TITLES[position]);
     }
+
 
     @Override
     public int getCount() {

@@ -22,14 +22,16 @@ public class MainActivity extends AppCompatActivity {
     final private Fragment fragment3 = SearchFragment.newInstance();
     final private FragmentManager fm = getSupportFragmentManager();
     private Fragment active = fragment1;
+    BottomNavigationView navView;
 
 
+    // creazione della view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
 
+        navView = findViewById(R.id.nav_view);
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").hide(fragment3).commit();
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment1, "1").commit();
@@ -61,5 +63,16 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+
+    @Override
+    public void onBackPressed(){
+        if(active != fragment1) {
+            navView.setSelectedItemId(R.id.navigation_scratchmap);
+            fm.beginTransaction().hide(active).show(fragment1).commit();
+            active = fragment1;
+        }
+        else
+            super.onBackPressed();
+    }
 
 }

@@ -1,14 +1,11 @@
 package com.psss.travelgram.viewmodel;
 
 import android.content.Context;
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.psss.travelgram.model.entity.TravelJournal;
 import com.psss.travelgram.model.entity.Traveler;
-import com.psss.travelgram.model.entity.TravelerList;
 import com.psss.travelgram.view.adapter.MemoryAdapter;
 
 import java.util.ArrayList;
@@ -22,7 +19,7 @@ public class JournalViewModel extends ViewModel implements Observer {
     private TravelJournal TJ;
     private Context context;
     private String countryName;
-    private Boolean following; // indica se siamo nel tab "Friends Memories" o "My Memories"
+    private Boolean following;      // indica se siamo nel tab "Friends Memories" o "My Memories"
 
 
     // costruttore
@@ -48,9 +45,7 @@ public class JournalViewModel extends ViewModel implements Observer {
 
 
     // set e get
-    public void setJAdapter(MemoryAdapter jAdapter){
-        this.jAdapter.setValue(jAdapter);
-    }
+    public void setJAdapter(MemoryAdapter jAdapter) { this.jAdapter.setValue(jAdapter); }
     public MutableLiveData<MemoryAdapter> getAdapter() { return jAdapter; }
 
 

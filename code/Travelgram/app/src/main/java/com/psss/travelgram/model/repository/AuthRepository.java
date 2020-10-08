@@ -19,8 +19,10 @@ public class AuthRepository {
     }
 
 
-    // ----------- LOG IN -----------
-    public void loginUser(String email, String password, final Traveler traveler){
+    // Log in
+    public void loginUser(String email,
+                          String password,
+                          final Traveler traveler){
 
         // registrazione su Firebase
         Task<AuthResult> task = mAuth.signInWithEmailAndPassword(email, password);
@@ -39,8 +41,11 @@ public class AuthRepository {
 
 
 
-    // ----------- SIGN UP -----------
-    public void signupUser(final String username, final String email, final String password, final Traveler traveler){
+    // Sign up
+    public void signupUser(final String username,
+                           final String email,
+                           final String password,
+                           final Traveler traveler){
 
          // registrazione su Firebase
         Task<AuthResult> task = mAuth.createUserWithEmailAndPassword(email, password);

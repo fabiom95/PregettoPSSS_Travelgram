@@ -49,7 +49,6 @@ public class MemoryRepository {
         // caricamento immagine su Storage
         final StorageReference memoRef = storage.getReference().child( myUserID + "/" + uri.getLastPathSegment());
         UploadTask uploadTask = memoRef.putFile(uri);
-        //TODO: check immagine con quel nome già esiste (nome dell'immagine: orario)
 
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -105,8 +104,6 @@ public class MemoryRepository {
                         });
             }
         });
-
-
     }
 
 
@@ -135,7 +132,6 @@ public class MemoryRepository {
                         }
                     }
                 });
-
     }
 
 
@@ -224,6 +220,5 @@ public class MemoryRepository {
                     });
         }
     }
-
 
 }

@@ -41,20 +41,22 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     private ImageView memoryImage;
     private TextView date;
     private MenuItem shareBtn;
-    private InsertMemoryViewModel insertMemoryViewModel;
     private FrameLayout progressBar;
     private String username;
 
+    private InsertMemoryViewModel insertMemoryViewModel;
 
+
+    // creazione della view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_memory);
 
+        // parametri passati dalla PlaceActivity
         Intent intent = getIntent();
         String countryName = intent.getStringExtra("countryName");
         username = intent.getStringExtra("username");
-
 
         // Toolbar
         Toolbar mToolbar = findViewById(R.id.toolbar);
@@ -68,7 +70,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
             }
         });
 
-        // Immagine
+        // immagine
         memoryImage = findViewById(R.id.memoryImage);
         memoryImage.setOnClickListener(this);
 
@@ -76,9 +78,9 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         date = findViewById(R.id.date);
         date.setOnClickListener(this);
         final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
+        int year  = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        int day   = c.get(Calendar.DAY_OF_MONTH);
         date.setText(day + "/" + (month+1) + "/" + year);
 
         // progress Bar
@@ -90,17 +92,16 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         description = findViewById(R.id.description);
 
         String[] countries = getResources().getStringArray(R.array.countries);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, countries);
 
         country.setAdapter(adapter);
         if (countryName != null)
             country.setText(countryName);
 
-
-        // ViewModel
+        // view model
         insertMemoryViewModel = new InsertMemoryViewModel();
 
-        // aspetta il via per l'azione successiva
+        // si attiva al termine dell'operazione di creazione Memory
         insertMemoryViewModel.getTaskResult().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -109,7 +110,6 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
                         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                         setResult(1);
                         finish();
-                        //TODO: far funzionare la finish
                     }
                     else {
                         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
@@ -120,9 +120,9 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     }
 
 
+    // creazione dei pulsanti sulla Toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.insert_memory_menu, menu);
         shareBtn = menu.findItem(R.id.share);
         shareBtn.setEnabled(false);
@@ -130,14 +130,37 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     }
 
 
+    // gestione dei click sulla toolbar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // pulsante Share
+        if (item.getItemId() == R.id.share) {
+            progressBar.setVisibility(View.VISIBLE);
+            insertMemoryViewModel.insertMemory(resultCode, uri,
+                    country.getText().toString(),
+                    city.getText().toString(),
+                    description.getText().toString(),
+                    date.getText().toString(),
+                    username
+            );
+        }
+        return true;
+    }
+
+
+    // gestione dei click sulla view
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+
+            // caricamento immagine da galleria
             case R.id.memoryImage:
                 Intent intent = new Intent(Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 0);
                 break;
+
+            // inserimento data
             case R.id.date:
                 Log.e("PROVA","prova");
                 DialogFragment newFragment = new DatePickerFragment();
@@ -147,28 +170,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.share:
-                progressBar.setVisibility(View.VISIBLE);
-                insertMemoryViewModel.insertMemory(resultCode, uri,
-                        country.getText().toString(),
-                        city.getText().toString(),
-                        description.getText().toString(),
-                        date.getText().toString(),
-                        username
-                );
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
+    // si attiva al termine della selezione immagine da galleria
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -176,6 +178,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         if(data != null){
             shareBtn.setEnabled(true);
             this.uri = data.getData();
+
             // immagine
             Glide.with(getApplicationContext())
                     .load(this.uri)
@@ -185,6 +188,6 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         }
 
         this.resultCode = resultCode;
-
     }
+
 }

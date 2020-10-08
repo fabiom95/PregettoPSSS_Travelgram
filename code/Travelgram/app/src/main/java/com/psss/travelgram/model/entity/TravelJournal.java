@@ -19,12 +19,8 @@ public class TravelJournal extends Observable{
 
 
     // set e get
-    public void setMemories(ArrayList<Memory> memories){
-        this.memories = memories;
-    }
-    public ArrayList<Memory> getMemories(){
-        return memories;
-    }
+    public void setMemories(ArrayList<Memory> memories) { this.memories = memories; }
+    public ArrayList<Memory> getMemories() { return memories; }
 
 
     // caricamento di più Memory da Firestore
@@ -32,10 +28,12 @@ public class TravelJournal extends Observable{
         memoryRepo.loadMemories(this);
     }
 
+
     // caricamento di più Memory da Firestore (dato un paese)
     public void loadMemories(String countryName){
         memoryRepo.loadMemories(this, countryName);
     }
+
 
     // caricamento di più Memory da Firestore (dato un paese, data una lista utenti)
     public void loadMemories(String countryName, ArrayList<String> userIDs){
@@ -79,6 +77,5 @@ public class TravelJournal extends Observable{
             usernames.add(memory.getTravelerUsername());
         return usernames;
     }
-
 
 }

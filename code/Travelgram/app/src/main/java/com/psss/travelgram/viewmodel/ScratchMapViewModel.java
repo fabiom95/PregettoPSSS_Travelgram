@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+
 public class ScratchMapViewModel extends ViewModel implements Observer{
 
     private Traveler traveler;
@@ -17,38 +18,32 @@ public class ScratchMapViewModel extends ViewModel implements Observer{
     private MutableLiveData<ArrayList<String>> wishedCountries;
 
 
+    // costruttore
     public ScratchMapViewModel(){
         visitedCountries = new MutableLiveData<>();
-        wishedCountries = new MutableLiveData<>();
+        wishedCountries  = new MutableLiveData<>();
+
         firstTime = new MutableLiveData<>();
         firstTime.setValue(true);
+
         traveler = new Traveler();
         traveler.loadTraveler();
         traveler.addObserver(this);
     }
 
-    public MutableLiveData<Boolean> getFirstTime() {
-        return firstTime;
-    }
-    public MutableLiveData<ArrayList<String>> getVisitedCountries() {
-        return visitedCountries;
-    }
-    public MutableLiveData<ArrayList<String>> getWishedCountries() {
-        return wishedCountries;
-    }
 
-    public void setFirstTime() {
-        this.firstTime.setValue(false);
-    }
-    public void setVisitedCountries() {
-        this.visitedCountries.setValue(traveler.getVisitedCountries());
-    }
-    public void setWishedCountries() {
-        this.wishedCountries.setValue(traveler.getWishedCountries());
-    }
+    // set e get
+    public void setFirstTime() { this.firstTime.setValue(false); }
+    public void setVisitedCountries() { this.visitedCountries.setValue(traveler.getVisitedCountries()); }
+    public void setWishedCountries() { this.wishedCountries.setValue(traveler.getWishedCountries()); }
+
+    public MutableLiveData<Boolean> getFirstTime() { return firstTime; }
+    public MutableLiveData<ArrayList<String>> getVisitedCountries() { return visitedCountries; }
+    public MutableLiveData<ArrayList<String>> getWishedCountries() { return wishedCountries; }
 
 
-    // l'update è chiamata quando traveler ha finito di caricare i dati dal database
+
+    // ricezione notifica dal Subject (il Traveler)
     @Override
     public void update(Observable o, Object arg) {
         setVisitedCountries();

@@ -16,13 +16,15 @@ import com.psss.travelgram.R;
 import com.psss.travelgram.view.adapter.MemoryAdapter;
 import com.psss.travelgram.viewmodel.JournalViewModel;
 
+
 public class JournalFragment extends Fragment {
 
     private RecyclerView recyclerView;
-
     private JournalViewModel journalViewModel;
 
 
+    // Android Best Practice: usare uno Static Factory Method al posto
+    // del costruttore per passare argomenti al nuovo Fragment
     public static JournalFragment newInstance(String countryName, Boolean following) {
         JournalFragment fragment = new JournalFragment();
         Bundle bundle = new Bundle();
@@ -33,16 +35,14 @@ public class JournalFragment extends Fragment {
     }
 
 
+    // creazione della view
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        //dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_journal, container, false);
 
-        recyclerView = (RecyclerView) root.findViewById(R.id.memory_recycler);
+        recyclerView = root.findViewById(R.id.memory_recycler);
         recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // view model
@@ -50,7 +50,7 @@ public class JournalFragment extends Fragment {
                 getArguments().getString("countryName"),
                 getArguments().getBoolean("following"));
 
-        // aspetta il via per l'azione successiva
+        // si attiva quando è pronto il MemoryAdapter
         journalViewModel.getAdapter().observe(getViewLifecycleOwner(), new Observer<MemoryAdapter>() {
             @Override
             public void onChanged(@Nullable MemoryAdapter adapter) {
@@ -60,6 +60,5 @@ public class JournalFragment extends Fragment {
 
         return root;
     }
-
 
 }

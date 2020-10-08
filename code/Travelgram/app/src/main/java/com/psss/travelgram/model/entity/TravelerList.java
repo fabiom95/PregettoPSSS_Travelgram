@@ -20,12 +20,8 @@ public class TravelerList extends Observable {
 
 
     // set e get
-    public void setTravelers(ArrayList<Traveler> travelers){
-        this.travelers = travelers;
-    }
-    public ArrayList<Traveler> getTravelers(){
-        return travelers;
-    }
+    public void setTravelers(ArrayList<Traveler> travelers) { this.travelers = travelers; }
+    public ArrayList<Traveler> getTravelers() { return travelers; }
 
 
     // ricerca di un traveler
@@ -49,10 +45,5 @@ public class TravelerList extends Observable {
             usernames.add(traveler.getUsername());
         return usernames;
     }
-
-
-
-
-
 
 }

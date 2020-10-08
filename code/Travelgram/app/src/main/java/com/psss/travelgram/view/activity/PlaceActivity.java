@@ -27,12 +27,14 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
     private PlaceViewModel placeViewModel;
     private SectionsPagerAdapter sectionsPagerAdapter;
 
+
+    // create view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place);
 
-        // riceve il nome del paese
+        // parametri passati dallo ScratchMapFragment
         intent = getIntent();
         countryName = intent.getStringExtra("countryName");
 
@@ -58,76 +60,13 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
             }
         });
 
-        // bottone aggiungi memory
+        // pulsante aggiungi memory
         FloatingActionButton addMemoryBtn = findViewById(R.id.addMemoryBtn);
         addMemoryBtn.setOnClickListener(this);
     }
 
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.addMemoryBtn:
-                Intent intent = new Intent(getApplicationContext(), InsertMemoryActivity.class);
-                intent.putExtra("countryName", countryName);
-                intent.putExtra("username", placeViewModel.getUsername());
-                startActivityForResult(intent,0);
-                break;
-
-            default:
-                break;
-        }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == 1)
-            finish();
-    }
-
-
-    // per i bottoni della toolbar
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.visited:
-                item.setChecked(!item.isChecked());
-
-                if(item.isChecked()){
-                    item.setIcon(R.drawable.place_visited_checked);
-                    placeViewModel.addVisitedCountry();
-                }
-                else{
-                    item.setIcon(R.drawable.place_visited);
-                    placeViewModel.removeVisitedCountry();
-                }
-                return true;
-
-            case R.id.wish:
-                item.setChecked(!item.isChecked());
-
-                if(item.isChecked()){
-                    item.setIcon(R.drawable.place_wish_checked);
-                    placeViewModel.addWishedCountry();
-                }
-                else{
-                    item.setIcon(R.drawable.place_wish);
-                    placeViewModel.removeWishedCountry();
-                }
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
+    // creazione dei pulsanti sulla Toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -143,6 +82,71 @@ public class PlaceActivity extends AppCompatActivity implements OnClickListener 
         wish.setIcon(wish.isChecked() ? R.drawable.place_wish_checked : R.drawable.place_wish);
 
         return true;
+    }
+
+
+    // gestione dei click sulla view
+    @Override
+    public void onClick(View view) {
+        // pulsante aggiungi memory
+        if (view.getId() == R.id.addMemoryBtn) {
+            Intent intent = new Intent(getApplicationContext(), InsertMemoryActivity.class);
+            intent.putExtra("countryName", countryName);
+            intent.putExtra("username", placeViewModel.getUsername());
+            startActivityForResult(intent, 0);
+        }
+    }
+
+
+    // si attiva quando termina l'operazione di creazione memory (per chiudere la schermata)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 1)
+            finish();
+    }
+
+
+    // gestione dei click sulla Toolbar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            // pulsante visited
+            case R.id.visited:
+                item.setChecked(!item.isChecked());
+
+                if(item.isChecked()){
+                    item.setIcon(R.drawable.place_visited_checked);
+                    placeViewModel.addVisitedCountry();
+                }
+                else{
+                    item.setIcon(R.drawable.place_visited);
+                    placeViewModel.removeVisitedCountry();
+                }
+                return true;
+
+
+            // pulsante wish
+            case R.id.wish:
+                item.setChecked(!item.isChecked());
+
+                if(item.isChecked()){
+                    item.setIcon(R.drawable.place_wish_checked);
+                    placeViewModel.addWishedCountry();
+                }
+                else{
+                    item.setIcon(R.drawable.place_wish);
+                    placeViewModel.removeWishedCountry();
+                }
+                return true;
+
+
+            // azione non riconosciuta
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

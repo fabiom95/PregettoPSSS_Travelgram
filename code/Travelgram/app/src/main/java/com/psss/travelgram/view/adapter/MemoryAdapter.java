@@ -16,8 +16,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.psss.travelgram.R;
 import com.psss.travelgram.view.activity.MemoryInfoActivity;
-import com.psss.travelgram.view.activity.PlaceActivity;
-import com.psss.travelgram.view.activity.SignUpActivity;
 
 import java.util.ArrayList;
 
@@ -29,12 +27,14 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
     private ArrayList<String> memoryIDs;
     private Context context;
 
-    // ---- classe innestata
+
+    // ---------- classe innestata ----------
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
         public TextView username;
         public TextView country;
 
+        // costruttore
         public MyViewHolder(View v) {
             super(v);
             image = v.findViewById(R.id.image);
@@ -45,10 +45,10 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
             country.setVisibility(View.GONE);
         }
     }
-    // ---- fine classe innestata
+    // ---------- fine classe innestata ----------
 
 
-    // Costruttore
+    // costruttore
     public MemoryAdapter(
             ArrayList<String> memoryIDs,
             ArrayList<String> imageLinks,
@@ -56,14 +56,14 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
             ArrayList<String> countries,
             Context context) {
         this.imageLinks = imageLinks;
-        this.memoryIDs = memoryIDs;
-        this.usernames = usernames;
-        this.countries = countries;
-        this.context = context;
+        this.memoryIDs  = memoryIDs;
+        this.usernames  = usernames;
+        this.countries  = countries;
+        this.context    = context;
     }
 
 
-    // Create new views (invoked by the layout manager)
+    // creazione delle views
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -71,7 +71,8 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
         return new MyViewHolder(v);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+
+    // Riempimento di una singola view
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
@@ -94,6 +95,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.MyViewHold
                 .thumbnail(0.2f)                                // thumbnail per il caricamento
                 .into(holder.image);
 
+        // il click sulla view apre le info della Memory
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
