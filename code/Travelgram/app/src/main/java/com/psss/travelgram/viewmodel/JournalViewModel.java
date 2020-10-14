@@ -56,8 +56,8 @@ public class JournalViewModel extends ViewModel implements Observer {
 
         // quando è pronto il currentUser:
         if(arg.toString().equals("loaded")){
-            ArrayList<String> following = currentUser.getFollowing();
-            TJ.loadMemories(countryName, following);    // carica tutte le memory di quelli che seguo (following)
+            ArrayList<String> followingIDs = currentUser.getFollowing();
+            TJ.loadMemories(countryName, followingIDs);    // carica tutte le memory di quelli che seguo (following)
         }
 
         else if(arg.toString().equals("TJ ready")) {
