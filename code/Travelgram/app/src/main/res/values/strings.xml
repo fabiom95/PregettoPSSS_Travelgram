@@ -5,6 +5,7 @@
     <string name="title_scratchmap">Map</string>
     <string name="title_journal">Journal</string>
     <string name="title_search">Search</string>
+    <string name="title_add_memory">New Memory</string>
 
     <!-- Place Activity -->
     <string name="MyMemories">My Memories</string>

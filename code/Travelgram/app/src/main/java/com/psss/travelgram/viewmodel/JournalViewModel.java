@@ -19,11 +19,11 @@ public class JournalViewModel extends ViewModel implements Observer {
     private TravelJournal TJ;
     private Context context;
     private String countryName;
-    private Boolean following;      // indica se siamo nel tab "Friends Memories" o "My Memories"
+    private boolean following;      // indica se siamo nel tab "Friends Memories" o "My Memories"
 
 
     // costruttore
-    public JournalViewModel(Context context, String countryName, Boolean following) {
+    public JournalViewModel(Context context, String countryName, boolean following) {
         jAdapter = new MutableLiveData<>();
         this.context = context;
         this.countryName = countryName;

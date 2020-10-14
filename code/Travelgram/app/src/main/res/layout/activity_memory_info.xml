@@ -74,8 +74,7 @@
                     android:layout_margin="5dp"
                     android:clickable="true"
                     android:background="@drawable/btn_style2"
-                    app:tint="#888888"
-                    android:visibility="gone"
+                    app:tint="#ffffff"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_delete_24" />

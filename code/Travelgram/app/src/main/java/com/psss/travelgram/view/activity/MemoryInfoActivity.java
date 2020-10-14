@@ -30,7 +30,7 @@ public class MemoryInfoActivity extends AppCompatActivity implements View.OnClic
         // parametri passati dal MemoryAdapter
         Intent intent = getIntent();
         String memID = intent.getStringExtra("memID");
-        final Boolean isMine = intent.getBooleanExtra("isMine",false);
+        final boolean isMine = intent.getBooleanExtra("isMine",false);
 
 
         final ImageView image       = findViewById(R.id.image);
@@ -60,7 +60,7 @@ public class MemoryInfoActivity extends AppCompatActivity implements View.OnClic
 
                         if(!isMine) {
                             user.setText(memoryInfoViewModel.getTravelerUsername());
-                            deleteBtn.setVisibility(View.VISIBLE);
+                            deleteBtn.setVisibility(View.GONE);
                             findViewById(R.id.username_layout).setVisibility(View.VISIBLE);
                             findViewById(R.id.username_line).setVisibility(View.VISIBLE);
                         }

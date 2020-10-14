@@ -25,7 +25,7 @@ public class JournalFragment extends Fragment {
 
     // Android Best Practice: usare uno Static Factory Method al posto
     // del costruttore per passare argomenti al nuovo Fragment
-    public static JournalFragment newInstance(String countryName, Boolean following) {
+    public static JournalFragment newInstance(String countryName, boolean following) {
         JournalFragment fragment = new JournalFragment();
         Bundle bundle = new Bundle();
         bundle.putString("countryName", countryName);
