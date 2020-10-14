@@ -46,7 +46,7 @@ public class JournalViewModel extends ViewModel implements Observer {
 
     // set e get
     public void setJAdapter(MemoryAdapter jAdapter) { this.jAdapter.setValue(jAdapter); }
-    public MutableLiveData<MemoryAdapter> getAdapter() { return jAdapter; }
+    public MutableLiveData<MemoryAdapter> getJApadter() { return jAdapter; }
 
 
 

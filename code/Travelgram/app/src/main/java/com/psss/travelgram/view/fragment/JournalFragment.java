@@ -51,7 +51,7 @@ public class JournalFragment extends Fragment {
                 getArguments().getBoolean("following"));
 
         // si attiva quando è pronto il MemoryAdapter
-        journalViewModel.getAdapter().observe(getViewLifecycleOwner(), new Observer<MemoryAdapter>() {
+        journalViewModel.getJApadter().observe(getViewLifecycleOwner(), new Observer<MemoryAdapter>() {
             @Override
             public void onChanged(@Nullable MemoryAdapter adapter) {
                 recyclerView.setAdapter(adapter);
