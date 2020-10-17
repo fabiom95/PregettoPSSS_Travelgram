@@ -9,12 +9,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.maps.android.data.Layer.OnFeatureClickListener;
 import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle;
+import com.psss.travelgram.view.activity.InsertMemoryActivity;
 import com.psss.travelgram.view.activity.PlaceActivity;
 import com.psss.travelgram.viewmodel.ScratchMapViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,7 +37,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, OnFeatureClickListener {
+public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, OnFeatureClickListener, OnClickListener {
 
     private GeoJsonLayer layer;
     private ArrayList<String> visitedCountries;
@@ -68,6 +71,10 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
         scratchMapViewModel = new ScratchMapViewModel();
         visitedCountries = new ArrayList<String>();
         wishedCountries = new ArrayList<String>();
+
+        // pulsante aggiungi memory
+        FloatingActionButton addMemoryBtn = view.findViewById(R.id.addMemoryBtn);
+        addMemoryBtn.setOnClickListener(this);
     }
 
 
@@ -190,6 +197,18 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
                     feature.setPolygonStyle(baseStyle);
                 return; // una volta trovato lo stato ci fermiamo
             }
+        }
+    }
+
+
+    // gestione dei click sulla view
+    @Override
+    public void onClick(View view) {
+        // pulsante aggiungi memory
+        if (view.getId() == R.id.addMemoryBtn) {
+            Intent intent = new Intent(getActivity(), InsertMemoryActivity.class);
+            intent.putExtra("username", scratchMapViewModel.getUsername());
+            startActivityForResult(intent, 0);
         }
     }
 

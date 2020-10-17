@@ -41,6 +41,10 @@ public class ScratchMapViewModel extends ViewModel implements Observer{
     public MutableLiveData<ArrayList<String>> getVisitedCountries() { return visitedCountries; }
     public MutableLiveData<ArrayList<String>> getWishedCountries() { return wishedCountries; }
 
+    public String getUsername(){
+        return traveler.getUsername();
+    }
+
 
 
     // ricezione notifica dal Subject (il Traveler)

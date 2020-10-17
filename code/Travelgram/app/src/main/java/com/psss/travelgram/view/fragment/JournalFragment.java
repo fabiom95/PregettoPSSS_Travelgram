@@ -25,7 +25,7 @@ public class JournalFragment extends Fragment {
 
     // Android Best Practice: usare uno Static Factory Method al posto
     // del costruttore per passare argomenti al nuovo Fragment
-    public static JournalFragment newInstance(String countryName, Boolean following) {
+    public static JournalFragment newInstance(String countryName, boolean following) {
         JournalFragment fragment = new JournalFragment();
         Bundle bundle = new Bundle();
         bundle.putString("countryName", countryName);
@@ -51,7 +51,7 @@ public class JournalFragment extends Fragment {
                 getArguments().getBoolean("following"));
 
         // si attiva quando è pronto il MemoryAdapter
-        journalViewModel.getAdapter().observe(getViewLifecycleOwner(), new Observer<MemoryAdapter>() {
+        journalViewModel.getJApadter().observe(getViewLifecycleOwner(), new Observer<MemoryAdapter>() {
             @Override
             public void onChanged(@Nullable MemoryAdapter adapter) {
                 recyclerView.setAdapter(adapter);

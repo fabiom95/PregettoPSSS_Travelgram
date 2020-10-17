@@ -19,11 +19,11 @@ public class JournalViewModel extends ViewModel implements Observer {
     private TravelJournal TJ;
     private Context context;
     private String countryName;
-    private Boolean following;      // indica se siamo nel tab "Friends Memories" o "My Memories"
+    private boolean following;      // indica se siamo nel tab "Friends Memories" o "My Memories"
 
 
     // costruttore
-    public JournalViewModel(Context context, String countryName, Boolean following) {
+    public JournalViewModel(Context context, String countryName, boolean following) {
         jAdapter = new MutableLiveData<>();
         this.context = context;
         this.countryName = countryName;
@@ -46,7 +46,7 @@ public class JournalViewModel extends ViewModel implements Observer {
 
     // set e get
     public void setJAdapter(MemoryAdapter jAdapter) { this.jAdapter.setValue(jAdapter); }
-    public MutableLiveData<MemoryAdapter> getAdapter() { return jAdapter; }
+    public MutableLiveData<MemoryAdapter> getJApadter() { return jAdapter; }
 
 
 
@@ -56,8 +56,8 @@ public class JournalViewModel extends ViewModel implements Observer {
 
         // quando è pronto il currentUser:
         if(arg.toString().equals("loaded")){
-            ArrayList<String> following = currentUser.getFollowing();
-            TJ.loadMemories(countryName, following);    // carica tutte le memory di quelli che seguo (following)
+            ArrayList<String> followingIDs = currentUser.getFollowing();
+            TJ.loadMemories(countryName, followingIDs);    // carica tutte le memory di quelli che seguo (following)
         }
 
         else if(arg.toString().equals("TJ ready")) {

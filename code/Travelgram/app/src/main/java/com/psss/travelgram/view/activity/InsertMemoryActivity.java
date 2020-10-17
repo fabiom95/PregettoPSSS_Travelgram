@@ -91,6 +91,7 @@ public class InsertMemoryActivity extends AppCompatActivity implements OnClickLi
         city = findViewById(R.id.select_city);
         description = findViewById(R.id.description);
 
+        // inserimento dell'array "countries" (arrays.xml) nel campo country
         String[] countries = getResources().getStringArray(R.array.countries);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, countries);
 
