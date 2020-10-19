@@ -34,8 +34,8 @@ public class JournalViewModel extends ViewModel implements Observer {
 
         if(following) {
             currentUser = new Traveler();
-            currentUser.loadTraveler();
             currentUser.addObserver(this);
+            currentUser.loadTraveler();
         }
         else if(countryName != null)
             TJ.loadMemories(countryName);   // carica le mie memory di un luogo
