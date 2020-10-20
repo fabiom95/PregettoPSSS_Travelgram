@@ -31,7 +31,7 @@ Look at your friends' experiences too:
 5. [Optional] Add a textual description of the memory. 
 6. Click on “Share”.
 
-![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserimentoMemory.png)
+![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserisciMemory.png)
 
 
 
@@ -64,7 +64,7 @@ Osserva le esperienze di altri travelers:
 5. [Opzionale] Aggiungi una descrizione testuale del ricordo.
 6. Clicca su “Share”.
 
-![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserimentoMemory.png)
+![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserisciMemory.png)
 
 
 
