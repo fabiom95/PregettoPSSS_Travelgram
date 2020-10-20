@@ -208,7 +208,7 @@ public class ScratchMapFragment extends Fragment implements OnMapReadyCallback, 
         if (view.getId() == R.id.addMemoryBtn) {
             Intent intent = new Intent(getActivity(), InsertMemoryActivity.class);
             intent.putExtra("username", scratchMapViewModel.getUsername());
-            startActivityForResult(intent, 0);
+            startActivity(intent);
         }
     }
 
