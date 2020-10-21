@@ -16,7 +16,7 @@ Look at your friends' experiences too:
 - follow who you know and/or who you consider interesting, view their memories and reviews.
 - manage your friendlist, login with facebook and follow automatically your facebook friends.
 
-![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/Immagine1_interfaccia.png)
+![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/Immagine_interfaccia.png)
 
 
 
@@ -31,7 +31,7 @@ Look at your friends' experiences too:
 5. [Optional] Add a textual description of the memory. 
 6. Click on “Share”.
 
-![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserimentoMemory.png)
+![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserisciMemory.png)
 
 
 
@@ -49,7 +49,7 @@ Osserva le esperienze di altri travelers:
 - segui i tuoi amici o persone che reputi interessanti, visualizza le loro Memories e recensioni.
 - gestisci la tua lista amici e segui automaticamente gli amici di facebook registrandoti all'app tramite il profilo facebook.
 
-![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/Immagine1_interfaccia.png)
+![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/Immagine_interfaccia.png)
 
 
 
@@ -64,7 +64,7 @@ Osserva le esperienze di altri travelers:
 5. [Opzionale] Aggiungi una descrizione testuale del ricordo.
 6. Clicca su “Share”.
 
-![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserimentoMemory.png)
+![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserisciMemory.png)
 
 
 
