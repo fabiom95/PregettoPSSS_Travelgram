@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2f539c</color>
+    <color name="colorPrimaryDark">#9ecdff</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="whiteTransparent">#aaffffff</color>
+
+    <!-- mappa -->
+    <color name="base">#DDF1F1E0</color>
+    <color name="baseDark">#5e5e51</color>
+    <color name="visited">#DDAEE279</color>
+    <color name="visitedDark">#3b5c1a</color>
+    <color name="wish">#DDFBF089</color>
+    <color name="wishDark">#635419</color>
+</resources>
