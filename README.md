@@ -1,10 +1,16 @@
 # Progetto PSSS: Travelgram
 
-> credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;  this is an Italian team, so the ReadMe is built in 2 section: 
+> credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;  this is an Italian team, so the ReadMe is built in two English sections and the Italian Introduction as well: 
 > 1. English summary
-> 2. Italian summary
+> 2. Repository organization
+> 3. Italian summary
+
+<br />
+<br />
+<br />
 
 
+## ENGLISH
 
 ### Introduction:
 
@@ -34,8 +40,51 @@ Look at your friends' experiences too:
 ![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserisciMemory.png)
 
 
+<br />
+<br />
 
 
+### Repository Organization:
+
+This section is widely descripted in the documentation, but is reported in the readme too in order to simplify the navigation in the repository.
+The structure of the repository is:
+
+.<br />
+├── **apk_documentation** : contains the APK, documentation in pdf format, readme to guide the new users<br />
+├── code/Travelgram<br /> 
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── .idea<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app**<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   └── gradle/wrapper<br />
+├── images : contains the pictures used for this readme<br />
+├── README.md<br />
+└── travelgram.vpp : is the Visual Paradigm file that contains UML diagrams<br />
+
+
+Taking a look on the specific "app" section:
+
+app<br />
+└── src<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ├── androidTest/java/com/psss/travelgram : contains test cases<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ├── debug/res/values<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ├── **main**<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ├── release/res/values<br />
+&nbsp; &nbsp; &nbsp; &nbsp; └── test/java/com/psss/travelgram<br />
+
+
+The main secontion contains:
+
+main<br />
+├── java/com/psss/travelgram<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── **model** : contains all the classes that implement entities and classes for communicate with server<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── **view** : contains classes necessary for the GUI<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └── **viewmodel** : contains classes necessary to link model and view<br />
+├── res : contains icons (folders "drawable" and "mipmap", folders as layout and menu (xml files) <br />
+└── AndroidManifest.xml : contains important informations as package name and versions<br />
+
+     
+<br />
+<br />
+<br />
 
 ## ITALIAN
 
@@ -66,8 +115,3 @@ Osserva le esperienze di altri travelers:
 
 ![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserisciMemory.png)
 
-
-
-
-> Per completare questo readme vedi questo link:
-> https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
