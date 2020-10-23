@@ -43,14 +43,23 @@ This section is widely descripted in the documentation, but is reported in the r
 The structure of the repository is:
 
 .
+
 ├── code
+
 │   ├── .idea : contains
+
 │   ├── app   : contains
+
 │   └── gradle/wrapper : contains
+
 |
+
 ├── images : contains the pictures used for this readme.
+
 ├── README.md
+
 └── travelgram.vpp : is
+
 
 Taking a look on the specific "app" section:
 
