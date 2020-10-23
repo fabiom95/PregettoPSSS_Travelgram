@@ -44,10 +44,9 @@ The structure of the repository is:
 
 .<br />
 ├── code<br />
-│&nbsp;     ├── .idea : contains<br />
-│&nbsp;     ├── app   : contains<br />
-│&nbsp;     └── gradle/wrapper : contains<br />
-|<br />
+│&nbsp; &nbsp; &nbsp;    ├── .idea : contains<br />
+│&nbsp; &nbsp; &nbsp;    ├── app   : contains<br />
+│&nbsp; &nbsp; &nbsp;    └── gradle/wrapper : contains<br />
 ├── images : contains the pictures used for this readme<br />
 ├── README.md<br />
 └── travelgram.vpp : is<br />
