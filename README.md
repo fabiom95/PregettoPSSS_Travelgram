@@ -44,9 +44,9 @@ The structure of the repository is:
 
 .<br />
 ├── code<br />
-│&nbsp; &nbsp; &nbsp;    ├── .idea : contains<br />
-│&nbsp; &nbsp; &nbsp;    ├── app   : contains<br />
-│&nbsp; &nbsp; &nbsp;    └── gradle/wrapper : contains<br />
+│&nbsp; &nbsp; &nbsp; &nbsp;   ├── .idea : contains<br />
+│&nbsp; &nbsp; &nbsp; &nbsp;   ├── app   : contains<br />
+│&nbsp; &nbsp; &nbsp; &nbsp;   └── gradle/wrapper : contains<br />
 ├── images : contains the pictures used for this readme<br />
 ├── README.md<br />
 └── travelgram.vpp : is<br />
@@ -54,28 +54,28 @@ The structure of the repository is:
 
 Taking a look on the specific "app" section:
 
-app
-└── src
-     ├── androidTest/java/com/psss/travelgram : contains
-     ├── debug/res/values : contains
-     ├── main : contains
-     ├── release/res/values : contains
-     └── test/java/com/psss/travelgram : contains
+app<br />
+└── src<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── androidTest/java/com/psss/travelgram : contains<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── debug/res/values : contains<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── main : contains<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── release/res/values : contains<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      └── test/java/com/psss/travelgram : contains<br />
 
 
 The main secontion contains:
 
-main
-├── java/com/psss/travelgram
-|                     ├── model : contains all the classes that implement entities and classes
-|                     |           that istantiate objects for the communication with server
-|                     |
-|                     ├── view : contains classes necessary for the GUI
-|                     |
-|                     └── viewmodel : contains classes necessary to link model and view
-|
-├── res : contains icons (folders "drawable" and "mipmap", folders as layout and menu (xml files) 
-└── AndroidManifest.xml : contains important informations as package name and versions
+main<br />
+├── java/com/psss/travelgram<br />
+|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── model : contains all the classes that implement entities and classes<br />
+|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|           that istantiate objects for the communication with server<br />
+|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
+|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;├── view : contains classes necessary for the GUI<br />
+|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
+|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;└── viewmodel : contains classes necessary to link model and view<br />
+| <br />
+├── res : contains icons (folders "drawable" and "mipmap", folders as layout and menu (xml files) <br />
+└── AndroidManifest.xml : contains important informations as package name and versions<br />
 
      
 
