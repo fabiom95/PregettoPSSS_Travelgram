@@ -58,7 +58,7 @@ The structure of the repository is:
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app/src/main/AndroidManifest.xml** : the app manifest<br />
 ├── images : contains the pictures used for this readme<br />
 ├── README.md<br />
-└── travelgram.vpp : is the Visual Paradigm file that contains UML diagrams<br />
+└── **travelgram.vpp** : is the Visual Paradigm file that contains UML diagrams<br />
 
      
 <br />
