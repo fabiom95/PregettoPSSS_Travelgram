@@ -36,6 +36,9 @@ Look at your friends' experiences too:
 ![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserisciMemory.png)
 
 
+<br />
+<br />
+
 
 ### Repository Organization:
 
@@ -74,6 +77,9 @@ main<br />
 └── AndroidManifest.xml : contains important informations as package name and versions<br />
 
      
+<br />
+<br />
+<br />
 
 ## ITALIAN
 
