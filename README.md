@@ -1,10 +1,12 @@
 # Progetto PSSS: Travelgram
 
-> credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;  this is an Italian team, so the ReadMe is built in 2 section: 
+> credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;  this is an Italian team, so the ReadMe is built in two English sections and the Italian Introduction as well: 
 > 1. English summary
-> 2. Italian summary
+> 2. Repository organization
+> 3. Italian summary
 
 
+## ENGLISH
 
 ### Introduction:
 
@@ -35,7 +37,47 @@ Look at your friends' experiences too:
 
 
 
+### Repository Organization:
 
+This section is widely descripted in the documentation, but is reported in the readme too in order to simplify the navigation in the repository.
+The structure of the repository is:
+
+.
+├── code
+│   ├── .idea : contains
+│   ├── app   : contains
+│   └── gradle/wrapper : contains
+|
+├── images : contains the pictures used for this readme.
+├── README.md
+└── travelgram.vpp : is
+
+Taking a look on the specific "app" section:
+
+app
+└── src
+     ├── androidTest/java/com/psss/travelgram : contains
+     ├── debug/res/values : contains
+     ├── main : contains
+     ├── release/res/values : contains
+     └── test/java/com/psss/travelgram : contains
+
+
+The main secontion contains:
+
+main
+├── java/com/psss/travelgram
+|                     ├── model : contains all the classes that implement entities and classes
+|                     |           that istantiate objects for the communication with server
+|                     |
+|                     ├── view : contains classes necessary for the GUI
+|                     |
+|                     └── viewmodel : contains classes necessary to link model and view
+|
+├── res : contains icons (folders "drawable" and "mipmap", folders as layout and menu (xml files) 
+└── AndroidManifest.xml : contains important informations as package name and versions
+
+     
 
 ## ITALIAN
 
@@ -66,8 +108,3 @@ Osserva le esperienze di altri travelers:
 
 ![alt text](https://github.com/fabiom95/ProgettoPSSS_Travelgram/blob/master/images/UseCase_InserisciMemory.png)
 
-
-
-
-> Per completare questo readme vedi questo link:
-> https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
