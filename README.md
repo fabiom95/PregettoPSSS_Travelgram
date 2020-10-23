@@ -51,6 +51,7 @@ The structure of the repository is:
 
 .<br />
 ├── code<br />
+│&nbsp; &nbsp; &nbsp; &nbsp;   ├── **apk_documentation** : contains the APK, documentation in pdf format, readme to guide the new users<br />
 │&nbsp; &nbsp; &nbsp; &nbsp;   ├── .idea<br />
 │&nbsp; &nbsp; &nbsp; &nbsp;   ├── **app**<br />
 │&nbsp; &nbsp; &nbsp; &nbsp;   └── gradle/wrapper<br />
