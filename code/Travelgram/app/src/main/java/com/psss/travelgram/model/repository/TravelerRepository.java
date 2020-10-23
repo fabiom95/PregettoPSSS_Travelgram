@@ -91,9 +91,10 @@ public class TravelerRepository {
     // ricerca del traveler (per il SearchViewModel)
     public void searchTravelers(final TravelerList TL, String s){
 
-        if(s.length() == 0)
+        if(s.length() == 0) {
             TL.setTravelers(new ArrayList<Traveler>());
-        else{
+            TL.callback("TL ready");
+        } else {
             db.collection("Travelers")
                     .orderBy("username")
                     .startAt(s)
