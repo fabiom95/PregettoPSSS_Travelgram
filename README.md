@@ -52,7 +52,7 @@ The structure of the repository is:
 .<br />
 ├── code<br />
 │&nbsp; &nbsp; &nbsp; &nbsp;   ├── .idea<br />
-│&nbsp; &nbsp; &nbsp; &nbsp;   ├── #####app<br />
+│&nbsp; &nbsp; &nbsp; &nbsp;   ├── **app**<br />
 │&nbsp; &nbsp; &nbsp; &nbsp;   └── gradle/wrapper<br />
 ├── images : contains the pictures used for this readme<br />
 ├── README.md<br />
@@ -65,7 +65,7 @@ app<br />
 └── src<br />
 &nbsp; &nbsp; &nbsp; &nbsp;      ├── androidTest/java/com/psss/travelgram<br />
 &nbsp; &nbsp; &nbsp; &nbsp;      ├── debug/res/values<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── #####main<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── **main**<br />
 &nbsp; &nbsp; &nbsp; &nbsp;      ├── release/res/values<br />
 &nbsp; &nbsp; &nbsp; &nbsp;      └── test/java/com/psss/travelgram<br />
 
@@ -74,9 +74,9 @@ The main secontion contains:
 
 main<br />
 ├── java/com/psss/travelgram<br />
-│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── model : contains all the classes that implement entities and classes for communicate with server<br />
-│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── view : contains classes necessary for the GUI<br />
-│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └── viewmodel : contains classes necessary to link model and view<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── **model** : contains all the classes that implement entities and classes for communicate with server<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── **view** : contains classes necessary for the GUI<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └── **viewmodel** : contains classes necessary to link model and view<br />
 ├── res : contains icons (folders "drawable" and "mipmap", folders as layout and menu (xml files) <br />
 └── AndroidManifest.xml : contains important informations as package name and versions<br />
 
