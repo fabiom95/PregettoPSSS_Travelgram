@@ -55,7 +55,7 @@ The structure of the repository is:
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app/src/main/java/com/psss/travelgram** : contains the packages with the java classes<br />
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app/src/androidTest/java/com/psss/travelgram** : contains the test cases<br />
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app/src/main/res** : contains the resources<br />
-│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app/src/main/AndroidManifest.xml** : the app manifest<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   └── **app/src/main/AndroidManifest.xml** : the app manifest<br />
 ├── images : contains the pictures used for this readme<br />
 ├── README.md<br />
 └── **travelgram.vpp** : is the Visual Paradigm file that contains UML diagrams<br />
