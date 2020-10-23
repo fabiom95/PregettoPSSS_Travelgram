@@ -44,9 +44,9 @@ The structure of the repository is:
 
 .<br />
 ├── code<br />
-│   ├── .idea : contains<br />
-│   ├── app   : contains<br />
-│   └── gradle/wrapper : contains<br />
+│&nbsp;     ├── .idea : contains<br />
+│&nbsp;     ├── app   : contains<br />
+│&nbsp;     └── gradle/wrapper : contains<br />
 |<br />
 ├── images : contains the pictures used for this readme<br />
 ├── README.md<br />
