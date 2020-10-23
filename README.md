@@ -51,10 +51,10 @@ The structure of the repository is:
 
 .<br />
 ├── **apk_documentation** : contains the APK, documentation in pdf format, readme to guide the new users<br />
-├── code<br /> 
-│&nbsp; &nbsp; &nbsp; &nbsp;   ├── .idea<br />
-│&nbsp; &nbsp; &nbsp; &nbsp;   ├── **app**<br />
-│&nbsp; &nbsp; &nbsp; &nbsp;   └── gradle/wrapper<br />
+├── code/Travelgram<br /> 
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── .idea<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app**<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   └── gradle/wrapper<br />
 ├── images : contains the pictures used for this readme<br />
 ├── README.md<br />
 └── travelgram.vpp : is the Visual Paradigm file that contains UML diagrams<br />
@@ -64,11 +64,11 @@ Taking a look on the specific "app" section:
 
 app<br />
 └── src<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── androidTest/java/com/psss/travelgram<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── debug/res/values<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── **main**<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── release/res/values<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      └── test/java/com/psss/travelgram<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ├── androidTest/java/com/psss/travelgram : contains test cases<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ├── debug/res/values<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ├── **main**<br />
+&nbsp; &nbsp; &nbsp; &nbsp; ├── release/res/values<br />
+&nbsp; &nbsp; &nbsp; &nbsp; └── test/java/com/psss/travelgram<br />
 
 
 The main secontion contains:
