@@ -50,15 +50,19 @@ This section is widely descripted in the documentation, but is reported in the r
 The structure of the repository is:
 
 .<br />
-├── **apk and documentation** : contains the APK, documentation in pdf format, readme to guide the new users<br />
+├── **apk and documentation** : contains the APK, documentation in pdf format, UML diagrams and a readme for the new users<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **README - video e consigli per il primo utilizzo.txt** : guide for the new user<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **Travelgram - Di Maio, Guillaro, Iodice, Maresca.pdf** : documentation<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **travelgram.apk** : APK<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   └── **travelgram.vpp** : is the Visual Paradigm file that contains UML diagrams<br />
 ├── **code/Travelgram** : contains the application code<br /> 
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app/src/main/java/com/psss/travelgram** : contains the packages with the java classes<br />
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app/src/androidTest/java/com/psss/travelgram** : contains the test cases<br />
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **app/src/main/res** : contains the resources<br />
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   └── **app/src/main/AndroidManifest.xml** : the app manifest<br />
 ├── images : contains the pictures used for this readme<br />
-├── README.md<br />
-└── **travelgram.vpp** : is the Visual Paradigm file that contains UML diagrams<br />
+└── README.md<br />
+
 
      
 <br />
