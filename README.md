@@ -5,6 +5,10 @@
 > 2. Repository organization
 > 3. Italian summary
 
+<br />
+<br />
+<br />
+
 
 ## ENGLISH
 
@@ -47,23 +51,23 @@ The structure of the repository is:
 
 .<br />
 ├── code<br />
-│&nbsp; &nbsp; &nbsp; &nbsp;   ├── .idea : contains<br />
-│&nbsp; &nbsp; &nbsp; &nbsp;   ├── app   : contains<br />
-│&nbsp; &nbsp; &nbsp; &nbsp;   └── gradle/wrapper : contains<br />
+│&nbsp; &nbsp; &nbsp; &nbsp;   ├── .idea<br />
+│&nbsp; &nbsp; &nbsp; &nbsp;   ├── #####app<br />
+│&nbsp; &nbsp; &nbsp; &nbsp;   └── gradle/wrapper<br />
 ├── images : contains the pictures used for this readme<br />
 ├── README.md<br />
-└── travelgram.vpp : is<br />
+└── travelgram.vpp : is the Visual Paradigm file that contains UML diagrams<br />
 
 
 Taking a look on the specific "app" section:
 
 app<br />
 └── src<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── androidTest/java/com/psss/travelgram : contains<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── debug/res/values : contains<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── main : contains<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      ├── release/res/values : contains<br />
-&nbsp; &nbsp; &nbsp; &nbsp;      └── test/java/com/psss/travelgram : contains<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── androidTest/java/com/psss/travelgram<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── debug/res/values<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── #####main<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      ├── release/res/values<br />
+&nbsp; &nbsp; &nbsp; &nbsp;      └── test/java/com/psss/travelgram<br />
 
 
 The main secontion contains:
