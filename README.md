@@ -42,23 +42,15 @@ Look at your friends' experiences too:
 This section is widely descripted in the documentation, but is reported in the readme too in order to simplify the navigation in the repository.
 The structure of the repository is:
 
-.
-
-├── code
-
-│   ├── .idea : contains
-
-│   ├── app   : contains
-
-│   └── gradle/wrapper : contains
-
-|
-
-├── images : contains the pictures used for this readme.
-
-├── README.md
-
-└── travelgram.vpp : is
+.<br />
+├── code<br />
+│   ├── .idea : contains<br />
+│   ├── app   : contains<br />
+│   └── gradle/wrapper : contains<br />
+|<br />
+├── images : contains the pictures used for this readme<br />
+├── README.md<br />
+└── travelgram.vpp : is<br />
 
 
 Taking a look on the specific "app" section:
