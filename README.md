@@ -51,6 +51,7 @@ The structure of the repository is:
 
 .<br />
 ├── **apk_and_documentation** : contains the APK, documentation, UML diagrams and a readme<br />
+│&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **Travelgram_Lyx** : LaTeX source for the .pdf documentation<br />
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **README-video_e_consigli_per_primo_utilizzo.txt** : guide for the new user<br />
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **Travelgram - Di Maio, Guillaro, Iodice, Maresca.pdf** : documentation<br />
 │&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   ├── **travelgram.apk** : APK<br />
