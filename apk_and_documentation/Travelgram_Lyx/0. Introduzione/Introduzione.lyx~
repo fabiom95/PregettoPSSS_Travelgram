@@ -21,12 +21,11 @@
 
 \fancyhead[RO,LE]{\bfseries \leftmark}
 \fancyfoot[LE,RO]{\thepage}
-\fancyfoot[LO,CE]{Elaborato PSSS: Travelgram}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \end_preamble
 \use_default_options true
-\master ../Tesina Travelgram- Di Maio, Guillaro, Iodice, Maresca.lyx
+\master ../Travelgram - Di Maio, Guillaro, Iodice, Maresca.lyx
 \maintain_unincluded_children false
 \language italian
 \language_package default
