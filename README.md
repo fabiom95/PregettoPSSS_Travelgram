@@ -1,6 +1,6 @@
 # Progetto PSSS: Travelgram
 
-> credits go to Fabio Maresca, Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice;  this is an Italian team, so the ReadMe is built in two English sections and the Italian Introduction as well: 
+> credits go to Pasquale Di Maio, Fabrizio Guillaro, Ivano Iodice, Fabio Maresca;  this is an Italian team, so the ReadMe is built in two English sections and the Italian Introduction as well: 
 > 1. English summary
 > 2. Repository organization
 > 3. Italian summary
