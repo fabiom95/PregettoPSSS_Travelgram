@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+// TravelerRepository incapsula la logica di accesso alla collection Travelers su Firestore
 
 public class TravelerRepository {
 

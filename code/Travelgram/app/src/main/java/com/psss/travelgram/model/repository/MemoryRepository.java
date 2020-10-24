@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+// MemoryRepository incapsula la logica di accesso alla collection Memories su Firestore
 
 public class MemoryRepository {
 

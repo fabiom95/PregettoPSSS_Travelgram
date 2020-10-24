@@ -7,6 +7,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.psss.travelgram.model.entity.Traveler;
 
+// AuthRepository incapsula la logica di accesso ai servizi di autenticazione di Firebase
 
 public class AuthRepository {
 
