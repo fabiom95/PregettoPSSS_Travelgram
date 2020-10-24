@@ -1,0 +1,180 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 7.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Necessità del testing semi-automatico
+\end_layout
+
+\begin_layout Standard
+Il testing è il processo di esecuzione di un codice con determinati parametri.
+ Il fine è quello di scovare dei malfunzionamenti ed in seguito risolverli
+ con il debugging; ma in realtà permette anche di dimostrare indirettamente
+ che il software rispetti specifiche e requisiti, e fornisce una stima della
+ sua affidabilità.
+ 
+\end_layout
+
+\begin_layout Standard
+È possibile eseguire un programma con parametri particolari tramite i 
+\emph on
+Test
+\emph default
+ 
+\emph on
+Cases
+\emph default
+.
+ Il problema è che, al crescere della complessità e della grandezza del
+ sistema, il numero dei casi di test aumenta e la loro derivazione manuale
+ può diventare lunga, ripetitiva e onerosa.
+ Per ovviare a questo problema ci sono varie alternative, in questo elaborato
+ approfondiremo una tecnica chiamata
+\emph on
+ "User Session Based Testing"
+\emph default
+ in quanto l'ambiente di sviluppo Android Studio mette a disposizione il
+ tool Record 
+\emph on
+Espresso
+\emph default
+ 
+\emph on
+Test
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Un testing basato su sessioni utente prevede l’interazione con l’applicazione
+ in esecuzione in maniera sistematica o casuale (in quest'ultimo caso si
+ parla di
+\emph on
+ "monkey testing"
+\emph default
+).
+ Questa tecnica è di tipo black box, si basa sull’analisi di input immessi
+ e output ottenuti interagendo con l'interfaccia dell'applicazione, senza
+ conoscere cosa ci sia effettivamente dietro la user interface.
+\end_layout
+
+\begin_layout Standard
+Le interazioni sono effettuate da utenti che possono approcciare in maniera
+ diversa in base all’esperienza e al loro ruolo: tester interni all’azienda
+ hanno il compito di condurre un’analisi sistematica dell’applicazione per
+ coprire più casi d’uso possibili, mentre utenti esterni potrebbero comportarsi
+ in maniera naturale e utilizzare solo una parte delle funzionalità dell’applica
+zione, non preoccupandosi delle altre più specifiche che non rientrano nei
+ loro interessi.
+\end_layout
+
+\begin_layout Standard
+Record Espresso Test opera in due fasi: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fase di Capture
+\series default
+: genera semi-automaticamente un caso di test memorizzando tutte le interazioni
+ che l'utente esegue sull'interfaccia dell'applicazione, in seguito crea
+ automaticamente codice eseguibile fedele alle interazioni registrare; 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fase di replay
+\series default
+: esegue il caso di test generato nella fase precedente, e riesegue le azioni
+ effettuate in fase di record nello stesso ordine con cui sono state registrate
+ (ma non con le stesse tempistiche).
+ Questa fase serve essenzialmente a verificare che il caso di test corrisponda
+ effettivamente alle azioni memorizzate.
+ 
+\end_layout
+
+\end_body
+\end_document

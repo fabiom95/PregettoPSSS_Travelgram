@@ -1,0 +1,339 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 1.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Tecniche e pratiche agili
+\end_layout
+
+\begin_layout Standard
+La scelta del modello di sviluppo da seguire è ricaduta sullo 
+\emph on
+Unified Process 
+\emph default
+(UP) Agile.
+ I motivi dietro questa scelta sono numerosi: 
+\end_layout
+
+\begin_layout Itemize
+Usa i principi di modellazione Agile per UML; 
+\end_layout
+
+\begin_layout Itemize
+È aperto all'uso di pratiche Agili; 
+\end_layout
+
+\begin_layout Itemize
+Prevede una serie di iterazioni time-boxed, con durata che varia dalle 2
+ alle 6 settimane, che garantiscono di avere sempre qualcosa di funzionante
+ anche nel caso in cui non si riesca a portare a termine l'intero progetto
+ entro una data di consegna predefinita;
+\end_layout
+
+\begin_layout Itemize
+Dà molta attenzione al testing; 
+\end_layout
+
+\begin_layout Itemize
+Prevede l'uso di VCS per mantenere sempre una versione funzionante del software
+ sulla Baseline; 
+\end_layout
+
+\begin_layout Itemize
+Il codice è pensato per il cambiamento ed è quindi flessibile e modificabile.
+ 
+\end_layout
+
+\begin_layout Standard
+Questo modello di sviluppo software prevede quattro fasi durante il processo
+ di sviluppo, sebbene non sia estremamente restrittivo né nella loro realizzazio
+ne, né nel numero di iterazioni da compiere in ogni fase:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fase di Ideazione
+\emph default
+: è la fase iniziale di fattibilità e visione
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fase di Elaborazione
+\emph default
+: sviluppo iterativo del nucleo del sistema, ovvero gli elementi principali
+ e con rischi maggiori
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fase di Costruzione
+\emph default
+: sviluppo iterativo degli elementi rimanenti, a rischio più basso
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fase di Transizione
+\emph default
+: beta test e rilascio
+\end_layout
+
+\begin_layout Standard
+Di queste quattro fasi, per motivi legati al tempo, ci siamo limitati a
+ completare la fase di Ideazione in una prima iterazione di due settimane
+ ed a portare a termine due iterazioni complete di Elaborazione in altre
+ due settimane ciascuna, per un periodo totale di sviluppo di sei settimane.
+ La versione dell'applicazione non è ancora pronta al rilascio, ma è vicina
+ all'essere la prima milestone da cui partire per programmare delle minor-releas
+e in fase di Costruzione.
+ Si mostra in tabella 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Fasi-di-UP"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ il dettaglio di cosa è stato realizzato nelle singole fasi: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="10cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ideazione
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+È stato realizzato il documento di visione che mette in luce gli obiettivi
+ e i requisiti generali del progetto.
+ Sono stati individuati i casi d'uso dell'applicazione che sono stati descritti
+ in formato breve.
+ Si è passato al dettagliamento di circa il 10-20% dei casi d'uso precedentement
+e individuati.
+ Sono state definite le specifiche supplementari.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Elaborazione 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+È stato realizzato un prototipo dell'applicazione da implementare.
+ Si è effettuata l'analisi testuale dei documenti realizzati finora.
+ Si sono realizzati i principali diagrammi di Analisi.
+ Si è iniziato ad implementare i casi d'uso principali.
+ Si sono creati i diagrammi dinamici e modificati di pari passo con l'implementa
+zione.
+ Si sono dettagliati altri casi d'uso per un totale di circa il 40%.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Elaborazione 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Analogamente alla prima iterazione sono stati implementati tutti i casi
+ d'uso principali che permettono all'applicazione di poter offrire le sue
+ funzionalità più importanti.
+ Sono stati raffinati e completati tutti i diagrammi.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Fasi-di-UP"
+
+\end_inset
+
+Fasi di UP realizzate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Altre Tecniche Agili 
+\end_layout
+
+\begin_layout Standard
+Altre pratiche Agili adoperate che hanno aiutato il team nel processo di
+ sviluppo sono: 
+\end_layout
+
+\begin_layout Itemize
+Utilizzo di una Task Board (SCRUM), offerta da Trello per tenere traccia
+ del lavoro svolto.
+ 
+\end_layout
+
+\begin_layout Itemize
+Daily Meeting (SCRUM), tramite Microsoft Teams, per far sì che il team si
+ aggiornasse continuamente riguardo al progresso del progetto.
+ 
+\end_layout
+
+\begin_layout Itemize
+Continous Integration (XP), integrazione giornaliera del codice effettuata
+ tramite il repository condiviso Git.
+ 
+\end_layout
+
+\begin_layout Itemize
+Refactoring (XP), pulizia del codice per migliorarne alcune caratteristiche
+ non funzionali senza modificarne il comportamento esterno.
+ 
+\end_layout
+
+\end_body
+\end_document

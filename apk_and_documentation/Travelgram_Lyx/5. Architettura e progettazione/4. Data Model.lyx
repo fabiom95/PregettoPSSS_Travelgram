@@ -1,0 +1,414 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 5.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Data Model
+\end_layout
+
+\begin_layout Subsection
+Firestore
+\end_layout
+
+\begin_layout Standard
+Il servizio 
+\series bold
+Cloud Firestore
+\series default
+ di Firebase mette a disposizione un database NoSQL di tipo documentale.
+ In questo tipo di database ogni elemento è un documento json e un insieme
+ di documenti prende il nome di collezione.
+ I concetti di documento e collezione sono simili a quelli di tupla e tabella
+ del mondo relazionale, con la differenza che un documento è semi-strutturato,
+ ovvero diversi documenti possono anche avere un insieme di campi differente.
+\end_layout
+
+\begin_layout Standard
+Per realizzare le funzionalità presentate nell'elaborato si è fatto uso
+ di due collezioni:
+\emph on
+ "Travelers"
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Collezione-Travelers"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) e 
+\emph on
+"Memories"
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Collezione-Memories"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/travelers.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Collezione-Travelers"
+
+\end_inset
+
+Collezione Travelers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/memories.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Collezione-Memories"
+
+\end_inset
+
+Collezione Memories
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si noti come nella collezione 
+\emph on
+"Memories"
+\emph default
+ si usa la 
+\series bold
+ridondanza
+\series default
+ dei dati, tipica dei database NoSQL.
+ In particolare, ogni Memory contiene anche alcuni dati relativi al Traveler
+ che l'ha pubblicata, poiché accade spesso che assieme alle informazioni
+ della Memory debbano essere mostrate anche questa porzione di informazioni
+ del Traveler.
+ Questo permette di ottenere tutte le informazioni che servono con un'unica
+ query, soluzione molto importante dal momento che il prezzo servizio di
+ Firestore è proporzionale al numero di letture (concetto approfondito nel
+ capitolo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Documentazione-dell'implementazi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subsection
+Authentication
+\end_layout
+
+\begin_layout Standard
+I dati relativi agli utenti autenticati sono gestiti da Firebase nella tabella
+ di figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Utenti-registrati"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Per motivi di sicurezza, Firebase non mostra le password nella tabella.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/authentication.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Utenti-registrati"
+
+\end_inset
+
+Utenti registrati
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cloud Storage
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cloud
+\series default
+ 
+\series bold
+Storage
+\series default
+ è il servizio usato per salvare le immagini degli utenti.
+ Si è scelto di creare una cartella diversa per ogni utente (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Cartelle-degli-utenti"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), ognuna contenente le immagini pubblicate da quell'utente (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Contenuto-della-cartella"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/storage 1.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Cartelle-degli-utenti"
+
+\end_inset
+
+Cartelle degli utenti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/storage 2.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Contenuto-della-cartella"
+
+\end_inset
+
+Contenuto della cartella di un utente
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

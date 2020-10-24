@@ -1,0 +1,516 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 1.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Tecniche e pratiche agili
+\end_layout
+
+\begin_layout Standard
+La scelta del modello di sviluppo da seguire è ricaduta sullo 
+\emph on
+Unified Process 
+\emph default
+(UP) Agile.
+ I motivi dietro questa scelta sono numerosi: 
+\end_layout
+
+\begin_layout Itemize
+Usa i principi di modellazione Agile per UML; 
+\end_layout
+
+\begin_layout Itemize
+È aperto all'uso di pratiche Agili; 
+\end_layout
+
+\begin_layout Itemize
+Prevede una serie di iterazioni time-boxed, con durata che varia dalle 2
+ alle 6 settimane, che garantiscono di avere sempre qualcosa di funzionante
+ anche nel caso in cui non si riesca a portare a termine l'intero progetto
+ entro una data di consegna predefinita;
+\end_layout
+
+\begin_layout Itemize
+Dà molta attenzione al testing; 
+\end_layout
+
+\begin_layout Itemize
+Prevede l'uso di VCS per mantenere sempre una versione funzionante del software
+ sulla Baseline; 
+\end_layout
+
+\begin_layout Itemize
+Il codice è pensato per il cambiamento ed è quindi flessibile e modificabile.
+ 
+\end_layout
+
+\begin_layout Standard
+Questo modello di sviluppo software prevede quattro fasi durante il processo
+ di sviluppo, sebbene non sia estremamente restrittivo né nella loro realizzazio
+ne, né nel numero di iterazioni da compiere in ogni fase:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fase di Ideazione
+\emph default
+: è la fase iniziale di fattibilità e visione
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fase di Elaborazione
+\emph default
+: sviluppo iterativo del nucleo del sistema, ovvero gli elementi principali
+ e con rischi maggiori
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fase di Costruzione
+\emph default
+: sviluppo iterativo degli elementi rimanenti, a rischio più basso
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fase di Transizione
+\emph default
+: beta test e rilascio
+\end_layout
+
+\begin_layout Standard
+Di queste quattro fasi, per motivi legati al tempo, ci siamo limitati a
+ completare la fase di Ideazione in una prima iterazione di due settimane
+ ed a portare a termine due iterazioni complete di Elaborazione in altre
+ due settimane ciascuna, per un periodo totale di sviluppo di sei settimane.
+ La versione dell'applicazione non è ancora pronta al rilascio, ma è vicina
+ all'essere la prima milestone da cui partire per programmare delle minor-releas
+e in fase di Costruzione.
+ Si mostra di seguito in tabella il dettaglio di cosa è stato realizzato
+ nelle singole fasi: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="10cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ideazione
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+È stato realizzato il documento di visione che mette in luce gli obiettivi
+ e i requisiti generali del progetto.
+ Sono stati individuati i casi d'uso dell'applicazione che sono stati descritti
+ in formato breve.
+ Si è passato al dettagliamento di circa il 10-20% dei casi d'uso precedentement
+e individuati.
+ Sono state definite le specifiche supplementari.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Elaborazione 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+È stato realizzato un prototipo dell'applicazione da implementare.
+ Si è effettuata l'analisi testuale dei documenti realizzati finora.
+ Si sono realizzati i principali diagrammi di Analisi.
+ Si è iniziato ad implementare i casi d'uso principali.
+ Si sono creati i diagrammi dinamici e modificati di pari passo con l'implementa
+zione.
+ Si sono dettagliati altri casi d'uso per un totale di circa il 40%.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Elaborazione 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Analogamente alla prima iterazione sono stati implementati tutti i casi
+ d'uso principali che permettono all'applicazione di poter offrire le sue
+ funzionalità più importanti.
+ Sono stati raffinati e completati tutti i diagrammi.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Vista-componenti-e"
+
+\end_inset
+
+Vista componenti e connettori
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Analisi dei 
+\series bold
+componenti
+\series default
+ previsti: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Firebase Platform
+\emph default
+: stereotipato come 
+\emph on
+<<platform as a service>> 
+\emph default
+è una piattaforma esterna che offre una serie di servizi utili al funzionamento
+ complessivo del sistema quali: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\emph on
+Authentication
+\emph default
+: realizza tutto il corredo di operazioni legato alla registrazione e autenticaz
+ione di un utente.
+ Le interazioni tra le entità esterne e questo servizio di Firebase riguardano
+ la creazione e il prelievo dei dati relativi all'autenticazione di un utente,
+ pertanto il servizio è collegato al porto di uscita del componente mediante
+ una relazione di tipo
+\emph on
+ <<data access>> 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Cloud Firestore
+\emph default
+: è il servizio di archiviazione di tutte le informazioni utilizzate dal
+ sistema.
+ Anche per questo servizio, le interazioni con le entità esterne sono di
+ tipo
+\emph on
+ <<data access>> 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Cloud Storage
+\emph default
+: è il servizio di archiviazioni dei dati multimediali che utilizza l'applicazio
+ne, in particolare sarà usato per la memorizzazione delle immagini associate
+ alle memory.
+ Anche in tal caso, l'interazione con questo tipo di servizio è di tipo
+ 
+\emph on
+<<data access>>
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Google Maps
+\emph default
+: stereotipato come 
+\emph on
+<<service>>
+\emph default
+ è il componente che rappresenta il servizio di gestione delle mappe, fondamenta
+le per realizzare la mappa interattiva con cui possono interagire gli utenti
+ del sistema
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Travelgram
+\emph default
+: è il macro-componente che rappresenta l'intero sistema 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Data Manager
+\emph default
+: è il componente di Travelgram dedito alla gestione di tutti i dati di
+ cui il sistema si serve per rappresentare le informazioni che utilizza,
+ dal prelievo di questi dati dal database, alla logica di elaborazione.
+ Tra i suoi sotto-componenti c'è il Respository Access Manager, che realizza
+ la logica di interfacciamento con i servizi esterni di Firebase; le interazioni
+ di questo componente con i servizi esterni di Firebase consistono quindi
+ in operazioni CRUD, quelle tipiche dell'interazione con un database 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+GUI Manager
+\emph default
+: è il componente di Travelgram dedito alla realizzazione di tutta la logica
+ di gestione dell'interfaccia grafica; è un componente estremamente importante,
+ dato che il sistema è fortemente orientato all'interazione con l'utente.
+ Tra i suoi sotto-componenti c'è 
+\emph on
+Maps Manager
+\emph default
+, che gestisce la visualizzazione della mappa interattiva e che pertanto
+ si serve direttamente del servizio esterno offerto da Google Maps 
+\end_layout
+
+\begin_layout Standard
+Analisi dei 
+\series bold
+connettori
+\series default
+ previsti: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Gui Manager 
+\emph default
+– 
+\emph on
+Data Manager
+\emph default
+: i due componenti che costituiscono Travelgram comunicano mediante un connettor
+e che consiste in delle semplici
+\emph on
+ procedure calls
+\emph default
+, in quanto si prevede che i moduli che realizzano questi componenti interagisca
+no invocando le funzioni offerte dagli altri.
+ Questa scelta è dovuta al fatto che i due componenti in questione si troveranno
+ sullo stesso nodo fisico e che comunicheranno molto frequentemente scambiando
+ un numero esiguo di informazioni.
+ Di conseguenza, dato che si tratta di una comunicazione molto semplice,
+ l'invocazione di funzioni è ritenuto il modo più naturale e veloce per
+ realizzarla, al fine anche di ridurre i tempi di risposta del sistema,
+ su cui ci sono requisiti molto stringenti, dato che l'applicazione è fortemente
+ orientata all'utente 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Maps Manager
+\emph default
+ – 
+\emph on
+Google Maps
+\emph default
+: l'interazione tra questi componenti è stata rappresentata mediante la
+ notazione di
+\emph on
+ interfaccia richiesta 
+\emph default
+e 
+\emph on
+interfaccia
+\emph default
+ 
+\emph on
+fornita
+\emph default
+.
+ Infatti il Maps Manager richiede l'interfaccia di accesso e di gestione
+ delle mappe, Google Maps fornisce esattamente questa interfaccia.
+ Pertanto, il connettore che realizza questo tipo di comunicazione consiste
+ nelle 
+\emph on
+Google
+\emph default
+ 
+\emph on
+Maps
+\emph default
+ 
+\emph on
+API
+\emph default
+, che da un lato vengono fornite, dall'altro vengono utilizzate 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Repository Access Manager 
+\emph default
+– 
+\emph on
+Firebase
+\emph default
+: anche in questo caso è stata utilizzata la notazione lollipop, in quanto
+ il Repository Access Manager richiede l'interfaccia di accesso e di gestione
+ delle informazioni archiviate nel database remoto, e Firebase fornisce
+ le funzioni di questa interfaccia.
+ Pertanto, il connettore che realizza questo tipo di comunicazione consiste
+ nelle 
+\emph on
+Firebase
+\emph default
+ 
+\emph on
+API
+\emph default
+.
+ Il Repository Access Manager utilizza queste API per eseguire le sue operazioni
+ CRUD 
+\end_layout
+
+\end_body
+\end_document

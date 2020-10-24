@@ -1,0 +1,773 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 6.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Manuale di Utilizzo
+\end_layout
+
+\begin_layout Standard
+Giunti a questo punto, presentiamo un sintetico Manuale di utilizzo del
+ software.
+ Si consiglia caldamente tuttavia, di prendere visione del video di anteprima
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Travelgram Preview"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, poiché risulta essere sicuramente più esplicativo e chiarificatore rispetto
+ agli screenshot che verranno riportati in questa sezione, che non mettono
+ purtroppo in risalto le scelte di Design pronunciate in precedenza.
+\end_layout
+
+\begin_layout Subsection
+Configurazione ed installazione
+\end_layout
+
+\begin_layout Standard
+Il nostro software non prevede complessi step di configurazione, se non
+ l'unica necessità di poter installare applicazioni di terze parti.
+ Per l'installazione del software, è stato generato un file 
+\emph on
+.apk 
+\emph default
+compatibile con i sistemi Android dalla versione 5.0 (Lollipop) in poi
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GitHub"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Il file va caricato sul dispositivo Android che si ha a disposizione ed
+ installato attraverso un qualunque File Manager.
+ Nel caso venisse chiesto, quindi, è importante abilitare la possibilità
+ di installare applicazioni derivanti da fonti sconosciute.
+\end_layout
+
+\begin_layout Subsection
+Flow di navigazione ed utilizzo
+\end_layout
+
+\begin_layout Standard
+Di seguito vengono riportati quindi alcuni screenshot dell'applicazione
+ con una descrizione di cosa rappresentano.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen login.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Login"
+
+\end_inset
+
+Login
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen signup.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sign-Up"
+
+\end_inset
+
+Sign Up
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Autenticazione"
+
+\end_inset
+
+Autenticazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Autenticazione:
+\end_layout
+
+\begin_layout Standard
+All'apertura dell'applicazione si verrà portati nella schermata in figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Login"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ per effettuare il Login.
+ Nel caso in cui non si disponga ancora di un account, cliccando sull'apposita
+ scritta si verrà invece portati sulla schermata di Sign Up (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sign-Up"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) per la creazione di un nuovo Traveler.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen map.jpg
+	scale 12
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Scratch-map"
+
+\end_inset
+
+Scratch-map
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen journal.jpg
+	scale 12
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Travel-Journal"
+
+\end_inset
+
+Travel Journal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen follow.jpg
+	scale 12
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ricerca-utenti"
+
+\end_inset
+
+Ricerca utenti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Schermata-principale"
+
+\end_inset
+
+Schermata principale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Schermata Principale:
+\end_layout
+
+\begin_layout Standard
+Una volta effettuato l'accesso quindi apparirà la schermata principale dell'appl
+icazione in cui è possibile effettuare diverse azioni: 
+\end_layout
+
+\begin_layout Enumerate
+Di default viene mostrata la 
+\emph on
+scratchmap
+\emph default
+ personale dell'utente (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Scratch-map"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) con tutti i luoghi visitati o da visitare.
+ Cliccando sul bottone flottante, si può passare alla schermata di pubblicazione
+ di una memory (descritta successivamente)
+\end_layout
+
+\begin_layout Enumerate
+Si può accedere al 
+\emph on
+Travel Journal
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Travel-Journal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), visualizzando quindi tutte le memories pubblicate dall'utente loggato.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si può accedere alla schermata dove ricercare ed effettuare il 
+\emph on
+follow/unfollow
+\emph default
+ di altri Travelers (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ricerca-utenti"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen my_memo.jpg
+	scale 12
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Visualizzazione-delle-proprie"
+
+\end_inset
+
+Visualizzazione delle proprie Memories relative al luogo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen friends_memo.jpg
+	scale 12
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Visualizzazione-delle-Memories"
+
+\end_inset
+
+Visualizzazione delle Memories degli utenti seguiti relative al luogo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen new_memo.jpg
+	scale 12
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Inserimento-di-una"
+
+\end_inset
+
+Inserimento di una nuova Memory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Schermata-di-un"
+
+\end_inset
+
+Schermata di un luogo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Schermata di un luogo:
+\end_layout
+
+\begin_layout Standard
+Una volta acceduto un Luogo interagendo con la mappa: 
+\end_layout
+
+\begin_layout Enumerate
+Di default vengono mostrate tutte le memories dell'utente relative a quel
+ Luogo (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Visualizzazione-delle-proprie"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ È inoltre possibile tramite i Toggle Button in altro a destra impostare
+ il Luogo come visitato o da visitare.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Cliccando sul tab Friends' Memories vengono mostrati i ricordi relativi
+ ai following dell'utente (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Visualizzazione-delle-Memories"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Cliccando sui pulsanti in alto a destra è possibile segnare il luogo 
+\end_layout
+
+\begin_layout Enumerate
+Cliccando sul pulsante flottante si accede alla schermata di Pubblicazione
+ di una Nuova Memory (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Inserimento-di-una"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) in cui è possibile inserire l'immagine, il paese, la città, una descrizione
+ e la data del nuovo ricordo.
+\end_layout
+
+\begin_layout Enumerate
+Alla fine della pubblicazione, si verrà riportati alla ScratchMap e questa
+ sarà opportunamente aggiornata se necessario.
+ 
+\end_layout
+
+\begin_layout Standard
+Si fa notare inoltre che se ci si trova nel tab "Friends' Memories" e uno
+ dei followings in contemporanea pubblica una nuova Memory di quel Luogo;
+ la schermata verrà aggiornata automaticamente senza bisogno di nessun refresh.
+ 
+\end_layout
+
+\begin_layout Standard
+Infine, in qualunque momento, cliccando su una Memory è possibile vederne
+ le informazioni nel dettaglio, così come mostrato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Visualizzazione-dei-dettagli"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/screen dettagli.jpg
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Visualizzazione-dei-dettagli"
+
+\end_inset
+
+Visualizzazione dei dettagli di una Memory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

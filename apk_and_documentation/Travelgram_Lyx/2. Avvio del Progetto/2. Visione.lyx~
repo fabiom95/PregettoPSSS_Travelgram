@@ -1,0 +1,712 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 2.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Visione
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Visione"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Obiettivi Generali
+\end_layout
+
+\begin_layout Standard
+L’applicazione 
+\series bold
+Travelgram
+\series default
+ è destinata agli amanti dei viaggi, per memorizzare ricordi (
+\emph on
+memories
+\emph default
+) e condividerli con gli amici.
+ 
+\end_layout
+
+\begin_layout Standard
+Gli obiettivi principali sono: 
+\end_layout
+
+\begin_layout Itemize
+tenere traccia dei luoghi visitati 
+\end_layout
+
+\begin_layout Itemize
+condividere ricordi con gli amici 
+\end_layout
+
+\begin_layout Itemize
+aiutare i viaggiatori a scegliere una meta
+\end_layout
+
+\begin_layout Standard
+  Il primo obiettivo riguarda la sfera personale: l’applicazione è pensata
+ in primis per coloro che desiderano mantenere un Diario di Viaggio (
+\emph on
+Travel Journal
+\emph default
+) al fine di conservare ricordi, pensieri ed esperienze relativi a luoghi
+ visitati.
+ 
+\end_layout
+
+\begin_layout Standard
+Il secondo obiettivo che ci si è posti è quello di dare all’applicazione
+ un’impronta social, orientandola alla condivisione delle esperienze e alla
+ creazione di una community di utenti con interessi in comune.
+ 
+\end_layout
+
+\begin_layout Standard
+Il terzo obiettivo è quello di aiutare gli utenti (
+\emph on
+travelers
+\emph default
+) a scoprire nuovi luoghi interessanti e ad orientare utenti indecisi verso
+ l’alternativa che potrebbe soddisfarli di più grazie ai feedback di migliaia
+ di viaggiatori.
+ 
+\end_layout
+
+\begin_layout Subsection
+Requisiti Generali 
+\end_layout
+
+\begin_layout Standard
+L'applicazione consente all’utente di conservare in un Diario di Viaggio
+ i propri ricordi relativi ad un luogo visitato sotto forma di immagini,
+ con eventuali descrizioni, e di recensione dell’esperienza complessiva.
+   
+\end_layout
+
+\begin_layout Standard
+Ogni utente registrato (
+\emph on
+traveler
+\emph default
+) ha la possibilità di seguire altri utenti e visualizzare le loro memories
+ e recensioni, così da restare al corrente delle loro esperienze e magari
+ scoprire nuovi luoghi da visitare.
+ Quando l’utente pubblica un contenuto, tutti gli utenti che lo seguono
+ vengono notificati.
+  
+\end_layout
+
+\begin_layout Itemize
+L’applicazione permette inoltre all’utente di selezionare uno specifico
+ luogo (stato o città) attraverso una mappa interattiva (
+\emph on
+Scratch
+\emph default
+ 
+\emph on
+Map
+\emph default
+), al fine di: 
+\end_layout
+
+\begin_layout Itemize
+indicare di averlo già visitato o di volerlo visitare 
+\end_layout
+
+\begin_layout Itemize
+aggiungerlo tra i luoghi preferiti 
+\end_layout
+
+\begin_layout Itemize
+visualizzare i ricordi e recensioni relativi a tale luogo e pubblicati dai
+ traveler seguiti o dall’utente stesso  
+\end_layout
+
+\begin_layout Itemize
+pubblicare ricordi o recensioni relativi a tale luogo 
+\end_layout
+
+\begin_layout Itemize
+consultare delle guide di viaggio che consigliano i punti di interesse da
+ visitare nello stato/città selezionato Infine, ogni utente ha a disposizione
+ una pagina del profilo che è possibile personalizzare indicando i propri
+ interessi relativi ai viaggi (natura, cultura, cucina, ...) per migliorare
+ l’esperienza ed inoltre essere visualizzata dagli altri utenti registrati
+ all’applicazione.
+ 
+\end_layout
+
+\begin_layout Standard
+Infine, ogni utente ha a disposizione una pagina del profilo che è possibile
+ personalizzare indicando i propri interessi relativi ai viaggi (natura,
+ cultura, cucina, ...) per migliorare l’esperienza ed inoltre essere visualizzata
+ dagli altri utenti registrati all’applicazione.
+ 
+\end_layout
+
+\begin_layout Standard
+D’altro canto, l’applicazione deve anche garantire: 
+\end_layout
+
+\begin_layout Itemize
+sicurezza
+\end_layout
+
+\begin_layout Itemize
+facilità d’uso
+\end_layout
+
+\begin_layout Itemize
+compatibilità con più dispositivi 
+\end_layout
+
+\begin_layout Itemize
+affidabilità
+\end_layout
+
+\begin_layout Itemize
+prestazioni
+\end_layout
+
+\begin_layout Itemize
+Interoperabilità
+\end_layout
+
+\begin_layout Itemize
+license   
+\end_layout
+
+\begin_layout Standard
+Una descrizione dettagliata dei requisiti funzionali e non funzionali sarà
+ esposta nel capitolo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Specifica-dei-Requisiti"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (Specifica dei Requisiti), attraverso la definizione dei casi d’uso a diversi
+ livelli di dettaglio e delle specifiche supplementari, in maniera conforme
+ allo sviluppo UP.
+\end_layout
+
+\begin_layout Subsection
+Vincoli
+\end_layout
+
+\begin_layout Standard
+Per poter usare l’applicazione, l’utente deve registrarsi.
+ L’applicazione è supportata sulle piattaforme Android dalla versione 5.0
+ in poi.
+ L’applicazione deve essere sviluppata rispettando le regole imposte dal
+ GDPR (General Data Protection Regulation) per il rispetto della privacy
+ dell’utente e i termini contrattuali relativi al Google Play Store.
+ 
+\end_layout
+
+\begin_layout Subsection
+Positioning 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+  Il problema di 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+capire quali mete soddisfano le proprie esigenze di viaggio
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Affligge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+gli utenti desiderosi di viaggiare
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Il suo impatto è
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+   lo spreco di tempo e/o la scelta di una meta non soddisfacente
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+  Una soluzione sarebbe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+avere a portata di mano i feedback di migliaia di viaggiatori 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+     
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Positioning"
+
+\end_inset
+
+Positioning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In tabella 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Positioning"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ è presentato il positioning dell'applicazione Travelgram.
+\end_layout
+
+\begin_layout Standard
+L'
+\series bold
+unicità 
+\series default
+del nostro prodotto è dovuta al fatto che:  
+\end_layout
+
+\begin_layout Itemize
+Differisce dai social media convenzionali per il fatto che questi sono orientati
+ alla condivisione di immagini o video di diverso genere per divertimento,
+ piuttosto che alla ricerca di mete di viaggio  
+\end_layout
+
+\begin_layout Itemize
+Differisce dalle altre piattaforme di viaggi per il fatto che queste permettono
+ di recensire specifiche attrazioni, musei, ristoranti, hotel e così via,
+ mentre la nostra applicazione permette di recensire qualsiasi tipo di luogo,
+ tra cui città e paesi
+\end_layout
+
+\begin_layout Subsection
+Parti interessate
+\end_layout
+
+\begin_layout Standard
+In tabella 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Parti-interessate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sono indicate le principali parti interessate e le loro descrizioni.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+  
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Parti interessate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Descrizione
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Project manager
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Monitora l’andamento del progetto
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Team di sviluppo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si occupa di:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+definizione dei requisiti
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+progettazione
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+implementazione
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+testing
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+manutenzione
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Traveler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+è l’utente che usa l’applicazione
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+     
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Parti-interessate"
+
+\end_inset
+
+Parti interessate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

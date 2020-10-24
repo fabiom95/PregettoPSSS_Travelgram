@@ -1,0 +1,284 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 5.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Architettura MVVM
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/MVVM.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Architettura-MVVM"
+
+\end_inset
+
+Architettura MVVM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Per la realizzazione dell'applicazione Android si è scelto di adottare il
+ pattern architetturale MVVM (Model - View - ViewModel) (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Architettura-MVVM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+La principale motivazione per cui è stato selezionato MVVM è che questo
+ pattern è indicato dalla guida ufficiale per gli sviluppatori 
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Architettura raccomandata"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ come una Best Practice, e quindi come architettura raccomandata per la
+ costruzione di applicazioni Android.
+ Si tratta di un'architettura molto usata per applicazioni basate su molte
+ interazioni con l'utente.
+\end_layout
+
+\begin_layout Standard
+I componenti principali di MVVM sono: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+View
+\series default
+: comprende la logica UI, ovvero tutto ciò che occorre per gestire l'aspetto
+ di ciò che vede l'utente e catturare le sue interazioni.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ViewModel
+\series default
+: è un intermediario tra View e Model.
+ Fornice dati provenienti dal Model ad uno o più componenti UI e trasforma
+ gli input provenienti dalla View in azioni sul Model.
+ Si occupa anche di trasformare i dati provenienti dal Model per prepararli
+ alla presentazione, attraverso, ad esempio, conversioni di formato.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Model
+\series default
+: comprende la logica di dominio e di accesso al database.
+ 
+\end_layout
+
+\begin_layout Standard
+Il pattern MVVM impone alcuni semplici 
+\series bold
+vincoli
+\series default
+ da rispettare: 
+\end_layout
+
+\begin_layout Itemize
+La View non deve contenere logica diversa da quella UI 
+\end_layout
+
+\begin_layout Itemize
+La View conosce il ViewModel, ma nessun elemento del ViewModel deve conoscere
+ la View 
+\end_layout
+
+\begin_layout Itemize
+La View e il Model possono interagire tra loro solo attraverso la mediazione
+ del ViewModel
+\end_layout
+
+\begin_layout Standard
+Un esempio di come interagiscono tra loro i vari elementi di MVVM è presentato
+ nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dinamica-del-Sistema"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (dinamica del sistema).
+ 
+\end_layout
+
+\begin_layout Paragraph
+Vantaggi di MVVM: 
+\end_layout
+
+\begin_layout Standard
+Un vantaggio è che si basa quindi sul principio
+\series bold
+ separazione di interessi
+\series default
+ (
+\emph on
+separation of concerns
+\emph default
+), secondo cui le classi relative all'interfacciamento con l'utente non
+ devono in alcun modo contenere una logica diversa da quella di gestione
+ dell'interfaccia.
+ Alcuni vantaggi del 
+\emph on
+separation of concerns 
+\emph default
+sono: 
+\end_layout
+
+\begin_layout Itemize
+Le classi UI risultano molto più leggere e performanti 
+\end_layout
+
+\begin_layout Itemize
+Si riduce la probabilità di errore 
+\end_layout
+
+\begin_layout Itemize
+Favorisce il riuso, la leggibilità e la manutenzione del codice
+\end_layout
+
+\begin_layout Standard
+MVVM è, inoltre, nativamente supportato da Android attraverso classi apposite.
+ Il binding dei dati tra ViewModel e View avviene in Android tramite un
+ wrapper chiamato 
+\emph on
+LiveData
+\emph default
+, attraverso cui il ViewModel può presentare alla View un flusso continuo
+ di informazioni che viene aggiornato in tempo reale.
+ 
+\end_layout
+
+\end_body
+\end_document

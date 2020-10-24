@@ -1,0 +1,146 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 3.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Specifiche Supplementari
+\end_layout
+
+\begin_layout Standard
+Altri requisiti funzionali da implementare, ma non dettagliati, sono il
+ 
+\emph on
+Login
+\emph default
+ di un Traveler registrato e la 
+\emph on
+Sign
+\emph default
+ 
+\emph on
+Up
+\emph default
+ di un nuovo utente.
+ 
+\end_layout
+
+\begin_layout Standard
+Oltre a quanto visto finora, come accennato nel Capitolo 2, l’applicazione
+ deve garantire anche alcuni requisiti non funzionali.  
+\end_layout
+
+\begin_layout Standard
+Primo fra tutti è la 
+\series bold
+facilità d’uso 
+\series default
+dell’applicazione mobile nei confronti degli utenti, per questo l’applicazione
+ deve essere progettata garantendo la user friendliness proponendo un’interfacci
+a intuitiva ed accattivante.
+\end_layout
+
+\begin_layout Standard
+ Altro punto fondamentale è la sicurezza, infatti bisogna che l’applicazione
+ tenga sicuri i dati e le informazioni personali degli utenti senza che
+ esse vengano accedute da persone non autorizzate.  Coerentemente l’app deve
+ anche essere affidabile e permettere quindi che a seguito di malfunzionamenti
+ i dati non vengano persi, ma possano essere ripristinati.  Considerando
+ sempre i bisogni dell’utente, altro punto fondamentale sono le prestazioni,
+ infatti l’app deve essere reattiva agli input degli utenti per far si che
+ questi non si stufino nell’utilizzo; inoltre queste prestazioni devono
+ essere garantite tenendo conto della scalabilità, quindi all’aumentare
+ sia dei dati che dei Travelers iscritti, il tutto minimizzando il più possibile
+ i consumi delle risorse.  Da un punto di vista maggiormente tecnico invece,
+ l’applicativo deve essere compatibile con la maggior parte dei dispositivi
+ Android per ottenere una diffusione maggiore tra gli utenti, e deve interagire
+ con gli altri sistemi al fine di ottenere un corretto funzionamento.
+ Per questo si è scelto di utilizzare come target SDK il livello API 30,
+ in modo da supportare al meglio i nuovi dispositivi (Android 11), ma si
+ è impostato come min SDK la versione 21, in modo da rendere l’applicazione
+ compatibile dalla versione Android 5.0 (Lollipop), raggiungendo quindi circa
+ il 95% dei dispositivi in circolazione.
+ 
+\end_layout
+
+\end_body
+\end_document

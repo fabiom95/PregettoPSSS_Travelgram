@@ -1,0 +1,521 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 5.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Class Diagrams
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Class-Diagrams"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mostriamo ora il Class Diagram.
+ Per evidenziare in maniera molto più chiara e semplice le relazioni tra
+ le classi, si è scelto di nascondere il contenuto delle classi (attributi
+ e metodi) e lasciarne solo il nome.
+ Una descrizione dettagliata delle classi con tutto il contenuto è invece
+ presentata nei paragrafi successivi.
+\end_layout
+
+\begin_layout Standard
+In figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Class-Diagram-(prima"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ è mostrata la prima versione realizzata del Class Diagram.
+ Per le funzionalità selezionate ai fini dell'elaborato, non sono state
+ implementate tutte le classi relative alle entità di dominio descritte
+ nel System Domain Model, ma solo quelle mostrate in questo diagramma.
+ In questa prima versione, sono state tradotte fedelmente le associazioni
+ trovate nel SDM.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/class old.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Class-Diagram-(prima"
+
+\end_inset
+
+Class Diagram (prima versione)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si noti che sono presenti relazioni d'uso anche tra gli information expert
+ (TravelerList e TravelJournal) e i rispettivi oggetti Repository (rispettivamen
+te TravelerRepository e MemoryRepository).
+ Senza tale relazione d'uso, infatti, sarebbe stato necessario effettuare
+ un numero di query pari alla grandezza della lista degli elementi dei contenito
+ri.
+\end_layout
+
+\begin_layout Standard
+In figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Class-Diagram-(versione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ è invece mostrata la versione definitiva del Class Diagram.
+ Rispetto alla versione precedente sono stati eliminati: 
+\end_layout
+
+\begin_layout Itemize
+L'associazione 1 a 1 tra Traveler e TravelJournal 
+\end_layout
+
+\begin_layout Itemize
+La classe FollowingJournalFragment del package view.fragment 
+\end_layout
+
+\begin_layout Itemize
+La classe FollowingJournalViewModel del package viewmodel
+\end_layout
+
+\begin_layout Standard
+Si noti che la rimozione dell'associazione 1 a 1 appena citata cambia leggerment
+e senso alla entità TravelJournal del System Domain Model.
+ A seguito della rimozione, un oggetto di tipo TravelJournal non rappresenta
+ più l'insieme di Memory pubblicate da uno specifico Traveler (come nel
+ SDM), ma rappresenta un generico information expert usato qualora si volesse
+ gestire un insieme di Memory, a prescindere da chi le ha pubblicate.
+\end_layout
+
+\begin_layout Standard
+Il problema della prima soluzione (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Class-Diagram-(prima"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) sta nel fatto che, per visualizzare le Memory di tutti i traveler seguiti
+ (caso d'uso Visualizza Memories, scenario 2.c), il FollowingJournalViewModel
+ deve: - Recuperare l'elenco dei traveler seguiti (1 query) - Per ogni Traveler
+ seguito, caricare il suo TravelJournal (N query, dove N è il numero di
+ traveler seguiti) - Mostrare i risultati solo dopo che tutte le query sono
+ terminate
+\end_layout
+
+\begin_layout Standard
+Nella seconda soluzione (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Class-Diagram-(versione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), basta effettuare una sola query che contiene tutte le informazioni necessarie.
+ In questa soluzione, le classi FollowingJournalFragment e FollowingJournalViewM
+odel non sono necessarie, perché è possibile riusare le classi JournalFragment
+ e JournalViewModel.
+\end_layout
+
+\begin_layout Standard
+I motivi per cui la seconda soluzione è migliore della prima saranno opportuname
+nte spiegati nel capitolo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Documentazione-dell'implementazi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, ma possiamo anticipare che sono legati a motivi economici e al modo in
+ cui si è scelto di effettuate le query.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/class new.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Class-Diagram-(versione"
+
+\end_inset
+
+Class Diagram (versione definitiva)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Saranno ora analizzati in dettaglio i singoli package.
+\end_layout
+
+\begin_layout Subsection
+Package View
+\end_layout
+
+\begin_layout Standard
+Come già accennato, si è scelto di separare le Activity, i Fragment e gli
+ Adapter in tre package diversi al fine di rendere più comprensibile il
+ loro utilizzo.
+ Gli Adapter sono usati per il corretto utilizzo di RecyclerView e del FragmentP
+agerAdapter di Android.
+ Il class diagram è mostrato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Class-Diagram-view"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/package view.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Class-Diagram-view"
+
+\end_inset
+
+Class Diagram del package View
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Package ViewModel
+\end_layout
+
+\begin_layout Standard
+Non è stato ritenuto necessario suddividere il ViewModel in ulteriori package.
+ Il class diagram è mostrato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Class-Diagram-viewmodel"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/package viewmodel.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Class-Diagram-viewmodel"
+
+\end_inset
+
+Class Diagram del package ViewModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Package Model
+\end_layout
+
+\begin_layout Standard
+Il package model (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Class-Diagram-model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) prevede due sotto-package: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Entity
+\series default
+: per gestire le entità di dominio.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Repository
+\series default
+: per gestire l'accesso al database.
+ Ad eccezione di AuthRepository, che si occupa unicamente del servizio di
+ autenticazione utenti, le classi Repository sono state concepite come un'astraz
+ione del database documentale FireStore: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TravelerRepository si occupa unicamente dell'accesso alla collezione 
+\emph on
+"Travelers"
+\emph default
+ su FireStore 
+\end_layout
+
+\begin_layout Itemize
+MemoryRepository si occupa unicamente dell'accesso alla collezione 
+\emph on
+"Memory"
+\emph default
+ su FireStore 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Si noti che, a differenza di altre note architetture (come BCED), il package
+ Repository è visto come un'astrazione del database, piuttosto che dell'Entity.
+ In altre parole, abbiamo una classe per ogni collezione sul database, non
+ una classe per ogni entity del dominio.
+ Questo può portare ad un accoppiamento leggermente peggiore, ma favorisce
+ anche una maggiore coesione di tali classi.
+ 
+\end_layout
+
+\begin_layout Standard
+Il motivo per cui i package sono stati chiamati Entity e Repository al posto
+ di Entity e Database è anche quello di sottolineare la differenza con un'archit
+ettura BCED, la quale, tra l'altro, è a livelli.
+ Nel caso dell'applicazione Travelgram, invece, non c'è alcun vincolo che
+ impone al package Repository di non poter usare i servizi del package Entity.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/package model.png
+	width 80text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Class-Diagram-model"
+
+\end_inset
+
+Class Diagram del package Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

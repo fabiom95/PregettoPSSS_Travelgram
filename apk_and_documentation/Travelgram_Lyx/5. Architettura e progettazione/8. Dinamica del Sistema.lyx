@@ -1,0 +1,765 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 5.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Dinamica del Sistema
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Dinamica-del-Sistema"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Package-Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (Package Diagram) è stato accennato il modo in cui i package comunicano
+ tra loro.
+ Il seguente schema (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dinamica-di-una"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) mostra, in maniera molto semplificata ma anche molto esplicativa, la dinamica
+ di una generica richiesta che parte dall'utente e attraversa il sistema
+ Travelgram.
+\end_layout
+
+\begin_layout Standard
+Si tenga conto del fatto che i primi componenti mostrati nello schema sono
+ quattro generiche classi rispettivamente dei package View, ViewModel, Model.Enti
+ty e Model.Repository.
+ L'ultimo componente astrae invece la piattaforma Firebase.
+\end_layout
+
+\begin_layout Standard
+Il diagramma mette in evidenza la comunicazione tra i package, in particolare:
+ 
+\end_layout
+
+\begin_layout Itemize
+Gli step 5 e 15 mostrano l'interazione tra View e ViewModel tramite 
+\series bold
+LiveData
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Gli step 6 e 14 mostrano l'interazione tra ViewModel e Entity tramite il
+ 
+\series bold
+pattern Observer 
+\end_layout
+
+\begin_layout Itemize
+Gli step 10 e 13 mostrano l'interazione tra Entity e Repository tramite
+ 
+\series bold
+callback
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/dinamica.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Dinamica-di-una"
+
+\end_inset
+
+Dinamica di una richiesta
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'adozione del meccanismo di callback è stata necessaria per via della natura
+ 
+\series bold
+asincrona
+\series default
+ ed 
+\series bold
+Event-driven 
+\series default
+di Firebase, che non rende possibile il passaggio del risultato di una query
+ come semplice valore di ritorno della funzione dello step 10.
+ La reply dello step 12, infatti, è un evento asincrono che deve essere
+ catturato da un opportuno listener, che si occuperà poi di avvisare l'Entity
+ tramite la callback.
+\end_layout
+
+\begin_layout Standard
+La dinamica di ogni interazione sarà descritta in maniera molto più dettagliata
+ nei diagrammi successivi.
+ Ulteriori dettagli sulla loro implementazione in Java è invece oggetto
+ del capitolo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Documentazione-dell'implementazi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Saranno ora mostrati diagrammi che descrivono la dinamica dei principali
+ casi d'uso sviluppati: 
+\end_layout
+
+\begin_layout Itemize
+Pubblica Memory 
+\end_layout
+
+\begin_layout Itemize
+Visualizza Memory 
+\end_layout
+
+\begin_layout Itemize
+Sign up 
+\end_layout
+
+\begin_layout Standard
+Sebbene sia stato implementato anche il caso d'uso Log in, la sua dinamica
+ non è stata modellata perché pressoché identica a quella del caso d'uso
+ Sign up, il quale è stato preferito perché mostra un'interazione in più
+ con l'utente e con Firebase.
+ 
+\end_layout
+
+\begin_layout Subsection
+Pubblica Memory
+\end_layout
+
+\begin_layout Standard
+Il seguente Activity Diagram di basso livello (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Activity-Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) descrive il caso d'uso Pubblica Memory con riferimento anche all'interfaccia
+ utente.
+ L'utente ha infatti una duplice scelta, poiché può avviare il vero e proprio
+ caso d'uso o da un pulsante presente sulla schermata della mappa, o cliccando
+ su uno specifico stato (quest'ultimo descritto anche dai sequence diagram
+ successivo).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/pubblicaMemory activity.png
+	scale 75
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Activity-Diagram"
+
+\end_inset
+
+Activity Diagram di Pubblica Memory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per descrivere in maniera più dettagliata e di basso livello il caso d'uso,
+ sono stati realizzati due Sequence Diagram: 
+\end_layout
+
+\begin_layout Itemize
+Uno di basso livello, il più possibile fedele al codice, in cui sono mostrati
+ in maniera dettagliata anche il funzionamento dei LiveData e dei Listener
+ 
+\end_layout
+
+\begin_layout Itemize
+Uno di livello leggermente più alto, in cui, per semplificare la lettura,
+ sono stati semplificate le interazioni con LiveData e Listener
+\end_layout
+
+\begin_layout Standard
+In figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequence-Diagram-dettagliato"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ è mostrato il Sequence Diagram di dettaglio di Pubblica Memory nella versione
+ in cui l'utente clicca su uno specifico paese.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/pubblicaMemory_sequence1.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequence-Diagram-dettagliato"
+
+\end_inset
+
+Sequence Diagram dettagliato di Pubblica Memory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Semplificazione-LiveData"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ è mostrata la notazione usata per semplificare la porzione di sequence
+ relativa alla comunicazione tramite LiveData.
+ Per rendere questa semplificazione generale e applicabile anche ai successivi
+ sequence diagram non si è fatto riferimento alle classi specifiche di Pubblica
+ Memory, ma piuttosto a generiche classi di View e ViewModel.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/semplificazioneLiveData.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Semplificazione-LiveData"
+
+\end_inset
+
+Semplificazione dell'interazione con LiveData
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Semplificazione-StorageReference"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ è mostrata la semplificazione, invece, della porzione di sequence relativa
+ al funzionamento di un Listener per il servizio di Cloud Storage di Firebase.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/semplificazioneStorage.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Semplificazione-StorageReference"
+
+\end_inset
+
+Semplificazione della gestione di StorageReference con Listener
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sfruttando queste semplificazioni, è stato generato il Sequence Diagram
+ in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pubblica memory sequence"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, molto più compatto e leggibile di quello appena visto.
+ Da qui in poi, tutti i Sequence Diagram useranno questa stessa notazione
+ semplificata, dal momento in cui la dinamica di questi elementi rimane
+ invariata.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/pubblicaMemory_sequence2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pubblica memory sequence"
+
+\end_inset
+
+Sequence Diagram di Pubblica Memory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Visualizza Memory
+\end_layout
+
+\begin_layout Standard
+Prima di mostrare il Sequence Diagram del caso d'uso Visualizza Memories,
+ mostriamo una notazione semplificata analoga a quella vista sopra per il
+ Listener, ma applicato ad una query su Firestore (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Semplificazione-query"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/semplificazioneQuery.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Semplificazione-query"
+
+\end_inset
+
+Semplificazione della gestione della query con Listener
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il Sequence Diagram in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:visualizza memories sequence"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ descrive il caso d'uso Visualizza Memory, in particolare lo scenario 2.c,
+ in cui il sistema mostra l'elenco di Memories relative ad un luogo specifico
+ e pubblicate dai Traveler seguiti dall'utente.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/visualizzaMemories_sequence.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:visualizza memories sequence"
+
+\end_inset
+
+Sequence Diagram di Visualizza Memories
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sign up
+\end_layout
+
+\begin_layout Standard
+Prima di mostrare il Sequence Diagram del caso d'uso Sign Up, mostriamo
+ una semplificazione di notazione analoga a quella vista sopra per il Listener,
+ ma mostrando l'utilizzo del servizio di autenticazione di Firebase al posto
+ del servizio di Cloud Storage (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Semplificazione-auth"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/semplificazioneAuth.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Semplificazione-auth"
+
+\end_inset
+
+Semplificazione della gestione dell'autenticazione con Listener
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+In figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequence-Diagram-sign up"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ il Sequence Diagram completo di Sign Up.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/signup_sequence.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequence-Diagram-sign up"
+
+\end_inset
+
+Sequence Diagram di Sign Up
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

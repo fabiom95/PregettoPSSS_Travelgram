@@ -1,0 +1,655 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 7.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Generazione dei Test Cases
+\end_layout
+
+\begin_layout Standard
+Sono state effettuate determinate interazioni con il fine di coprire più
+ funzionalità possibili dell'applicazione, e quindi simulare al meglio un
+ normale comportamento di un generico utente.
+ Quindi i seguenti casi di test saranno relativi a fase di registrazione,
+ login, following di utenti.
+ 
+\end_layout
+
+\begin_layout Standard
+Per quanto riguarda l'interazione con la ScratchMap sono sorti dei problemi:
+ a differenza dei bottoni e della navbar (widget tipici delle applicazioni),
+ gli stati della mappa interattiva non vengono riconosciuti dal sistema
+ di capture seppure sono cliccabili.
+ Infatti Espresso recepisce l'interazione con i pulsanti dell'interfaccia,
+ ma non l'interazione con la Scratchmap, di conseguenza quest'azione non
+ verrà registrata e non sarà presente nel caso di test auto-generato.
+ 
+\end_layout
+
+\begin_layout Standard
+Quindi questa azione non verrà replicata nella fase di replay, e tutte le
+ interazioni successive porteranno ad una terminazione negativa del caso
+ di test poiché si aspettano l'interfaccia relativa allo stato specifico
+ (mentre sarà ancora presente l'interfaccia iniziale)
+\end_layout
+
+\begin_layout Subsection
+Test Case 1 - Signup
+\end_layout
+
+\begin_layout Standard
+Il primo caso di test generato riguarda la registrazione dell'utente.
+ Sono stati riempiti i campi dell'interfaccia di signup con i valori: 
+\emph on
+espresso
+\emph default
+, 
+\emph on
+espresso@gmail.com
+\emph default
+, 
+\emph on
+123456
+\emph default
+.
+ I valori inseriti sono coerenti sia con la formattazione dell'e-mail e
+ sia con i vincoli imposti per la password.
+ 
+\end_layout
+
+\begin_layout Standard
+E' stato testato il solo caso positivo in quanto lo scopo principale di
+ questo caso di test voleva essere la verifica della post-condizione del
+ caso d'uso Signup.
+ Inoltre tutti i casi di test che violano i vincoli di email e password
+ sono stati testati manualmente in fase di implementazione.
+\end_layout
+
+\begin_layout Standard
+Nella 
+\series bold
+fase di Capture
+\series default
+, Espresso ha correttamente recepito tutte le interazioni dell'utente, e
+ le ha memorizzate come in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Case-1-capture"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/test case 1.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Case 1 - fase di capture
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Case-1-capture"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il codice del caso di test risultante dalla memorizzazione dei passi appena
+ effettuati è mostrato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Case-1-codice"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/test case 1.2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Case 1 - codice
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Case-1-codice"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per motivi di leggibilità e formattazione si è provveduto a ritoccare manualment
+e il codice.
+ Un esempio di come fosse il codice originale e di come questo appaia attualment
+e è riportato nella figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Case-1-codice-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/test case 1.3.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Case 1 - semplificazione codice
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Case-1-codice-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le istruzioni eliminate erano ridondanti in quanto contribuivano ad identificare
+ dei widget che già erano ben identificati dal solo ID univoco.
+ Anzi, queste si sono rivelate controproducenti in alcuni casi: l'esecuzione
+ del caso di test ha portato al crash dell'applicazione, in quanto Espresso
+ ha erroneamente assegnato alle CompatTextView dei valori di "childAtPosition"
+ errati.
+ Ad esempio la seconda CompatTextView era contrassegnata dal valore 0.
+ Successivamente si è testato il caso di test correggendo manualmente il
+ valore 0 in 1, in questo modo il caso di test ha avuto esito positivo.
+ Tuttavia si è scelto di non considerare le istruzioni di "childAtPosition"
+ per il motivo spiegato sopra.
+\end_layout
+
+\begin_layout Standard
+Un'ulteriore correzione manuale è stata quella di eliminare il "press back"
+ generato automaticamente.
+ Questo riportava l'applicazione alla LoginActivity, comportandone il crash.
+ In realtà questa interazione è stata registrata da Espresso dopo aver premuto
+ il pulsante "indietro" (proprio dell'emulatore e non dell'applicazione)
+ poiché la tastiera copriva il pulsante di "Sign up".
+ Correzioni minori prevedono modifiche dei delay per una maggiore fluidità
+ nell'esecuzione dei casi di test.
+\end_layout
+
+\begin_layout Standard
+In
+\series bold
+ fase di Replay
+\series default
+ sono state effettuate correttamente le stesse azioni, e si è arrivati alla
+ post-condizione prevista: il replay ha inserito nuovamente i dati di un
+ utente già registrato in fase di capture, e pertanto un utente con quella
+ determinata e-mail esisteva già.
+ Il caso d'uso è terminato con un errore da parte del sistema visualizzabile
+ dall'applicazione: 
+\emph on
+"The email address is already in use by another account"
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Case-1-errore"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/test case 1.4.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Case 1 - messaggio di errore
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Case-1-errore"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Test Case 2 - Login
+\end_layout
+
+\begin_layout Standard
+In questo secondo caso di test si vuole verificare il corretto funzionamento
+ del login.
+ Ad effettuare l'autenticazione sarà l'utente appena creato, quindi i parametri
+ inseriti sono 
+\emph on
+"espresso@gmail.com"
+\emph default
+ e 
+\emph on
+"123456"
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/test case 2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Case 2 - fase di capture
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Case-2-capture"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Come si può notare dalla lista di interazioni all'interno del log (figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Case-2-capture"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), si è voluto testare il funzionamento delle asserzioni: se la navbar "nav_view
+" esiste, allora il login è andato a buon fine, poiché si può accedere a
+ questa schermata contenente la navbar solo se si è un Traveler già registrato
+ ed autenticato.
+\end_layout
+
+\begin_layout Standard
+Dalla figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Case-2-replay"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ si può notare che la fase di replay ha avuto successo, quindi è sicuramente
+ risultato "true" il check sulla navbar indicata nell'asserzione (elemento
+ riquadrato in rosso dallo stesso tool Espresso).
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/test case 2.2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Case 2 - fase di replay
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Case-2-replay"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nel caso in cui non fosse stata trovata la navbar, il test avrebbe riportato
+ esito negativo.
+ Ciò è successo in un primo tentativo di replay, in quanto Espresso ha erroneame
+nte impostato il valore di 
+\emph on
+childAtPosition
+\emph default
+, motivo per cui anche questa volta si è intervenuti manualmente con la
+ correzione della porzione di codice.
+ L'esito negativo del test è riportato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Case-2-errore"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, con esplicito riferimento al non aver trovato la navbar.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/test case 2.3.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Case 2 - errore
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Case-2-errore"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Test Case 3 - Following
+\end_layout
+
+\begin_layout Standard
+Per poter eseguire questo caso d'uso, la pre-condizione è quella di essere
+ autenticati, motivo per cui la prima parte dell'attuale caso di test richiama
+ parzialmente le istruzioni del caso di test precedente.
+ La seconda parte invece prevede l'interazione con la navbar dell'interfaccia
+ principale, la ricerca di un determinato utente esistente, il click sul
+ bottone "Follow".
+ La fase di capture è mostrata in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Case-3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/test case 3.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Case 3 - fase di capture
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Case-3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

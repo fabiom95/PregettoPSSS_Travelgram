@@ -1,0 +1,228 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 4.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Use Case Diagram
+\end_layout
+
+\begin_layout Standard
+Il diagramma dei casi d'uso (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Use-Case-Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) è stato utile per una sintesi grafica dei casi d'uso definiti in fase
+ di specifica dei requisiti e da essi derivato.
+ Esso mette in luce le funzionalità offerte dal sistema, così come percepite
+ e utilizzate dagli attori, ponendo l'accento sugli obiettivi e le esigenze
+ degli utenti.
+ Infatti, seguendo il modello di Jacobson, ogni caso d'uso del diagramma
+ racchiude una serie di scenari che l'attore attraversa per raggiungere
+ un preciso e definito obiettivo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/usecase.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Use-Case-Diagram"
+
+\end_inset
+
+Use Case Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per mostrare in maniera grafica l'insieme completo di servizi che il sistema
+ dovrebbe offrire, il diagramma raffigura sia i casi d'uso implementati,
+ sia quelli non implementati (che non sono stati dettagliati in fase di
+ specifica).
+ 
+\end_layout
+
+\begin_layout Standard
+Da notare che: 
+\end_layout
+
+\begin_layout Itemize
+I casi d'uso 
+\emph on
+Modifica o Elimina Review
+\emph default
+ e 
+\emph on
+Modifica o Elimina Memory
+\emph default
+ includono rispettivamente i casi d'suo 
+\emph on
+Visualizza Reviews 
+\emph default
+e 
+\emph on
+Visualizza Memories 
+\emph default
+poiché si immagina che l'attore debba necessariamente visualizzare l'elenco
+ di Memories/Reviews prima di modificarne o eliminarne qualcuna 
+\end_layout
+
+\begin_layout Itemize
+Il caso d'uso
+\emph on
+ Segna Luogo 
+\emph default
+estende il caso d'uso 
+\emph on
+Pubblica Memory
+\emph default
+ dato che il luogo viene impostato come visitato se vi si pubblica una memory
+ 
+\end_layout
+
+\begin_layout Itemize
+I casi d'uso 
+\emph on
+Segui Traveler
+\emph default
+, 
+\emph on
+Pubblica Memory
+\emph default
+ e 
+\emph on
+Pubblica Review
+\emph default
+ includono
+\emph on
+ Invia Notifica
+\emph default
+ dato che prevedono l'invio di una notifica 
+\end_layout
+
+\begin_layout Itemize
+L'attore 
+\emph on
+Traveler
+\emph default
+ è un tipo di attore 
+\emph on
+Utente
+\emph default
+ che ha usato il caso d'uso Registrati nel suo scenario principale, portando
+ a termine l'obiettivo di registrazione al sistema 
+\end_layout
+
+\end_body
+\end_document

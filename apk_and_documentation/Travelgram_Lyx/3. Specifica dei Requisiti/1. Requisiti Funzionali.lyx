@@ -1,0 +1,1465 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 3.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Requisiti Funzionali
+\end_layout
+
+\begin_layout Standard
+Tra i modelli indicati a descrivere i requisiti funzionali si è scelto di
+ utilizzare il Modello dei Casi d'Uso, come proposto da UP.
+ Questo si presenta in due formati (breve e dettagliato) che variano per
+ la loro dimensione ed accuratezza.
+ Ogni formato è adatto ad una fase diversa del processo di sviluppo con
+ metodologia UP Agile.
+\end_layout
+
+\begin_layout Subsection
+Casi d'Uso in Formato Breve
+\end_layout
+
+\begin_layout Standard
+Durante la fase di Ideazione si è fornita una semplice e breve descrizione
+ testuale che sintetizza l'intero caso d'uso.
+ Abbiamo in particolare individuato 2 Attori e 14 Casi d'Uso rappresentati
+ nella seguente tabella.
+ I casi d'uso effettivamente implementati sono indicati in grassetto.
+\begin_inset Tabular
+<lyxtabular version="3" rows="15" columns="3">
+<features islongtable="true" firstHeadBottomDL="true" headBottomDL="true" longtabularalignment="center">
+<column alignment="center" valignment="top" width="4.5cm">
+<column alignment="center" valignment="top" width="4.5cm">
+<column alignment="center" valignment="top" width="4.5cm">
+<row endhead="true" endfirsthead="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Attore
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Nome
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Descrizione in formato breve
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Utente non registrato
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Sign Up
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L’utente non ancora registrato inserisce le credenziali di registrazione.
+ Il sistema salva i dati inseriti.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+Traveler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Login
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L’utente registrato si autentica inserendo le proprie credenziali.
+ Il sistema verifica la validità.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Pubblica Memory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Il traveler aggiunge un nuovo ricordo relativo ad un luogo.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Segna Luogo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Il traveler contrassegna un luogo di interesse come visitato o da visitare
+ interagendo con la mappa.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Segui Traveler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Il traveler aggiunge un determinato profilo nella propria lista di utenti
+ seguiti.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Visualizza Memories
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Il traveler visualizza le Memories (proprie o di chi segue).
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pubblica Review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Il traveler scrive una Review relativa ad un luogo visitato, opzionalmente
+ esprime un giudizio.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Invia Notifica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Il sistema notifica un utente quando viene seguito, o i follower di un Traveler
+ in seguito alla pubblicazione di una memory o di una review.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Visualizza Reviews
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Il traveler visualizza le Reviews.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Personalizza Profilo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L’utente può modificare il proprio profilo aggiornando i suoi interessi.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Modifica o Elimina Memory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L’utente può cancellare o modificare una memory pubblicata.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Modifica o Elimina Review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L’utente può cancellare o modificare una review pubblicata.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Consulta Guida Turistica  
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L’utente può controllare guide turistiche relative ad un determinato luogo.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Visualizza profilo di un Traveler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L’utente può visualizzare il profilo di altri travelers.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Casi d'Uso in Formato Dettagliato
+\end_layout
+
+\begin_layout Standard
+Durante la prima fase di Ideazione, e nelle successive fasi di Elaborazione,
+ si è passato al dettagliamento dei Casi d'Uso principali, che nella tabella
+ precedente sono stati marcati in grassetto.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Pubblica Memory:
+\end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="1">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="15cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+NOME DEL CASO D'USO:
+\end_layout
+
+\begin_layout Plain Layout
+Pubblica Memory 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+DESCRIZIONE IN
+\series default
+ 
+\series bold
+FORMATO BREVE:
+\end_layout
+
+\begin_layout Plain Layout
+Il Traveler aggiunge un nuovo ricordo relativo ad un luogo.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PORTATA:
+\end_layout
+
+\begin_layout Plain Layout
+Applicazione Travelgram 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+LIVELLO:
+\end_layout
+
+\begin_layout Plain Layout
+Obiettivo Utente 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ATTORE PRIMARIO:
+\end_layout
+
+\begin_layout Plain Layout
+Traveler
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PARTI INTERESSATE:
+\end_layout
+
+\begin_layout Plain Layout
+Traveler (vuole pubblicare una nuova Memory) 
+\end_layout
+
+\begin_layout Plain Layout
+Follower (vuole essere notificato della pubblicazione)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PRE-CONDIZIONI:
+\end_layout
+
+\begin_layout Plain Layout
+Il Traveler deve aver effettuato il Login.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+POST-CONDIZIONI:
+\end_layout
+
+\begin_layout Plain Layout
+La Memory è salvata.  
+\end_layout
+
+\begin_layout Plain Layout
+Messaggio di conferma mostrato.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Luogo contrassegnato come visitato.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+La mappa viene aggiornata.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SCENARIO PRINCIPALE:
+\end_layout
+
+\begin_layout Enumerate
+Il Traveler accede alla schermata di inserimento Memory 
+\end_layout
+
+\begin_layout Enumerate
+Il Traveler inserisce le informazioni della Memory, aggiungendo una o più
+ immagini dalla galleria, lo stato, la città, descrizione e data 
+\end_layout
+
+\begin_layout Enumerate
+Il sistema salva la Memory 
+\end_layout
+
+\begin_layout Enumerate
+Il sistema notifica la pubblicazione ai follower usando 
+\bar under
+Invia Notifica
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SCENARI ALTERNATIVI:
+\end_layout
+
+\begin_layout Plain Layout
+3.a  Luogo non ancora visitato
+\end_layout
+
+\begin_layout Enumerate
+Il sistema usa 
+\bar under
+Segna Luogo
+\bar default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Segna Luogo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="1">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="15cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+NOME DEL CASO D'USO:
+\end_layout
+
+\begin_layout Plain Layout
+Segna Luogo
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+DESCRIZIONE IN
+\series default
+ 
+\series bold
+FORMATO BREVE:
+\end_layout
+
+\begin_layout Plain Layout
+Il traveler contrassegna un luogo di interesse come visitato o da visitare
+ interagendo con la mappa.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PORTATA:
+\end_layout
+
+\begin_layout Plain Layout
+Applicazione Travelgram
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+LIVELLO:
+\end_layout
+
+\begin_layout Plain Layout
+Obiettivo Utente
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ATTORE PRIMARIO:
+\end_layout
+
+\begin_layout Plain Layout
+Traveler
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PARTI INTERESSATE:
+\end_layout
+
+\begin_layout Plain Layout
+Traveler (vuole segnare un luogo come visitato o da visitare) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PRE-CONDIZIONI:
+\end_layout
+
+\begin_layout Plain Layout
+Il Traveler deve aver effettuato il Login.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+POST-CONDIZIONI:
+\end_layout
+
+\begin_layout Plain Layout
+Luogo contrassegnato come visitato o da visitare.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+La mappa viene aggiornata.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SCENARIO PRINCIPALE:
+\end_layout
+
+\begin_layout Enumerate
+Il Traveler accede alla schermata di un luogo.
+\end_layout
+
+\begin_layout Enumerate
+Il Traveler indica il luogo come visitato o da visitare.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Il sistema aggiorna lo stato del luogo.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SCENARI ALTERNATIVI:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Segui Traveler:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="1">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="15cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+NOME DEL CASO D'USO:
+\end_layout
+
+\begin_layout Plain Layout
+Segui Traveler 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+DESCRIZIONE IN
+\series default
+ 
+\series bold
+FORMATO BREVE:
+\end_layout
+
+\begin_layout Plain Layout
+Il Traveler aggiunge un determinato profilo nella propria lista di utenti
+ seguiti.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PORTATA:
+\end_layout
+
+\begin_layout Plain Layout
+Applicazione Travelgram 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+LIVELLO:
+\end_layout
+
+\begin_layout Plain Layout
+Obiettivo Utente 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ATTORE PRIMARIO:
+\end_layout
+
+\begin_layout Plain Layout
+Traveler
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PARTI INTERESSATE:
+\end_layout
+
+\begin_layout Plain Layout
+Traveler (vuole seguire altri utenti per essere aggiornato delle loro pubblicazi
+oni) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PRE-CONDIZIONI:
+\end_layout
+
+\begin_layout Plain Layout
+Il Traveler deve aver effettuato il Login.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+POST-CONDIZIONI:
+\end_layout
+
+\begin_layout Plain Layout
+L’utente seguito viene aggiunto alla lista dei seguiti del traveler 
+\end_layout
+
+\begin_layout Plain Layout
+Il Traveler viene aggiunto alla lista dei follower dell’utente seguito
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SCENARIO PRINCIPALE:
+\end_layout
+
+\begin_layout Enumerate
+Il Traveler accede alla schermata di ricerca 
+\end_layout
+
+\begin_layout Enumerate
+Il Traveler ricerca l’altro utente che vuole seguire 
+\end_layout
+
+\begin_layout Enumerate
+Il Traveler aggiunge l’utente cercato ai suoi seguiti 
+\end_layout
+
+\begin_layout Enumerate
+Il sistema aggiorna i profili Il sistema notifica l’utente seguito del nuovo
+ follower usando 
+\bar under
+Invia Notifica
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SCENARI ALTERNATIVI:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Visualizza Memories:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="1">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="15cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+NOME DEL CASO D'USO:
+\end_layout
+
+\begin_layout Plain Layout
+Visualizza Memories
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+DESCRIZIONE IN
+\series default
+ 
+\series bold
+FORMATO BREVE:
+\end_layout
+
+\begin_layout Plain Layout
+Il traveler visualizza tutte le Memories (proprie o di chi segue).
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PORTATA:
+\end_layout
+
+\begin_layout Plain Layout
+Applicazione Travelgram 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+LIVELLO:
+\end_layout
+
+\begin_layout Plain Layout
+Obiettivo Utente 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ATTORE PRIMARIO:
+\end_layout
+
+\begin_layout Plain Layout
+Traveler 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PARTI INTERESSATE:
+\end_layout
+
+\begin_layout Plain Layout
+Traveler (vuole visualizzare memories pubblicate da lui o da un traveler)
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+PRE-CONDIZIONI:
+\end_layout
+
+\begin_layout Plain Layout
+Il Traveler deve aver effettuato il Login.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Il traveler per visualizzare memory di altri utenti deve aver prima effettuato
+ il follow.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+POST-CONDIZIONI:
+\end_layout
+
+\begin_layout Plain Layout
+Viene presentata una nuova schermata che contiene tutte le memories del
+ traveler corrente, o dei suoi following.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SCENARIO PRINCIPALE:
+\end_layout
+
+\begin_layout Enumerate
+Il traveler accede alla schermata di visualizzazione delle memories.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Il sistema mostra le memories pubblicate.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SCENARI ALTERNATIVI:
+\end_layout
+
+\begin_layout Plain Layout
+2.a Visualizza memories dell’utente corrente: 
+\end_layout
+
+\begin_layout Enumerate
+Il sistema mostra tutte le memories pubblicate dall’utente 
+\end_layout
+
+\begin_layout Plain Layout
+2.b Visualizza memories di un Luogo: 
+\end_layout
+
+\begin_layout Enumerate
+Il sistema mostra tutte le memories pubblicate dall’utente relative ad un
+ Luogo specifico.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+2.c Visualizza memories dei following: 
+\end_layout
+
+\begin_layout Enumerate
+Il sistema mostra le memories pubblicate dai following dell’utente relative
+ ad un Luogo specifico.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

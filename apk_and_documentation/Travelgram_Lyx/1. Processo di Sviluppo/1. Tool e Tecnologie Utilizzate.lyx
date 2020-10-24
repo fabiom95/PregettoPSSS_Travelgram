@@ -1,0 +1,1241 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 1.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Tool e Tecnologie Utilizzate
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/logo teams.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo google docs.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo onenote.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo trello.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo github.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo github desktop.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo vp.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo vp online 2.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo mockflow.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo java.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo android.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo android studio.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo firebase.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo maps.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/logo google cloud.png
+	height 1cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Loghi-degli-strumenti"
+
+\end_inset
+
+Loghi degli strumenti utilizzati
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Strumenti per la condivisione del lavoro
+\end_layout
+
+\begin_layout Paragraph
+Microsoft Teams:
+\end_layout
+
+\begin_layout Standard
+Il primo strumento da citare che ha permesso al team di poter lavorare e
+ comunicare a distanza durante tutta la realizzazione del progetto, dovuta
+ all'impossibilità di incontrarsi in gruppo, è stato 
+\emph on
+Microsoft Teams
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Microsoft-Teams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Infatti, tramite la piattaforma è stato possibile effettuare delle riunioni
+ virtuali che hanno permesso al team di "incontrarsi" giornalmente in modo
+ da aggiornarsi sullo stato di avanzamento dei lavori.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/teams2.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Microsoft-Teams"
+
+\end_inset
+
+Microsoft Teams
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Google Docs e Microsoft OneNote:
+\end_layout
+
+\begin_layout Standard
+Sin dalle prime riunioni, è stato necessario adoperare molti strumenti per
+ il brainstorming, quali 
+\emph on
+Google
+\emph default
+ 
+\emph on
+Docs
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Google-Docs"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) e 
+\emph on
+OneNote
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OneNote"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), al fine di poter lavorare contemporaneamente su di un unico documento
+ condiviso.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/google docs.png
+	width 80text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Google-Docs"
+
+\end_inset
+
+Google Docs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/onenote 1.png
+	width 80text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OneNote"
+
+\end_inset
+
+OneNote
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Trello:
+\end_layout
+
+\begin_layout Standard
+Una volta definita l'idea e prodotti i primi documenti di Analisi del progetto,
+ è stato necessario chiarire quali funzionalità avessero la precedenza,
+ e quindi, come dover dividere i compiti da svolgere nelle varie iterazioni
+ e fasi del lavoro.
+ Per questo motivo è stato fondamentale l'utilizzo di 
+\emph on
+Trello
+\emph default
+, uno strumento molto utile per tenere sempre sotto controllo ogni compito
+ da realizzare in ogni Sprint.
+ Infatti esso mette a disposizione delle lavagne virtuali all'interno delle
+ quali è possibile definire delle sezioni personalizzabili.
+ Nel nostro caso sono state create due bacheche, rispettivamente 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Travelgram - Fase di Ideazione
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+, con le sezioni 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Cose da fare
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+, 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+In esecuzione
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph default
+e 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Fatto
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+, e 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Travelgram - Fase di Elaborazione
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Trello---bacheca"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), con le sezioni 
+\emph on
+"Cose da fare"
+\emph default
+, 
+\emph on
+"Cose da fare - Iterazione corrente"
+\emph default
+, 
+\emph on
+"In esecuzione - Iterazione corrente"
+\emph default
+ e 
+\emph on
+"Fatto"
+\emph default
+.
+ Sta quindi ad ogni membro del team spostare manualmente ogni task nelle
+ categorie adatte man mano che si avanza nei lavori.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/trello 1.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Trello---bacheca"
+
+\end_inset
+
+Trello - bacheca per la fase di elaborazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+GitHub:
+\end_layout
+
+\begin_layout Standard
+Per garantire la gestione del codice, si è fatto uso di un sitema di Version-Con
+trol (VCS) capace di supportare il Configuration Management e le sue attività,
+ ossia Version Management, System Building, Change Management e Release
+ Management.
+ Il VCS scelto è stato 
+\emph on
+Git
+\emph default
+, un noto VCS Distribuito con il sistema di hosting e gestione delle repository
+ basato su cloud offerto da 
+\emph on
+GitHub
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GitHub"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GitHub"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\emph on
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+ Questo è stato utile per lavorare su parti diverse del codice, o in momenti
+ diversi, tenendo traccia di tutte le modifiche effettuate garantendo una
+ semplice risoluzione dei conflitti laddove presenti.
+ 
+\end_layout
+
+\begin_layout Standard
+Per semplificare ulteriormente il lavoro, si è fatto uso anche della versione
+ desktop di GitHub, 
+\emph on
+GitHub Desktop 
+\emph default
+(figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GitHub-Desktop"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/github.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GitHub"
+
+\end_inset
+
+GitHub
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/github desktop.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GitHub-Desktop"
+
+\end_inset
+
+GitHub Desktop
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Strumenti e tecnologie per lo sviluppo
+\end_layout
+
+\begin_layout Paragraph
+Visual Paradigm:
+\end_layout
+
+\begin_layout Standard
+Per modellare diagrammi aderenti allo standard UML che rappresentassero
+ le viste più adeguate della nostra Architettura Software abbiamo utilizzato
+ lo strumento studiato durante il corso, 
+\emph on
+Visual
+\emph default
+ 
+\emph on
+Paradigm
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Visual-Paradigm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ In particolare, è stata usata inizialmente la versione di prova di Visual
+ Paradigm Enterprise, allo scadere della quale è stata usata la Community
+ Edition.
+\end_layout
+
+\begin_layout Standard
+Sono inoltre stati creati degli account su 
+\emph on
+Visual Paradigm Online
+\emph default
+, piattaforma che ha permesso di usufruire del servizio 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Team Collaboration
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Gestione-della-collaborazione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), sistema di Version-Control (VCS) che permette ad ogni componente del
+ team di lavorare in proprio su una copia locale dei diagrammi, andando
+ a realizzare così un meccanismo di Configuration Management.
+ Questo strumento semplifica notevolmente la gestione delle versioni dei
+ diagrammi, dal momento che, a differenza di altri VCS come GitHub, non
+ tratta il file .vpp come un unico elemento, ma apprezza le variazioni di
+ ogni singolo componente di ogni diagramma, mostrando di volta in volta
+ le specifiche modifiche e gli eventuali conflitti.
+\end_layout
+
+\begin_layout Standard
+È possibile visualizzare l'integrazione di Team Collaboration nella versione
+ desktop in alto in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Visual-Paradigm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/vp 1.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Visual-Paradigm"
+
+\end_inset
+
+Visual Paradigm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/visual paradigm online.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Gestione-della-collaborazione"
+
+\end_inset
+
+Gestione della collaborazione con Visual Paradigm Online
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+MockFlow:
+\end_layout
+
+\begin_layout Standard
+Per realizzare dei mockup che ci guidassero nella progettazione dell'Interfaccia
+ Utente Grafica (GUI) abbiamo utilizzato 
+\emph on
+MockFlow
+\emph default
+ con il suo editor 
+\emph on
+WireframePro
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MockFlow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), uno strumento disponibile online che consente di utilizzare funzionalità
+ legate alla prototipazione ed al design.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/mockflow 1.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MockFlow"
+
+\end_inset
+
+WireframePro su MockFlow
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Android Studio:
+\end_layout
+
+\begin_layout Standard
+Una volta stabilite le funzionalità da realizzare con maggior priorità ed
+ i task che le componessero, è stato il momento di definire quali tecnologie
+ e quale linguaggio di programmazione utilizzare per supportare lo sviluppo
+ dell'applicazione.
+ Abbiamo subito scelto all'unanimità di utilizzare l'IDE proposto da Google
+ per lo sviluppo di Applicazioni Android, 
+\emph on
+Android Studio
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Documentazione Android"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Android-Studio"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), che mette a disposizione molte funzionalità per semplificare la realizzazione
+ di applicazioni, tra cui un emulatore integrato dei possibili dispositivi
+ Android, la possibilità di integrare strumenti di Version-Control, Gradle
+ come sistema di build automatizzato per il progetto e molto altro.
+ Come linguaggio di programmazione, la possibile scelta ricadeva tra 
+\emph on
+Kotlin
+\emph default
+ o 
+\emph on
+Java
+\emph default
+; nonostante il primo sia molto consigliato anche dalla community, si è
+ scelto di optare per un linguaggio ormai noto al team che conosce le sue
+ particolarità e i suoi costrutti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/android studio 1.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Android-Studio"
+
+\end_inset
+
+Android Studio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Servizi esterni
+\end_layout
+
+\begin_layout Paragraph
+Google Firebase:
+\end_layout
+
+\begin_layout Standard
+Molte delle funzionalità necessarie per il funzionamento dell'applicazione
+ hanno richiesto il supporto di 
+\emph on
+Firebase
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Documentazione firebase"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Console-di-Firebase"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), una piattaforma appartenente alla famiglia Google di cui sono stati adoperati
+ i seguenti servizi: 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Firebase Authentication
+\emph default
+: per gestire l'autenticazione e la registrazione degli utenti dell'applicazione.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Firebase Cloud Firestore
+\emph default
+: database che garantisce persistenza e sincronizzazione dei dati.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Firebase Storage
+\emph default
+: per l'immagazzinamento delle immagini.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/firebase 1.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Console-di-Firebase"
+
+\end_inset
+
+Console di Firebase
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Google Maps:
+\end_layout
+
+\begin_layout Standard
+Infine sono state utilizzate le API di 
+\emph on
+Google Maps
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Documentazione Maps"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+ al fine di poter gestire una mappa interattiva all'interno dell'applicazione.
+ La gestione delle Google Maps API è gestita tramite 
+\emph on
+Google Cloud Platform
+\emph default
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Google-Cloud-Platform"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/google cloud platform.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Google-Cloud-Platform"
+
+\end_inset
+
+Google Cloud Platform
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

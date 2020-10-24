@@ -1,0 +1,292 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 4.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+System Domain Model
+\end_layout
+
+\begin_layout Standard
+Al fine di porre delle basi significative alla fase di progettazione, è
+ utile individuare le principali entità del dominio del sistema, stabilendo
+ quali sono i loro attributi significativi e come sono associate tra di
+ loro, senza badare, almeno in questa fase di analisi, alle eventuali responsabi
+lità e operazioni.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/SDM.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+System Domain Model
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:System-Domain-Model"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Di seguito si riporta una descrizione delle singole classi concettuali individua
+te nel dominio del sistema Travelgram, riportate nel System Domain Model
+ di Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:System-Domain-Model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Traveler
+\series default
+: Rappresenta un utente registrato, pertanto è l'attore fondamentale del
+ sistema; è identificato da un ID, possiede uno username, una email e una
+ password forniti al momento della registrazione, e in più, una descrizione
+ e un'immagine del profilo per arricchire la propria esperienza di utilizzo
+ dell'applicazione.
+ Può pubblicare memory e review, seguire altri Traveler e navigare tra i
+ luoghi della ScratchMap.
+ Inoltre, può stabilire di voler visitare un luogo o di averlo visitato
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Memory
+\series default
+: Rappresenta un ricordo di viaggio che può pubblicare un Traveler.
+ Possiede un ID, una descrizione, un'immagine e eventualmente la data del
+ relativo viaggio.
+ In più, contiene il paese e, opzionalmente, la città a cui si riferisce.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Review
+\series default
+: Rappresenta una recensione di un viaggio che può pubblicare un Traveler.
+ Possiede un ID, una descrizione, un voto e eventualmente la data del relativo
+ viaggio.
+ In più, contiene il paese e, opzionalmente, la città a cui si riferisce.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+TravelJournal
+\series default
+: Rappresenta l'insieme di tutte le memory e review pubblicate da uno specifico
+ Traveler, il così detto diario di viaggio 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Place
+\series default
+: Rappresenta un luogo che un Traveler può visitare e riguardo al quale
+ può pubblicare una memory o una review.
+ Ha il solo attributo nome, ed è la classe padre di una gerarchia 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+City
+\series default
+: Rappresenta una città che il Traveler può visitare e che può opzionalmente
+ inserire tra i riferimenti della propria memory o review.
+ Essendo un tipo di luogo, è figlia della classe Place 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Country
+\series default
+: Rappresenta un paese che il Traveler può visitare e che inserisce tra
+ i riferimenti delle proprie memory o review.
+ Essendo un tipo di luogo, è una classe figlia di Place; inoltre, contiene
+ un insieme di città 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+TravelGuide
+\series default
+: Rappresenta una guida turistica che fornisce informazioni riguardo uno
+ specifico luogo.
+ Possiede un nome, una descrizione, delle immagini, e il link sorgente da
+ cui consultarla; inoltre, contiene il nome del luogo a cui si riferisce
+ 
+\end_layout
+
+\begin_layout Standard
+In seguito invece, un elenco delle associazioni individuate tra le classi
+ di cui sopra: 
+\end_layout
+
+\begin_layout Itemize
+Travler-Traveler: un traveler può seguire zero o più traveler, ed avere
+ zero o più follower 
+\end_layout
+
+\begin_layout Itemize
+Travel Journal-Traveler: Un traveler ha uno e un solo diario di viaggio,
+ il quale è relativo certamente a un solo traveler 
+\end_layout
+
+\begin_layout Itemize
+Traveler-Place: Un traveler può impostare più luoghi come visitati o da
+ visitare.
+ Ogni luogo può essere impostato in questi modi da zero o più traveler diversi
+ 
+\end_layout
+
+\begin_layout Itemize
+Travel Journal-Memory/Review: Il diario di vaiggio è un insieme di memory
+ e review, e può non contenerne nessuna, mentre una memory, o una review,
+ può essere contenuta al più nel diario di viaggio del traveler che l'ha
+ pubblicata 
+\end_layout
+
+\begin_layout Itemize
+Memoryl/Review-Place: Ogni memory o review è relativa almeno a un luogo,
+ cioè il paese, e al massimo a due luogo, cioè al paese e alla città, dato
+ che la seconda è opzionale.
+ A un luogo possono riferirsi più memory e review, o nessuna 
+\end_layout
+
+\begin_layout Itemize
+TravelGuide-PlaceL Una guida turistica si riferisce ad uno e un solo luogo,
+ mentre un luogo può avere a supporto più guide turistiche 
+\end_layout
+
+\begin_layout Itemize
+City-Country – Un paese è un insieme di più città (almeno una, perché non
+ esistono paesi senza), mentre una città appartiene a uno e un solo paese
+ 
+\end_layout
+
+\end_body
+\end_document

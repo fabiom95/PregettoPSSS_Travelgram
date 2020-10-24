@@ -1,0 +1,311 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\master Capitolo 6.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "beraserif" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2.5cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Organizzazione del Codice
+\end_layout
+
+\begin_layout Standard
+Come già visto, il pattern architetturale utilizzato è stato l'MVVM, con
+ la scelta di separare il Model in due sottopackage denominati entity e
+ repository, mentre il linguaggio di programmazione è stato Java.
+ Le classi java si presentano nei vari package come in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classi-java"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/classi java.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Classi-java"
+
+\end_inset
+
+Classi java
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si descrivono quindi brevemente le caratteristiche di ogni package: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+model.entity
+\emph default
+: contiene le classi che implementano le entità del nostro dominio.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+model.repository
+\emph default
+: sono le classi che instanziano gli oggetti necessari alla comunicazione
+ con il Server per il prelievo e l'inserimento dei dati dal/nel Database.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+view.activity
+\emph default
+: contiene le classi per l'interfaccia utente e per la gestione degli input
+ ed output dall'esterno.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+view.fragment
+\emph default
+: classi che rappresentano porzioni di interfaccia utente in una activity.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+view.adapter
+\emph default
+: classi che permettono di gestire più elementi dello stesso tipo in un
+ formato compatto (ViewHodler) all'interno di una activity o fragment in
+ modo da realizzare delle liste visibili all'utente.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+viewmodel
+\emph default
+: classi che fanno da intermediari tra View e Model fornendo dati provenienti
+ dal Model alla UI (con eventuali trasformazioni) e convertendo gli input
+ provenienti dalla View in azioni sul Model.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/resources.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Risorse"
+
+\end_inset
+
+Risorse
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Risorse"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sono presentate le risorse xml e json utilizzate: 
+\end_layout
+
+\begin_layout Itemize
+La cartella 
+\emph on
+drawable
+\emph default
+ contiene le icone ed altri oggetti grafici 
+\end_layout
+
+\begin_layout Itemize
+La cartella 
+\emph on
+layout
+\emph default
+ contiene i file xml relativi alle viste 
+\end_layout
+
+\begin_layout Itemize
+La cartella 
+\emph on
+menu
+\emph default
+ contiene i file xml relativi agli elementi inclusi in varie toolbar o navigatio
+n bar 
+\end_layout
+
+\begin_layout Itemize
+La cartella 
+\emph on
+mipmap
+\emph default
+ contiene l'icona principale dell'applicazione, in diverse risoluzioni 
+\end_layout
+
+\begin_layout Itemize
+La cartella 
+\emph on
+raw
+\emph default
+ contiene altri elementi diversi da xml, in questo caso solo dei json
+\end_layout
+
+\begin_layout Itemize
+La cartella 
+\emph on
+values
+\emph default
+ contiene xml che contengono informazioni usate dall'applicazione
+\end_layout
+
+\end_body
+\end_document
