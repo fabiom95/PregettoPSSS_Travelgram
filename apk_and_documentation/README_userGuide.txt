@@ -3,7 +3,7 @@ CONSIGLI PER IL PRIMO UTILIZZO
 E' consigliato:
 
 1) Visualizzare il video "Travelgram Preview" al seguente indirizzo:
-        https://drive.google.com/file/d/1kvxh-en2RDth7RAbbEcUAB7QbOU1UE-_/view?usp=sharing
+     https://www.youtube.com/watch?v=QBkgVoCjopg&t=1s
 
 2) Installare travelgram.apk
 
